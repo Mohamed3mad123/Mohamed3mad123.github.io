@@ -1,14 +1,444 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Mohamed Emad - Data Analyst Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Emad | Data Analyst Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- General Styles --- */
+        :root {
+            --primary-color: #007bff; /* Professional Blue */
+            --secondary-color: #2c3e50; /* Dark Navy for Text */
+            --bg-color: #f8f9fa; /* Light Gray Background */
+            --card-bg: #ffffff;
+            --text-on-dark: #ffffff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--secondary-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* --- Header / Navigation --- */
+        header {
+            background-color: var(--card-bg);
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #1a252f 100%);
+            color: var(--text-on-dark);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: var(--text-on-dark);
+            border-radius: 25px;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        /* --- About Section --- */
+        .about {
+            padding: 80px 0;
+            background-color: var(--card-bg);
+        }
+
+        .about h2, .projects h2, .contact h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .about h2::after, .projects h2::after, .contact h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 2;
+        }
+
+        .skills-list {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .skill-item {
+            background-color: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* --- Projects Section --- */
+        .projects {
+            padding: 80px 0;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .project-details {
+            padding: 30px;
+        }
+
+        .project-details h3 {
+            font-size: 24px;
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .project-meta {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+
+        .project-tools {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tool-tag {
+            font-size: 12px;
+            background-color: #f1f3f5;
+            padding: 5px 10px;
+            border-radius: 15px;
+            color: var(--secondary-color);
+        }
+
+        .project-description {
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .project-description ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .project-description ul li {
+            margin-bottom: 5px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 8px 20px;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--text-on-dark);
+        }
+
+        /* --- Contact Section --- */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--secondary-color);
+            color: var(--text-on-dark);
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            font-size: 16px;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #1a252f;
+            color: #95a5a6;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .container { width: 90%; }
+            .hero h1 { font-size: 32px; }
+            .about-content { flex-direction: column; text-align: center; }
+            .skills-list { margin-top: 30px; }
+            .project-card { text-align: left; }
+        }
+    </style>
 </head>
 <body>
-    <h1>أهلاً بك في بورتفوليو محمد عماد</h1>
-    <p>محلل بيانات متخصص في SQL, Power BI, و Excel.</p>
-    <h2>مشاريعي:</h2>
-    <ul>
-        <li>تحليل صادرات الحبوب - مشروع باستخدام Power BI و SQL</li>
-    </ul>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">M.Emad</div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Mohamed Emad</h1>
+            <p>Data Analyst | Turning Complex Data into Actionable Business Insights</p>
+            <a href="#projects" class="btn-primary">View My Work</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I am a passionate Data Analyst dedicated to helping businesses grow by transforming raw data into meaningful stories and strategic decisions. My expertise lies in cleaning data, creating interactive visualizations, and conducting in-depth business intelligence analysis to uncover opportunities and solve critical challenges.</p>
+                </div>
+                <div class="skills-list">
+                    <div class="skill-item">SQL</div>
+                    <div class="skill-item">Power BI</div>
+                    <div class="skill-item">Excel / Power Query</div>
+                    <div class="skill-item">Data Visualization</div>
+                    <div class="skill-item">Statistical Analysis</div>
+                    <div class="skill-item">Market Basket Analysis</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+
+            <div class="project-card">
+                <img src="path_to_image_0.png" alt="Sales Performance Dashboard" class="project-image">
+                <div class="project-details">
+                    <h3>Beyond Charts: A Story of Business Growth & Operational Efficiency</h3>
+                    <div class="project-meta">Business Intelligence | Operational Analysis</div>
+                    <div class="project-tools">
+                        <span class="tool-tag">Power BI</span>
+                        <span class="tool-tag">SQL</span>
+                        <span class="tool-tag">Excel</span>
+                    </div>
+                    <div class="project-description">
+                        <p>This project is not just a dashboard; it's a narrative of performance and strategic decision-making. I analyzed sales data to uncover the "why" behind the numbers, focusing on profitability and market acceptance.</p>
+                        <strong>Key Insights:</strong>
+                        <ul>
+                            <li><strong>High Efficiency:</strong> Achieved an 87% net profit margin on $1.76M in total sales, reflecting excellent cost control.</li>
+                            <li><strong>Product Quality:</strong> Maintained an exceptionally low return rate of 0.99%, indicating high market satisfaction with the 833K units sold.</li>
+                            <li><strong>Growth Driver:</strong> Identified that opening 11 new branches in 1998 was a direct catalyst for increased sales and a growing customer base (8,000 new customers).</li>
+                            <li><strong>Target Audience:</strong> Pinpointed that customers with income <$60K and seniors are the most active and largest segments.</li>
+                        </ul>
+                        <strong>Strategic Recommendations:</strong>
+                        <ul>
+                            <li><strong>Focus on North West:</strong> Reallocate marketing budget to the highest-performing region ($0.84M in revenue).</li>
+                            <li><strong>Tailored Loyalty Programs:</strong> Design specific offers for the large senior demographic and the <$60K income segment to maximize customer lifetime value.</li>
+                            <li><strong>Review Returns:</strong> Investigate the "Hermanos Red Pepper" product to safeguard its high-profit margin despite its higher return rate.</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" target="_blank" class="btn-secondary">View Live Dashboard</a>
+                        <a href="#" target="_blank" class="btn-secondary">View SQL Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="path_to_image_2.png" alt="Market Basket & What-If Analysis Dashboard" class="project-image">
+                <div class="project-details">
+                    <h3>Unlocking Profitability: When Discounts Drive Real Growth (Market Basket & What-If)</h3>
+                    <div class="project-meta">Cross-Selling | Pricing Strategy | Simulation</div>
+                    <div class="project-tools">
+                        <span class="tool-tag">Power BI</span>
+                        <span class="tool-tag">Advanced DAX</span>
+                        <span class="tool-tag">Statistical Analysis</span>
+                    </div>
+                    <div class="project-description">
+                        <p>Does a discount always reduce profit? This project proves that data-driven discounts can be a powerful growth lever. I combined Market Basket Analysis with What-If simulations to optimize cross-selling and pricing strategies.</p>
+                        <strong>Key Achievements:</strong>
+                        <ul>
+                            <li><strong>Identified Bundles:</strong> Used Market Basket Analysis to discover which products customers frequently purchase together, creating clear opportunities for product bundling.</li>
+                            <li><strong>Simulated Outcomes:</strong> Developed a What-If Analysis model to answer critical questions: "What if we offer a discount on this bundle?" and "What if that discount increases order volume slightly?".</li>
+                            <li><strong>Data-Driven Pricing:</strong> Compared sales and profitability scenarios (pre and post-discount) to support pricing decisions based on actual numbers, not assumptions.</li>
+                            <li><strong>Business Impact:</strong> Helped the business increase Average Order Value (AOV) and reduce the risk associated with random discounting.</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" target="_blank" class="btn-secondary">View Live Dashboard</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="path_to_image_1.png" alt="F&B Performance Optimization Dashboard" class="project-image">
+                <div class="project-details">
+                    <h3>Strategic F&B Turnaround: Data-Driven Profits Over Simple Discounts</h3>
+                    <div class="project-meta">Business Turnaround | Profitability Analysis | Menu Engineering</div>
+                    <div class="project-tools">
+                        <span class="tool-tag">Power BI</span>
+                        <span class="tool-tag">Correlation Analysis</span>
+                        <span class="tool-tag">Market Basket Analysis</span>
+                    </div>
+                    <div class="project-description">
+                        <p>For a business in the Food & Beverage sector, I was tasked with a clear goal: analyze declining sales and provide actionable recommendations to improve performance. This project proves that data-driven decisions reduce waste and maximize profitability.</p>
+                        <strong>Key Results & Strategic Moves:</strong>
+                        <ul>
+                            <li><strong>Re-evaluating Discounts:</strong> Through Correlation Analysis, I discovered that direct discounts had a very limited effect on increasing quantity sold but a severe negative impact on profit margin. Customers purchased based on perceived value, not just price.</li>
+                            <li><strong>Menu Engineering:</strong> Identified that the "Waffle" achieved a high-profit margin (up to 73%) despite not being the highest-selling item. My recommendation: re-direct marketing and menu engineering efforts towards high-margin products to maximize net profit.</li>
+                            <li><strong>Bundle Strategy:</strong> Replaced random discounts with calculated product bundles (derived from Market Basket Analysis) to raise the Average Order Value (AOV).</li>
+                            <li><strong>Predictive Simulation:</strong> Concluded the project with a What-If Analysis to test different pricing scenarios and discount levels *before* implementation, predicting their exact effect on expected profits.</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" target="_blank" class="btn-secondary">View Live Dashboard</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Let's Connect</h2>
+            <p>Are you looking for a Data Analyst to transform your numbers into strategic insights? I am open to discussing new opportunities.</p>
+            <div class="contact-links">
+                <div class="contact-item"><a href="mailto:mohamed.emad.data@email.com" target="_blank">mohamed.emad.data@email.com</a></div>
+                <div class="contact-item"><a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank">LinkedIn</a></div>
+                <div class="contact-item"><a href="https://github.com/mohamed3mad123" target="_blank">GitHub</a></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Mohamed Emad. All rights reserved.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
