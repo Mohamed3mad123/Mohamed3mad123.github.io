@@ -1,65 +1,55 @@
-<style>
-:root{
---dark:#0f172a;
---blue:#1e3a8a;
---light:#ffffff;
---gray:#64748b;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-/* BODY */
+<title>Mohamed Emad Hamdy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+
 body{
 margin:0;
-font-family:'Poppins',sans-serif;
+font-family:'Inter',sans-serif;
 background:#ffffff;
-color:var(--dark);
+color:#0f172a;
 }
 
-/* HEADER */
-header{
-background:#ffffff;
-border-bottom:1px solid #e2e8f0;
-position:sticky;
-top:0;
+/* NAV */
+nav{
+display:flex;
+justify-content:space-between;
+padding:20px 8%;
+position:fixed;
+width:100%;
+background:white;
+box-shadow:0 2px 10px rgba(0,0,0,0.05);
 z-index:1000;
 }
 
-nav{
-width:90%;
-margin:auto;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 0;
-}
-
 nav a{
+margin-left:20px;
 text-decoration:none;
 color:#0f172a;
-margin-left:20px;
-font-weight:500;
 }
 
 /* HERO */
 .hero{
-background:linear-gradient(135deg,#0f172a,#1e3a8a);
-color:white;
+height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
-gap:30px;
-padding:100px 20px;
-flex-wrap:wrap;
-}
-
-.hero img{
-width:140px;
-height:140px;
-border-radius:50%;
-border:4px solid white;
+flex-direction:column;
+background:linear-gradient(135deg,#0f172a,#1e3a8a);
+color:white;
+text-align:center;
 }
 
 .hero h1{
-font-size:42px;
+font-size:55px;
 margin:0;
 }
 
@@ -69,63 +59,48 @@ color:#cbd5f5;
 
 /* SECTION */
 .section{
-width:90%;
-max-width:1100px;
-margin:auto;
-padding:60px 0;
+padding:100px 8%;
 }
 
 /* SKILLS */
-.skills-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+.skills{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
 }
 
-.skill-card{
-background:#ffffff;
-border:1px solid #e2e8f0;
-padding:20px;
-border-radius:15px;
-transition:0.3s;
-}
-
-.skill-card:hover{
-transform:translateY(-5px);
-box-shadow:0 10px 25px rgba(0,0,0,0.05);
-}
-
-.skill-card h3{
-color:#1e3a8a;
+.skills span{
+background:#eef2ff;
+padding:10px 15px;
+border-radius:10px;
 }
 
 /* PROJECTS */
-.projects-grid{
+.projects{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:20px;
 }
 
-.project-card{
-background:#ffffff;
+.card{
 border:1px solid #e2e8f0;
-border-radius:20px;
+border-radius:15px;
 overflow:hidden;
 transition:0.3s;
 }
 
-.project-card:hover{
-transform:translateY(-6px);
-box-shadow:0 20px 40px rgba(0,0,0,0.08);
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 15px 40px rgba(0,0,0,0.1);
 }
 
-.project-card img{
+.card img{
 width:100%;
 height:200px;
 object-fit:cover;
 }
 
-.project-details{
+.card-body{
 padding:20px;
 }
 
@@ -133,14 +108,10 @@ padding:20px;
 .btn{
 background:#1e3a8a;
 color:white;
-border:none;
 padding:10px 20px;
+border:none;
 border-radius:10px;
 cursor:pointer;
-}
-
-.btn:hover{
-background:#2563eb;
 }
 
 /* CONTACT */
@@ -149,17 +120,6 @@ background:#0f172a;
 color:white;
 text-align:center;
 padding:80px 20px;
-}
-
-.contact a{
-color:#cbd5f5;
-display:block;
-margin:10px;
-text-decoration:none;
-}
-
-.contact a:hover{
-color:white;
 }
 
 /* MODAL */
@@ -175,13 +135,144 @@ background:rgba(0,0,0,0.7);
 .modal-content{
 background:white;
 margin:5% auto;
-padding:30px;
+padding:20px;
 width:70%;
-border-radius:20px;
+border-radius:15px;
 }
 
-/* SCROLL */
-html{
-scroll-behavior:smooth;
+/* SLIDER */
+.slider img{display:none;width:100%;}
+.slider img.active{display:block;}
+
+.arrow{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:white;
+border:none;
+padding:10px;
+cursor:pointer;
 }
+.prev{left:10px;}
+.next{right:10px;}
+
 </style>
+</head>
+
+<body>
+
+<nav>
+<div><strong>Mohamed Emad</strong></div>
+<div>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<h1>Mohamed Emad Hamdy</h1>
+<p>Data Analyst | SQL | Power BI | Excel</p>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section" data-aos="fade-up">
+<h2>About Me</h2>
+<p>
+I am a Data Analyst focused on turning data into insights and business decisions using Power BI, SQL, and Excel.
+</p>
+</section>
+
+<!-- SKILLS -->
+<section class="section" data-aos="fade-up">
+<h2>Skills</h2>
+<div class="skills">
+<span>SQL</span>
+<span>Power BI</span>
+<span>Excel</span>
+<span>Data Cleaning</span>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section" data-aos="fade-up">
+<h2>Projects</h2>
+
+<div class="projects">
+
+<div class="card">
+<img src="sales_project1.png">
+<div class="card-body">
+<h3>Sales Analysis</h3>
+<button class="btn" onclick="openModal('p1')">View</button>
+</div>
+</div>
+
+<div class="card">
+<img src="market_basket1.jpg">
+<div class="card-body">
+<h3>Market Basket</h3>
+<button class="btn" onclick="openModal('p2')">View</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+<h2>Contact</h2>
+<p>Email: mohamed3mad131@gmail.com</p>
+<p>WhatsApp: 01040699963</p>
+</section>
+
+<!-- MODAL -->
+<div id="p1" class="modal">
+<div class="modal-content">
+<span onclick="closeModal('p1')" style="cursor:pointer;">X</span>
+
+<div class="slider" id="slider1">
+<img src="sales_project1.png" class="active">
+<img src="sales_project2.png">
+<button class="arrow prev" onclick="slide('slider1',-1)">❮</button>
+<button class="arrow next" onclick="slide('slider1',1)">❯</button>
+</div>
+
+<p>Full business analysis with insights.</p>
+
+</div>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+AOS.init();
+
+function openModal(id){
+document.getElementById(id).style.display="block";
+}
+
+function closeModal(id){
+document.getElementById(id).style.display="none";
+}
+
+function slide(id,dir){
+let slider=document.getElementById(id);
+let imgs=slider.getElementsByTagName("img");
+let index=0;
+
+for(let i=0;i<imgs.length;i++){
+if(imgs[i].classList.contains("active")){
+imgs[i].classList.remove("active");
+index=i;
+}
+}
+
+let next=(index+dir+imgs.length)%imgs.length;
+imgs[next].classList.add("active");
+}
+</script>
+
+</body>
+</html>
