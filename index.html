@@ -41,13 +41,23 @@ color:#1e293b;
 
 /* HERO */
 .hero{
-text-align:center;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:40px;
 padding:100px 20px;
-background:linear-gradient(135deg,#3b82f6,#60a5fa);
+background:linear-gradient(135deg,#1e3a8a,#1e40af);
 color:white;
+flex-wrap:wrap;
+}
+.hero img{
+width:140px;
+height:140px;
+border-radius:50%;
+border:4px solid white;
 }
 .hero h1{
-font-size:50px;
+font-size:42px;
 margin:0;
 }
 
@@ -71,7 +81,6 @@ padding:20px;
 border-radius:15px;
 }
 .skill-card i{
-font-size:25px;
 color:#3b82f6;
 margin-right:10px;
 }
@@ -105,6 +114,17 @@ border-radius:10px;
 cursor:pointer;
 }
 
+/* CONTACT */
+.contact{
+text-align:center;
+}
+.contact a{
+display:block;
+margin:10px;
+text-decoration:none;
+color:#1e293b;
+}
+
 /* MODAL */
 .modal{
 display:none;
@@ -124,22 +144,12 @@ border-radius:15px;
 .close{
 float:right;
 cursor:pointer;
-font-size:20px;
 }
 
 /* SLIDER */
-.slider{
-position:relative;
-}
-.slider img{
-display:none;
-width:100%;
-max-height:300px;
-object-fit:contain;
-}
-.slider img.active{
-display:block;
-}
+.slider img{display:none;width:100%;max-height:300px;object-fit:contain;}
+.slider img.active{display:block;}
+
 .arrow{
 position:absolute;
 top:50%;
@@ -164,20 +174,30 @@ cursor:pointer;
 <a href="#about">About</a>
 <a href="#skills">Skills</a>
 <a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
 </div>
 </nav>
 </header>
 
+<!-- HERO -->
 <section class="hero" data-aos="fade-up">
+<img src="Mohamed Emad.jpg" alt="">
+<div>
 <h1>Mohamed Emad Hamdy</h1>
-<p>Data Analyst</p>
+<p>Data Analyst | SQL | Power BI | Excel</p>
+</div>
 </section>
 
+<!-- ABOUT -->
 <section id="about" class="section" data-aos="fade-up">
 <h2>About</h2>
-<p>Data Analyst focused on turning data into insights and business decisions using Power BI, Excel, and SQL.</p>
+<p>
+Data Analyst passionate about transforming raw data into business insights and strategic decisions.
+I focus on storytelling, performance analysis, and building dashboards using Power BI, SQL, and Excel.
+</p>
 </section>
 
+<!-- SKILLS -->
 <section id="skills" class="section" data-aos="fade-up">
 <h2>My Skills</h2>
 
@@ -205,6 +225,7 @@ cursor:pointer;
 </div>
 </section>
 
+<!-- PROJECTS -->
 <section id="projects" class="section" data-aos="fade-up">
 <h2>Projects</h2>
 
@@ -229,6 +250,16 @@ cursor:pointer;
 </div>
 </section>
 
+<!-- CONTACT -->
+<section id="contact" class="section contact" data-aos="fade-up">
+<h2>Contact</h2>
+
+<a href="mailto:mohamed3mad131@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
+<a href="https://www.linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+<a href="https://wa.me/201040699963" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+
+</section>
+
 <!-- MODAL -->
 <div id="p1" class="modal">
 <div class="modal-content">
@@ -238,12 +269,11 @@ cursor:pointer;
 <img src="sales_project1.png" class="active">
 <img src="sales_project2.png">
 <img src="sales_project3.png">
-
 <button class="arrow prev" onclick="slide('slider1',-1)">❮</button>
 <button class="arrow next" onclick="slide('slider1',1)">❯</button>
 </div>
 
-<p>Full business analysis with insights and recommendations.</p>
+<p>Full business analysis with insights.</p>
 
 </div>
 </div>
@@ -251,7 +281,7 @@ cursor:pointer;
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 <script>
-AOS.init();
+AOS.init({duration:1000});
 
 function openModal(id){
 document.getElementById(id).style.display="block";
