@@ -12,158 +12,149 @@
 
 <style>
 :root {
-    --primary: #3b82f6;
-    --bg: #f8fafc;
+    --primary:#3b82f6;
 }
 
 body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom, #ffffff, #f1f5ff);
-    color: #1e293b;
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:#f8fafc;
+    color:#1e293b;
+}
+
+/* Background shapes */
+body::before{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    radial-gradient(circle at 10% 20%, rgba(59,130,246,0.08), transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(59,130,246,0.08), transparent 20%);
+    z-index:-1;
 }
 
 /* Header */
-header {
-    background: white;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+header{
+    background:white;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    position:sticky;
+    top:0;
 }
 
-nav {
-    width: 90%;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 0;
+nav{
+    width:90%;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 0;
 }
 
-.nav-links {
-    display: flex;
-    gap: 20px;
-    list-style: none;
+.profile{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.profile img{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    border:3px solid var(--primary);
 }
 
 /* Hero */
-.hero {
-    text-align: center;
-    padding: 100px 20px;
-}
-
-.hero h1 {
-    font-size: 48px;
-}
-
-.subtitle {
-    color: #64748b;
+.hero{
+    text-align:center;
+    padding:80px 20px;
 }
 
 /* Sections */
-.section {
-    width: 90%;
-    max-width: 1000px;
-    margin: auto;
-    padding: 60px 0;
+.section{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:60px 0;
 }
 
 /* Skills */
-.skills span {
-    background: #eef2ff;
-    padding: 8px 14px;
-    border-radius: 10px;
-    margin: 5px;
-    display: inline-block;
+.skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
 }
 
-/* Projects */
-.project-card {
-    background: white;
-    border-radius: 20px;
-    margin-bottom: 30px;
-    overflow: hidden;
-    border: 1px solid #e2e8f0;
-    transition: 0.3s;
+.skill-card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
 }
 
-.project-card:hover {
-    transform: translateY(-5px);
+.skill-card h3{
+    color:var(--primary);
 }
 
-.project-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
+/* Projects Grid */
+.projects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
 }
 
-.project-details {
-    padding: 20px;
+.project-card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,0.05);
 }
 
-.btn {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    cursor: pointer;
+.project-card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
 }
 
-/* Contact */
-.contact {
-    text-align: center;
+.project-details{
+    padding:15px;
 }
 
-.contact a {
-    display: block;
-    margin: 10px;
-    color: #1e293b;
-    text-decoration: none;
+.btn{
+    background:var(--primary);
+    color:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:10px;
+    cursor:pointer;
 }
 
 /* Modal */
-.modal {
-    display: none;
-    position: fixed;
-    background: rgba(0,0,0,0.7);
-    width: 100%;
-    height: 100%;
-    top: 0;
-    overflow-y: auto;
+.modal{
+    display:none;
+    position:fixed;
+    background:rgba(0,0,0,0.7);
+    width:100%;
+    height:100%;
+    top:0;
+    overflow:auto;
 }
 
-.modal-content {
-    background: white;
-    margin: 5% auto;
-    padding: 30px;
-    width: 80%;
-    border-radius: 20px;
+.modal-content{
+    background:white;
+    margin:5% auto;
+    padding:30px;
+    width:80%;
+    border-radius:20px;
 }
 
-.close {
-    float: right;
-    font-size: 25px;
-    cursor: pointer;
+.close{
+    float:right;
+    cursor:pointer;
 }
 
 /* Slider */
-.slider img {
-    width: 100%;
-    display: none;
-}
-
-.slider img.active {
-    display: block;
-}
-
-.slider-btn {
-    margin: 10px 5px;
-    padding: 8px 12px;
-    border: none;
-    cursor: pointer;
-    background: #e2e8f0;
-}
+.slider img{display:none;width:100%;}
+.slider img.active{display:block;}
 </style>
 </head>
 
@@ -171,42 +162,62 @@ nav {
 
 <header>
 <nav>
-    <h3>Mohamed Emad</h3>
-    <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
+<div class="profile">
+<img src="Mohamed Emad.jpg">
+<div>
+<strong>Mohamed Emad</strong><br>
+<span style="color:#3b82f6;">Data Analyst</span>
+</div>
+</div>
 </nav>
 </header>
 
 <section class="hero" data-aos="fade-up">
-    <h1>Mohamed Emad</h1>
-    <p class="subtitle">Data Analyst | SQL | Power BI | Excel</p>
+<h1>Turning Data into Business Decisions</h1>
+<p>SQL • Power BI • Excel</p>
 </section>
 
-<section id="about" class="section" data-aos="fade-up">
+<section class="section" data-aos="fade-up">
 <h2>About Me</h2>
-<p>Data Analyst focused on insights, dashboards, and business decisions.</p>
+<p>
+I am a Data Analyst passionate about transforming raw data into actionable insights.
+I specialize in analyzing business performance, building dashboards, and uncovering opportunities to increase revenue and optimize operations.
+My work focuses on storytelling through data — not just numbers, but insights that drive decisions.
+</p>
 </section>
 
-<section id="skills" class="section" data-aos="fade-up">
-<h2>Skills</h2>
-<div class="skills">
-<span>Power BI</span>
-<span>Excel</span>
-<span>SQL</span>
+<section class="section" data-aos="fade-up">
+<h2>My Skills</h2>
+
+<div class="skills-grid">
+
+<div class="skill-card">
+<h3>Tools</h3>
+<p>Power BI, Excel</p>
+</div>
+
+<div class="skill-card">
+<h3>Technical</h3>
+<p>SQL, Data Cleaning, Data Modeling</p>
+</div>
+
+<div class="skill-card">
+<h3>Business</h3>
+<p>KPIs, Data Storytelling, Decision Making</p>
+</div>
+
 </div>
 </section>
 
-<section id="projects" class="section" data-aos="fade-up">
+<section class="section" data-aos="fade-up">
 <h2>Projects</h2>
+
+<div class="projects-grid">
 
 <div class="project-card">
 <img src="sales_project1.png">
 <div class="project-details">
-<h3>Sales Analysis</h3>
+<h3>Sales Story Analysis</h3>
 <button class="btn" onclick="openModal('p1')">View Details</button>
 </div>
 </div>
@@ -214,7 +225,7 @@ nav {
 <div class="project-card">
 <img src="market_basket1.jpg">
 <div class="project-details">
-<h3>Market Basket</h3>
+<h3>Market Basket & What-If</h3>
 <button class="btn" onclick="openModal('p2')">View Details</button>
 </div>
 </div>
@@ -222,40 +233,97 @@ nav {
 <div class="project-card">
 <img src="fb_project.jpg">
 <div class="project-details">
-<h3>F&B Analysis</h3>
+<h3>F&B Profit Optimization</h3>
 <button class="btn" onclick="openModal('p3')">View Details</button>
 </div>
 </div>
 
+</div>
 </section>
 
-<section id="contact" class="section contact" data-aos="fade-up">
-<h2>Contact</h2>
+<!-- MODALS -->
 
-<a href="mailto:mohamed3mad131@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
-<a href="https://www.linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-<a href="https://wa.me/201040699963" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-
-</section>
-
-<!-- Modal with Slider -->
 <div id="p1" class="modal">
 <div class="modal-content">
-<span class="close" onclick="closeModal('p1')">&times;</span>
+<span class="close" onclick="closeModal('p1')">X</span>
 
-<div class="slider" id="slider1">
+<div class="slider">
 <img src="sales_project1.png" class="active">
 <img src="sales_project2.png">
-<img src="sales_project3.png">
 </div>
 
-<button class="slider-btn" onclick="slide('slider1',-1)">Prev</button>
-<button class="slider-btn" onclick="slide('slider1',1)">Next</button>
+<h3>📊 Business Story</h3>
+<p>
+This project is not just a dashboard — it's a full business story.
+Starting from high-level KPIs, we discovered strong profitability (87% margin),
+low returns (0.99%), and high operational efficiency.
+</p>
 
-<h3>Sales Analysis</h3>
-<p><strong>Goal:</strong> Improve sales performance</p>
-<p><strong>Steps:</strong> Cleaning → Modeling → Dashboard</p>
-<p><strong>Results:</strong> Found best products & trends</p>
+<h4>Key Insights</h4>
+<ul>
+<li>North West generates ~50% of revenue</li>
+<li>Top stores: 13 & 17</li>
+<li>Best product: Hermanos Red Pepper</li>
+</ul>
+
+<h4>Recommendations</h4>
+<ul>
+<li>Focus marketing on North West</li>
+<li>Target customers <60K income</li>
+<li>Improve large store performance</li>
+</ul>
+
+</div>
+</div>
+
+<div id="p2" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('p2')">X</span>
+
+<h3>🧠 Market Basket & What-If Analysis</h3>
+
+<p>
+This project answers a key question:
+Do discounts really reduce profit — or can they increase it?
+</p>
+
+<ul>
+<li>Identified frequent product bundles</li>
+<li>Built What-If scenarios</li>
+<li>Simulated demand increase</li>
+</ul>
+
+<h4>Results</h4>
+<ul>
+<li>Stronger bundles identified</li>
+<li>Improved AOV</li>
+<li>Better pricing decisions</li>
+</ul>
+
+</div>
+</div>
+
+<div id="p3" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('p3')">X</span>
+
+<h3>🍽 F&B Analysis</h3>
+
+<p>
+This project focused on increasing profitability without relying on discounts.
+</p>
+
+<ul>
+<li>Discounts hurt margins</li>
+<li>Waffle = 73% margin</li>
+<li>Bundles replaced discounts</li>
+</ul>
+
+<h4>Impact</h4>
+<ul>
+<li>Higher profitability</li>
+<li>Better pricing strategy</li>
+</ul>
 
 </div>
 </div>
@@ -266,26 +334,11 @@ nav {
 AOS.init();
 
 function openModal(id){
-    document.getElementById(id).style.display="block";
+document.getElementById(id).style.display="block";
 }
+
 function closeModal(id){
-    document.getElementById(id).style.display="none";
-}
-
-function slide(id,dir){
-    let slider=document.getElementById(id);
-    let imgs=slider.getElementsByTagName("img");
-    let index=0;
-
-    for(let i=0;i<imgs.length;i++){
-        if(imgs[i].classList.contains("active")){
-            imgs[i].classList.remove("active");
-            index=i;
-        }
-    }
-
-    let next=(index+dir+imgs.length)%imgs.length;
-    imgs[next].classList.add("active");
+document.getElementById(id).style.display="none";
 }
 </script>
 
