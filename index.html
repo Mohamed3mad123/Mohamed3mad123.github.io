@@ -3,51 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mohamed Emad Hamdy | Data Portfolio</title>
+
+<title>Mohamed Emad | Data Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-:root { 
-    --primary-color: #3b82f6; 
-    --bg-color: #f8fafc; 
-    --card-bg: #ffffff; 
+:root {
+    --primary: #3b82f6;
+    --bg: #f8fafc;
 }
 
-body { 
-    font-family: 'Poppins', sans-serif; 
-    margin: 0; 
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
     background: linear-gradient(to bottom, #ffffff, #f1f5ff);
     color: #1e293b;
 }
 
 /* Header */
-header { 
-    background: white; 
-    padding: 15px 0; 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+header {
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
 }
-nav { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    width: 90%; 
+
+nav {
+    width: 90%;
     margin: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
 }
 
-.logo { font-weight: 700; }
-
-.nav-links { display: flex; gap: 20px; list-style: none; }
-.nav-links a { text-decoration: none; color: #1e293b; }
+.nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
 
 /* Hero */
-.hero { text-align: center; padding: 80px 20px; }
-.hero h1 { font-size: 48px; }
-.subtitle { color: #64748b; }
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 48px;
+}
+
+.subtitle {
+    color: #64748b;
+}
 
 /* Sections */
-.section { width: 90%; max-width: 1000px; margin: auto; padding: 60px 0; }
+.section {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    padding: 60px 0;
+}
 
 /* Skills */
 .skills span {
@@ -60,61 +79,90 @@ nav {
 
 /* Projects */
 .project-card {
-    background: var(--card-bg);
+    background: white;
     border-radius: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     overflow: hidden;
     border: 1px solid #e2e8f0;
+    transition: 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
 }
 
 .project-card img {
     width: 100%;
+    height: 220px;
+    object-fit: cover;
 }
 
 .project-details {
-    padding: 25px;
+    padding: 20px;
 }
 
 .btn {
-    background: var(--primary-color);
+    background: var(--primary);
+    color: white;
     border: none;
     padding: 10px 20px;
-    color: white;
     border-radius: 10px;
     cursor: pointer;
 }
 
 /* Contact */
-.contact { text-align: center; }
+.contact {
+    text-align: center;
+}
+
 .contact a {
     display: block;
     margin: 10px;
-    text-decoration: none;
     color: #1e293b;
+    text-decoration: none;
 }
 
 /* Modal */
 .modal {
     display: none;
     position: fixed;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.7);
     width: 100%;
     height: 100%;
     top: 0;
+    overflow-y: auto;
 }
 
 .modal-content {
     background: white;
+    margin: 5% auto;
     padding: 30px;
-    margin: 8% auto;
-    width: 70%;
+    width: 80%;
     border-radius: 20px;
 }
 
 .close {
     float: right;
-    cursor: pointer;
     font-size: 25px;
+    cursor: pointer;
+}
+
+/* Slider */
+.slider img {
+    width: 100%;
+    display: none;
+}
+
+.slider img.active {
+    display: block;
+}
+
+.slider-btn {
+    margin: 10px 5px;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    background: #e2e8f0;
 }
 </style>
 </head>
@@ -122,178 +170,122 @@ nav {
 <body>
 
 <header>
-    <nav>
-        <div class="logo">Mohamed Emad</div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+<nav>
+    <h3>Mohamed Emad</h3>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
 </header>
 
-<section class="hero">
-    <h1>Mohamed Emad Hamdy</h1>
+<section class="hero" data-aos="fade-up">
+    <h1>Mohamed Emad</h1>
     <p class="subtitle">Data Analyst | SQL | Power BI | Excel</p>
 </section>
 
-<section id="about" class="section">
-    <h2>About Me</h2>
-    <p>
-        Data Analyst focused on transforming raw data into business insights.
-        I specialize in building dashboards, analyzing trends, and supporting decision-making using Power BI, SQL, and Excel.
-    </p>
+<section id="about" class="section" data-aos="fade-up">
+<h2>About Me</h2>
+<p>Data Analyst focused on insights, dashboards, and business decisions.</p>
 </section>
 
-<section id="skills" class="section">
-    <h2>Skills</h2>
-    <div class="skills">
-        <span>Power BI</span>
-        <span>Excel (Advanced)</span>
-        <span>SQL</span>
-    </div>
+<section id="skills" class="section" data-aos="fade-up">
+<h2>Skills</h2>
+<div class="skills">
+<span>Power BI</span>
+<span>Excel</span>
+<span>SQL</span>
+</div>
 </section>
 
-<section id="projects" class="section">
-    <h2>Projects</h2>
+<section id="projects" class="section" data-aos="fade-up">
+<h2>Projects</h2>
 
-    <!-- Project 1 -->
-    <div class="project-card">
-        <img src="sales_project1.png">
-        <div class="project-details">
-            <h3>Sales Performance Analysis</h3>
-            <p>End-to-end analysis of sales data to uncover trends and improve profitability.</p>
-            <button class="btn" onclick="openModal('p1')">View Details</button>
-        </div>
-    </div>
+<div class="project-card">
+<img src="sales_project1.png">
+<div class="project-details">
+<h3>Sales Analysis</h3>
+<button class="btn" onclick="openModal('p1')">View Details</button>
+</div>
+</div>
 
-    <!-- Project 2 -->
-    <div class="project-card">
-        <img src="market_basket1.jpg">
-        <div class="project-details">
-            <h3>Market Basket Analysis</h3>
-            <p>Analyzed customer purchase behavior to increase cross-selling.</p>
-            <button class="btn" onclick="openModal('p2')">View Details</button>
-        </div>
-    </div>
+<div class="project-card">
+<img src="market_basket1.jpg">
+<div class="project-details">
+<h3>Market Basket</h3>
+<button class="btn" onclick="openModal('p2')">View Details</button>
+</div>
+</div>
 
-    <!-- Project 3 -->
-    <div class="project-card">
-        <img src="fb_project.jpg">
-        <div class="project-details">
-            <h3>F&B Profit Optimization</h3>
-            <p>Analyzed menu performance and pricing strategy to maximize margins.</p>
-            <button class="btn" onclick="openModal('p3')">View Details</button>
-        </div>
-    </div>
+<div class="project-card">
+<img src="fb_project.jpg">
+<div class="project-details">
+<h3>F&B Analysis</h3>
+<button class="btn" onclick="openModal('p3')">View Details</button>
+</div>
+</div>
 
 </section>
 
-<section id="contact" class="section contact">
-    <h2>Contact</h2>
+<section id="contact" class="section contact" data-aos="fade-up">
+<h2>Contact</h2>
 
-    <a href="mailto:mohamed3mad131@gmail.com">
-        <i class="fa-solid fa-envelope"></i> Email
-    </a>
-
-    <a href="https://www.linkedin.com/in/mohamed-emad-76b24a294" target="_blank">
-        <i class="fa-brands fa-linkedin"></i> LinkedIn
-    </a>
-
-    <a href="https://wa.me/201040699963" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i> WhatsApp
-    </a>
+<a href="mailto:mohamed3mad131@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
+<a href="https://www.linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+<a href="https://wa.me/201040699963" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
 
 </section>
 
-<!-- Modals -->
-
+<!-- Modal with Slider -->
 <div id="p1" class="modal">
 <div class="modal-content">
 <span class="close" onclick="closeModal('p1')">&times;</span>
 
-<h2>Sales Performance Analysis</h2>
+<div class="slider" id="slider1">
+<img src="sales_project1.png" class="active">
+<img src="sales_project2.png">
+<img src="sales_project3.png">
+</div>
 
-<h4>🎯 Goal</h4>
-<p>Understand revenue, profit, and customer behavior to improve business performance.</p>
+<button class="slider-btn" onclick="slide('slider1',-1)">Prev</button>
+<button class="slider-btn" onclick="slide('slider1',1)">Next</button>
 
-<h4>🛠 Steps</h4>
-<ul>
-<li>Data cleaning using Excel</li>
-<li>Built data model in Power BI</li>
-<li>Created KPIs (Revenue, Profit, Orders)</li>
-<li>Time analysis (daily, monthly trends)</li>
-</ul>
-
-<h4>📊 Results</h4>
-<ul>
-<li>Identified peak sales months</li>
-<li>Detected top-performing products</li>
-<li>Highlighted underperforming categories</li>
-</ul>
+<h3>Sales Analysis</h3>
+<p><strong>Goal:</strong> Improve sales performance</p>
+<p><strong>Steps:</strong> Cleaning → Modeling → Dashboard</p>
+<p><strong>Results:</strong> Found best products & trends</p>
 
 </div>
 </div>
 
-<div id="p2" class="modal">
-<div class="modal-content">
-<span class="close" onclick="closeModal('p2')">&times;</span>
-
-<h2>Market Basket Analysis</h2>
-
-<h4>🎯 Goal</h4>
-<p>Increase average order value by understanding product relationships.</p>
-
-<h4>🛠 Steps</h4>
-<ul>
-<li>Analyzed transaction data</li>
-<li>Identified frequent item combinations</li>
-<li>Built dashboard in Power BI</li>
-</ul>
-
-<h4>📊 Results</h4>
-<ul>
-<li>Suggested product bundles</li>
-<li>Improved cross-selling strategy</li>
-<li>Increased customer basket size</li>
-</ul>
-
-</div>
-</div>
-
-<div id="p3" class="modal">
-<div class="modal-content">
-<span class="close" onclick="closeModal('p3')">&times;</span>
-
-<h2>F&B Profit Optimization</h2>
-
-<h4>🎯 Goal</h4>
-<p>Improve profit margins by analyzing pricing and discount strategies.</p>
-
-<h4>🛠 Steps</h4>
-<ul>
-<li>Analyzed cost vs revenue</li>
-<li>Studied discount impact</li>
-<li>Identified high-margin products</li>
-</ul>
-
-<h4>📊 Results</h4>
-<ul>
-<li>Reduced unnecessary discounts</li>
-<li>Focused on profitable items</li>
-<li>Improved overall profitability</li>
-</ul>
-
-</div>
-</div>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 <script>
-function openModal(id) {
-    document.getElementById(id).style.display = "block";
+AOS.init();
+
+function openModal(id){
+    document.getElementById(id).style.display="block";
 }
-function closeModal(id) {
-    document.getElementById(id).style.display = "none";
+function closeModal(id){
+    document.getElementById(id).style.display="none";
+}
+
+function slide(id,dir){
+    let slider=document.getElementById(id);
+    let imgs=slider.getElementsByTagName("img");
+    let index=0;
+
+    for(let i=0;i<imgs.length;i++){
+        if(imgs[i].classList.contains("active")){
+            imgs[i].classList.remove("active");
+            index=i;
+        }
+    }
+
+    let next=(index+dir+imgs.length)%imgs.length;
+    imgs[next].classList.add("active");
 }
 </script>
 
