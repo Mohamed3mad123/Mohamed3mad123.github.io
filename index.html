@@ -1,64 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Mohamed Emad Hamdy</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <style>
+:root{
+--dark:#0f172a;
+--blue:#1e3a8a;
+--light:#ffffff;
+--gray:#64748b;
+}
+
+/* BODY */
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
-background:#f8fafc;
-color:#1e293b;
+background:#ffffff;
+color:var(--dark);
 }
 
 /* HEADER */
 header{
+background:white;
+border-bottom:1px solid #e2e8f0;
 position:sticky;
 top:0;
-background:white;
 z-index:1000;
-box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
 nav{
-display:flex;
-justify-content:space-between;
 width:90%;
 margin:auto;
+display:flex;
+justify-content:space-between;
 padding:15px 0;
 }
-nav a{
-margin-left:20px;
-text-decoration:none;
-color:#1e293b;
-}
 
-/* HERO */
+/* HERO (Dark Premium Section) */
 .hero{
+background:var(--dark);
+color:white;
 display:flex;
 align-items:center;
 justify-content:center;
 gap:40px;
 padding:100px 20px;
-background:linear-gradient(135deg,#1e3a8a,#1e40af);
-color:white;
 flex-wrap:wrap;
 }
 .hero img{
 width:140px;
 height:140px;
 border-radius:50%;
-border:4px solid white;
+border:3px solid #1e3a8a;
 }
 .hero h1{
 font-size:42px;
 margin:0;
+}
+.hero p{
+color:#cbd5f5;
 }
 
 /* SECTIONS */
@@ -66,246 +60,86 @@ margin:0;
 width:90%;
 max-width:1100px;
 margin:auto;
-padding:60px 0;
+padding:70px 0;
 }
 
 /* SKILLS */
-.skills-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
 .skill-card{
-background:white;
+background:#ffffff;
+border:1px solid #e2e8f0;
 padding:20px;
 border-radius:15px;
+transition:0.3s;
 }
-.skill-card i{
-color:#3b82f6;
-margin-right:10px;
+.skill-card:hover{
+transform:translateY(-5px);
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+.skill-card h3{
+color:var(--blue);
 }
 
 /* PROJECTS */
-.projects-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:20px;
-}
 .project-card{
 background:white;
-border-radius:15px;
+border:1px solid #e2e8f0;
+border-radius:20px;
 overflow:hidden;
-box-shadow:0 5px 20px rgba(0,0,0,0.05);
+transition:0.3s;
+}
+.project-card:hover{
+transform:translateY(-6px);
+box-shadow:0 20px 40px rgba(0,0,0,0.08);
 }
 .project-card img{
 width:100%;
-height:180px;
+height:200px;
 object-fit:cover;
 }
 .project-details{
-padding:15px;
+padding:20px;
 }
+
+/* BUTTON */
 .btn{
-background:#3b82f6;
+background:var(--blue);
 color:white;
 border:none;
-padding:8px 15px;
+padding:10px 20px;
 border-radius:10px;
 cursor:pointer;
+transition:0.3s;
+}
+.btn:hover{
+background:#2563eb;
 }
 
 /* CONTACT */
 .contact{
+background:var(--dark);
+color:white;
 text-align:center;
+padding:80px 20px;
 }
 .contact a{
+color:#cbd5f5;
 display:block;
 margin:10px;
 text-decoration:none;
-color:#1e293b;
+}
+.contact a:hover{
+color:white;
 }
 
 /* MODAL */
-.modal{
-display:none;
-position:fixed;
-top:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.7);
-}
 .modal-content{
 background:white;
-margin:5% auto;
-padding:20px;
-width:70%;
-border-radius:15px;
-}
-.close{
-float:right;
-cursor:pointer;
+border-radius:20px;
+padding:30px;
 }
 
-/* SLIDER */
-.slider img{display:none;width:100%;max-height:300px;object-fit:contain;}
-.slider img.active{display:block;}
-
-.arrow{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-background:white;
-border:none;
-padding:10px;
-cursor:pointer;
+/* SCROLL ANIMATION SMOOTH */
+html{
+scroll-behavior:smooth;
 }
-.prev{left:10px;}
-.next{right:10px;}
-
 </style>
-</head>
-
-<body>
-
-<header>
-<nav>
-<div><strong>Mohamed Emad</strong></div>
-<div>
-<a href="#about">About</a>
-<a href="#skills">Skills</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
-</div>
-</nav>
-</header>
-
-<!-- HERO -->
-<section class="hero" data-aos="fade-up">
-<img src="Mohamed Emad.jpg" alt="">
-<div>
-<h1>Mohamed Emad Hamdy</h1>
-<p>Data Analyst | SQL | Power BI | Excel</p>
-</div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="section" data-aos="fade-up">
-<h2>About</h2>
-<p>
-Data Analyst passionate about transforming raw data into business insights and strategic decisions.
-I focus on storytelling, performance analysis, and building dashboards using Power BI, SQL, and Excel.
-</p>
-</section>
-
-<!-- SKILLS -->
-<section id="skills" class="section" data-aos="fade-up">
-<h2>My Skills</h2>
-
-<div class="skills-grid">
-
-<div class="skill-card">
-<h3>Tools</h3>
-<p>
-<i class="fa-solid fa-database"></i> SQL<br>
-<i class="fa-solid fa-chart-column"></i> Power BI<br>
-<i class="fa-solid fa-file-excel"></i> Excel
-</p>
-</div>
-
-<div class="skill-card">
-<h3>Technical</h3>
-<p>Data Cleaning<br>Data Modeling</p>
-</div>
-
-<div class="skill-card">
-<h3>Business</h3>
-<p>KPI Analysis<br>Decision Making</p>
-</div>
-
-</div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects" class="section" data-aos="fade-up">
-<h2>Projects</h2>
-
-<div class="projects-grid">
-
-<div class="project-card">
-<img src="sales_project1.png">
-<div class="project-details">
-<h3>Sales Analysis</h3>
-<button class="btn" onclick="openModal('p1')">View</button>
-</div>
-</div>
-
-<div class="project-card">
-<img src="market_basket1.jpg">
-<div class="project-details">
-<h3>Market Basket</h3>
-<button class="btn" onclick="openModal('p2')">View</button>
-</div>
-</div>
-
-</div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section contact" data-aos="fade-up">
-<h2>Contact</h2>
-
-<a href="mailto:mohamed3mad131@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
-<a href="https://www.linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-<a href="https://wa.me/201040699963" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-
-</section>
-
-<!-- MODAL -->
-<div id="p1" class="modal">
-<div class="modal-content">
-<span class="close" onclick="closeModal('p1')">X</span>
-
-<div class="slider" id="slider1">
-<img src="sales_project1.png" class="active">
-<img src="sales_project2.png">
-<img src="sales_project3.png">
-<button class="arrow prev" onclick="slide('slider1',-1)">❮</button>
-<button class="arrow next" onclick="slide('slider1',1)">❯</button>
-</div>
-
-<p>Full business analysis with insights.</p>
-
-</div>
-</div>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-<script>
-AOS.init({duration:1000});
-
-function openModal(id){
-document.getElementById(id).style.display="block";
-}
-function closeModal(id){
-document.getElementById(id).style.display="none";
-}
-
-function slide(id,dir){
-let slider=document.getElementById(id);
-let imgs=slider.getElementsByTagName("img");
-let index=0;
-
-for(let i=0;i<imgs.length;i++){
-if(imgs[i].classList.contains("active")){
-imgs[i].classList.remove("active");
-index=i;
-}
-}
-
-let next=(index+dir+imgs.length)%imgs.length;
-imgs[next].classList.add("active");
-}
-</script>
-
-</body>
-</html>
