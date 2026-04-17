@@ -358,30 +358,6 @@ function openPopup(img, link) {
 }
 </script>
 
-function openTab(evt, id) {
-let tabs = document.querySelectorAll(".tab-content");
-tabs.forEach(t => t.style.display = "none");
 
-document.getElementById(id).style.display = "block";
-
-let btns = document.querySelectorAll(".tab-btn");
-btns.forEach(b => b.classList.remove("active"));
-
-evt.currentTarget.classList.add("active");
-}
-
-function toggleLang(){
-let en = document.getElementById("en");
-let ar = document.getElementById("ar");
-
-if(en.style.display === "none"){
-en.style.display="block";
-ar.style.display="none";
-}else{
-en.style.display="none";
-ar.style.display="block";
-}
-}
-  
 </body>
 </html>
