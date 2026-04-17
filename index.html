@@ -15,72 +15,71 @@
             --card-bg: #ffffff; 
         } 
         body { font-family: 'Poppins', sans-serif; margin: 0; background-color: var(--bg-color); color: var(--secondary-color); scroll-behavior: smooth; overflow-x: hidden; } 
-        .container { width: 90%; max-width: 1100px; margin: 0 auto; padding: 20px 0; } 
-        header { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); padding: 15px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; } 
-        nav { display: flex; justify-content: space-between; align-items: center; } 
-        .profile-brand { display: flex; align-items: center; gap: 18px; } 
-        .profile-img { width: 65px; height: 65px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary-color); } 
-        .logo { font-size: 22px; font-weight: 700; color: var(--secondary-color); line-height: 1.2; } 
-        .logo span { display: block; font-size: 14px; color: var(--primary-color); font-weight: 600; text-transform: uppercase; } 
-        .nav-links { display: flex; gap: 25px; list-style: none; padding: 0; margin: 0; } 
-        .nav-links a { text-decoration: none; color: var(--secondary-color); font-weight: 500; font-size: 14px; transition: 0.3s; } 
-        .nav-links a:hover { color: var(--primary-color); } 
-
-        .hero { padding: 120px 0 80px; text-align: center; } 
-        .hero h1 { font-size: 55px; margin: 0; font-weight: 700; } 
-        .hero .subtitle { font-size: 20px; color: #64748b; margin-top: 15px; } 
-
-        /* About Section */
-        .about-section { padding: 80px 0; background: #fff; box-shadow: inset 0 0 50px rgba(0,0,0,0.02); }
-        .about-container { max-width: 850px; margin: 0 auto; text-align: center; }
-        .about-section p { font-size: 17px; line-height: 1.8; color: #475569; }
-
-        .projects-header { text-align: center; padding: 60px 0 30px; font-size: 32px; font-weight: 700; } 
-        .project-card { background: var(--card-bg); border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.06); margin-bottom: 60px; border: 1px solid #f1f5f9; } 
+        .container { width: 92%; max-width: 1100px; margin: 0 auto; padding: 10px 0; } 
         
-        .slider-container { position: relative; width: 100%; background: #fff; min-height: 400px; display: flex; align-items: center; justify-content: center; } 
-        .slider-container img { width: 100%; height: auto; display: none; } 
-        .slider-container img.active { display: block; } 
-        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; width: 50px; height: 50px; cursor: pointer; border-radius: 50%; font-size: 20px; z-index: 10; transition: 0.3s; } 
-        .slider-btn:hover { background: var(--primary-color); color: #fff; } 
-        .prev { left: 20px; } .next { right: 20px; } 
+        header { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); padding: 10px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; } 
+        nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; } 
+        .profile-brand { display: flex; align-items: center; gap: 12px; } 
+        .profile-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-color); } 
+        .logo { font-size: 18px; font-weight: 700; color: var(--secondary-color); line-height: 1.1; } 
+        .logo span { display: block; font-size: 12px; color: var(--primary-color); font-weight: 600; } 
+        
+        .nav-links { display: flex; gap: 15px; list-style: none; padding: 0; margin: 10px 0 0 0; } 
+        .nav-links a { text-decoration: none; color: var(--secondary-color); font-weight: 500; font-size: 13px; transition: 0.3s; } 
 
-        .project-details { padding: 40px; } 
-        .tabs-menu { display: flex; gap: 10px; border-bottom: 2px solid #f1f5f9; margin-bottom: 20px; overflow-x: auto; padding-bottom: 5px; } 
-        .tab-link { padding: 10px 20px; border: none; background: none; font-family: inherit; font-weight: 600; color: #64748b; cursor: pointer; transition: 0.3s; border-radius: 8px 8px 0 0; white-space: nowrap; } 
-        .tab-link.active { color: var(--primary-color); border-bottom: 2px solid var(--primary-color); } 
-        .tab-pane { display: none; animation: fadeIn 0.5s ease; } 
+        .hero { padding: 80px 0 40px; text-align: center; } 
+        .hero h1 { font-size: clamp(32px, 8vw, 55px); margin: 0; font-weight: 700; } 
+        .hero .subtitle { font-size: clamp(14px, 4vw, 20px); color: #64748b; margin-top: 10px; } 
+
+        .about-section { padding: 60px 0; background: #fff; }
+        .about-container { max-width: 850px; margin: 0 auto; text-align: center; }
+        .about-section p { font-size: 16px; line-height: 1.7; color: #475569; padding: 0 15px; }
+
+        .projects-header { text-align: center; padding: 40px 0 20px; font-size: 28px; font-weight: 700; } 
+        .project-card { background: var(--card-bg); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 40px; border: 1px solid #f1f5f9; } 
+        
+        .slider-container { position: relative; width: 100%; background: #eee; aspect-ratio: 16/9; display: flex; align-items: center; overflow: hidden; } 
+        .slider-container img { width: 100%; height: 100%; object-fit: contain; display: none; } 
+        .slider-container img.active { display: block; } 
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; width: 35px; height: 35px; cursor: pointer; border-radius: 50%; font-size: 16px; z-index: 10; display: flex; align-items: center; justify-content: center; } 
+        .prev { left: 10px; } .next { right: 10px; } 
+
+        .project-details { padding: 20px; } 
+        .tabs-menu { display: flex; gap: 8px; border-bottom: 2px solid #f1f5f9; margin-bottom: 15px; overflow-x: auto; padding-bottom: 8px; -webkit-overflow-scrolling: touch; } 
+        .tab-link { padding: 8px 15px; border: none; background: #f8fafc; font-family: inherit; font-weight: 600; color: #64748b; cursor: pointer; transition: 0.3s; border-radius: 6px; white-space: nowrap; font-size: 13px; } 
+        .tab-link.active { color: #fff; background: var(--primary-color); } 
+        
+        .tab-pane { display: none; animation: fadeIn 0.4s ease; } 
         .tab-pane.active { display: block; } 
-        .translate-btn { background: #e2e8f0; border: none; padding: 5px 12px; border-radius: 5px; font-size: 12px; font-weight: 600; cursor: pointer; margin-bottom: 15px; }
-        .tab-content-text { font-size: 15px; line-height: 1.8; color: #475569; }
+        .translate-btn { background: #e2e8f0; border: none; padding: 6px 12px; border-radius: 5px; font-size: 11px; font-weight: 700; cursor: pointer; margin-bottom: 12px; display: block; }
+        .tab-content-text { font-size: 14px; line-height: 1.6; color: #475569; }
+        .tab-content-text ul { padding-left: 20px; }
         .rtl { direction: rtl; text-align: right; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* CERTIFICATES */
-        .certificates-section { padding: 80px 0; } 
-        .certificates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; } 
-        .certificate-card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: 0.3s; } 
-        .certificate-card:hover { transform: translateY(-10px); } 
-        .certificate-card img { width: 100%; height: 200px; object-fit: cover; cursor: pointer; } 
-        .cert-info { padding: 20px; text-align: center; }
-        .cert-info h3 { font-size: 16px; margin-bottom: 15px; color: var(--secondary-color); min-height: 45px; }
-        .view-cert-btn { display: inline-block; background: var(--primary-color); color: #fff; text-decoration: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; transition: 0.3s; }
-        .view-cert-btn:hover { background: #0056b3; }
+        .certificates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; } 
+        .certificate-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); } 
+        .certificate-card img { width: 100%; height: 180px; object-fit: cover; cursor: pointer; } 
+        .cert-info { padding: 15px; text-align: center; }
+        .cert-info h3 { font-size: 14px; margin-bottom: 12px; min-height: 40px; }
+        .view-cert-btn { display: inline-block; background: var(--primary-color); color: #fff; text-decoration: none; padding: 7px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; }
 
-        .popup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 9999; } 
+        .popup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 10000; padding: 20px; box-sizing: border-box; } 
         .popup.active { display: flex; } 
-        .popup img { max-width: 90%; max-height: 80%; border-radius: 10px; } 
+        .popup img { max-width: 100%; max-height: 90%; object-fit: contain; } 
 
-        /* CONTACT SECTION */
-        .contact { padding: 100px 0; background: var(--secondary-color); color: white; text-align: center; border-radius: 50px 50px 0 0; } 
-        .contact-info { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; margin-top: 40px; } 
-        .contact-item i { display: block; color: var(--primary-color); font-size: 12px; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; font-style: normal; }
-        .contact-item a { color: #fff; text-decoration: none; font-size: 18px; border-bottom: 1px solid rgba(255,255,255,0.2); transition: 0.3s; }
-        .contact-item a:hover { color: var(--primary-color); border-color: var(--primary-color); }
-        footer { padding: 30px 0; background: #0f172a; color: #64748b; text-align: center; font-size: 13px; } 
+        .contact { padding: 60px 0; background: var(--secondary-color); color: white; text-align: center; border-radius: 30px 30px 0 0; } 
+        .contact-info { display: flex; flex-direction: column; gap: 20px; align-items: center; margin-top: 30px; } 
+        .contact-item i { display: block; color: var(--primary-color); font-size: 11px; margin-bottom: 5px; font-style: normal; font-weight: 700; }
+        .contact-item a { color: #fff; text-decoration: none; font-size: 16px; word-break: break-all; }
 
-        @media (max-width: 768px) { .hero h1 { font-size: 38px; } .contact-info { gap: 25px; } }
+        @media (min-width: 768px) {
+            nav { flex-wrap: nowrap; }
+            .nav-links { margin: 0; }
+            .contact-info { flex-direction: row; justify-content: center; gap: 40px; }
+            .project-details { padding: 30px; }
+        }
     </style> 
 </head>
 
@@ -114,8 +113,7 @@
     <div class="container about-container">
         <h2>About Me</h2>
         <p>
-            As a specialized Data Analyst, I bridge the gap between complex raw data and strategic business decisions. 
-            I don't just build dashboards; I build narratives that highlight efficiency, identify growth opportunities, and optimize profitability.
+            Professional Data Analyst with expertise in SQL, Power BI, and Excel. I specialize in transforming raw data into meaningful business insights through interactive dashboards, performance optimization, and strategic data modeling.
         </p>
     </div>
 </section>
@@ -134,7 +132,7 @@
             <button class="slider-btn next" onclick="changeSlide('slider-icecream', 1)">❯</button>
         </div>
         <div class="project-details">
-            <h3>Ice Cream Shop Analysis</h3>
+            <h3 style="margin-top:0;">Ice Cream Shop Analysis</h3>
             <div class="tabs-menu">
                 <button class="tab-link active" onclick="openTab(event, 'overview-tab')">Overview</button>
                 <button class="tab-link" onclick="openTab(event, 'problem-tab')">Problem</button>
@@ -145,72 +143,100 @@
 
             <div id="overview-tab" class="tab-pane active">
                 <button class="translate-btn" onclick="toggleLang('overview-tab')">Translate to Arabic</button>
-                <div class="tab-content-text en">A comprehensive end-to-end data analysis project for an ice cream retail business (2023 - 2025). It monitors financial performance and simulates marketing decisions using What-if analysis.</div>
-                <div class="tab-content-text ar rtl" style="display:none;">مشروع تحليل بيانات شامل لمتجر آيس كريم (2023 - 2025). يراقب الأداء المالي ويحاكي القرارات التسويقية باستخدام تحليل "What-if".</div>
+                <div class="tab-content-text en">This project identifies top product combinations and evaluates how discounts and increased demand impact sales and profit. It covers performance from 2023 to 2025, providing a 360-degree view of the business including revenue, net profit, and order trends.</div>
+                <div class="tab-content-text ar rtl" style="display:none;">يحدد هذا المشروع أفضل مجموعات المنتجات ويقيم كيفية تأثير الخصومات وزيادة الطلب على المبيعات والأرباح. يغطي المشروع الأداء من 2023 إلى 2025، مما يوفر رؤية شاملة للعمل تتضمن الإيرادات وصافي الربح واتجاهات الطلبات.</div>
             </div>
 
             <div id="problem-tab" class="tab-pane">
                 <button class="translate-btn" onclick="toggleLang('problem-tab')">Translate to Arabic</button>
-                <div class="tab-content-text en">Management struggled to identify profitable vs best-selling products, lacked clarity on peak demand hours, and couldn't measure discount impacts.</div>
-                <div class="tab-content-text ar rtl" style="display:none;">واجهت الإدارة صعوبة في تمييز المنتجات المربحة، ونقص الوضوح في ساعات الذروة، وعدم القدرة على قياس أثر الخصومات.</div>
+                <div class="tab-content-text en">Management lacked clear insights into branch performance (Cairo vs Alex), couldn't track employee efficiency, and had no automated way to simulate the effects of changing discount rates on future profits.</div>
+                <div class="tab-content-text ar rtl" style="display:none;">كانت الإدارة تفتقر إلى رؤى واضحة حول أداء الفروع (القاهرة مقابل الإسكندرية)، ولم تتمكن من تتبع كفاءة الموظفين، ولم يكن لديها وسيلة تلقائية لمحاكاة تأثير تغيير معدلات الخصم على الأرباح المستقبلية.</div>
             </div>
 
             <div id="prep-tab" class="tab-pane">
                 <button class="translate-btn" onclick="toggleLang('prep-tab')">Translate to Arabic</button>
-                <div class="tab-content-text en">Used Power Query for ETL, created a custom Calendar table, and developed DAX measures for KPIs like Profit Margin and YoY growth.</div>
-                <div class="tab-content-text ar rtl" style="display:none;">استخدام Power Query لعمليات ETL، وإنشاء جدول تقويم مخصص، وتطوير مقاييس DAX لمؤشرات الأداء.</div>
+                <div class="tab-content-text en">Data was extracted and cleaned using Power Query. I created a star schema data model, calculated advanced KPIs using DAX (AVO, Profit Margin), and implemented "What-if" parameters to allow dynamic scenario testing.</div>
+                <div class="tab-content-text ar rtl" style="display:none;">تم استخراج البيانات وتنظيفها باستخدام Power Query. قمت بإنشاء نموذج بيانات (Star Schema)، وحساب مؤشرات أداء متقدمة باستخدام DAX، وتطبيق بارامترات "What-if" للسماح باختبار السيناريوهات بشكل ديناميكي.</div>
             </div>
 
             <div id="insights-tab" class="tab-pane">
                 <button class="translate-btn" onclick="toggleLang('insights-tab')">Translate to Arabic</button>
-                <div class="tab-content-text en">Peak demand at 11 PM Fridays. Waffles have the highest profit margin (73%).</div>
-                <div class="tab-content-text ar rtl" style="display:none;">ذروة الطلب في 11 مساءً أيام الجمعة. الوافل يحقق أعلى هامش ربح (73%).</div>
+                <div class="tab-content-text en">
+                    <ul>
+                        <li>Cairo branch leads revenue with $111K.</li>
+                        <li>Cash is the preferred payment method ($116K), followed by Cards.</li>
+                        <li>The most frequent product pair is "Cone" and "Ice Cream Cup" (87 pairs).</li>
+                        <li>A 5% discount combined with a 10% order increase leads to a 2.29% profit growth.</li>
+                    </ul>
+                </div>
+                <div class="tab-content-text ar rtl" style="display:none;">
+                    <ul>
+                        <li>فرع القاهرة يتصدر الإيرادات بـ 111 ألف دولار.</li>
+                        <li>الكاش هو وسيلة الدفع المفضلة (116 ألف دولار)، يليه البطاقات البنكية.</li>
+                        <li>أكثر زوج منتجات تكراراً هو "الكون" و "كوب الآيس كريم" (87 مرة).</li>
+                        <li>تطبيق خصم 5% مع زيادة طلبات 10% يؤدي لنمو أرباح بنسبة 2.29%.</li>
+                    </ul>
+                </div>
             </div>
 
             <div id="rec-tab" class="tab-pane">
                 <button class="translate-btn" onclick="toggleLang('rec-tab')">Translate to Arabic</button>
-                <div class="tab-content-text en">Optimize staffing for evening shifts and launch Combo bundles based on Market Basket Analysis.</div>
-                <div class="tab-content-text ar rtl" style="display:none;">تحسين توزيع الموظفين في المساء وإطلاق عروض "كومبو" بناءً على تحليل سلة المشتريات.</div>
+                <div class="tab-content-text en">
+                    <ul>
+                        <li>Focus marketing on "Waffles" as they yield the highest margin (73%).</li>
+                        <li>Expand digital payment options (Vodafone Cash/Instapay) to capture more "Evening" shift customers.</li>
+                        <li>Implement a 5% discount strategy for low-demand periods to boost overall volume and net profit.</li>
+                    </ul>
+                </div>
+                <div class="tab-content-text ar rtl" style="display:none;">
+                    <ul>
+                        <li>التركيز التسويقي على "الوافل" لأنه يحقق أعلى هامش ربح (73%).</li>
+                        <li>توسيع خيارات الدفع الرقمي (فودافون كاش/إنستاباي) لجذب المزيد من عملاء الفترة المسائية.</li>
+                        <li>تطبيق استراتيجية خصم 5% في فترات الطلب المنخفض لزيادة حجم المبيعات وصافي الربح.</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<section id="certificates" class="certificates-section container">
+<section id="certificates" class="container" style="padding: 40px 0;">
     <h2 style="text-align:center;">Professional Certificates</h2>
     <div class="certificates-grid">
         <div class="certificate-card">
             <img src="Data%20Transformation%20in%20power%20bi.png" onclick="openPopup(this.src)">
             <div class="cert-info">
                 <h3>Data Transformation in Power BI</h3>
-                <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/e686cfc0c0906f9569fc3c411b468fa769c9b0cc" target="_blank" class="view-cert-btn">Verify Certificate</a>
+                <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/e686cfc0c0906f9569fc3c411b468fa769c9b0cc" target="_blank" class="view-cert-btn">Verify Link</a>
             </div>
         </div>
         <div class="certificate-card">
             <img src="intermediante%20Sql.jpg" onclick="openPopup(this.src)">
             <div class="cert-info">
                 <h3>Intermediate SQL</h3>
-                <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/fe2ff1270f4fb6187ad25757aeba17846d8b42bb" target="_blank" class="view-cert-btn">Verify Certificate</a>
+                <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/fe2ff1270f4fb6187ad25757aeba17846d8b42bb" target="_blank" class="view-cert-btn">Verify Link</a>
             </div>
         </div>
         <div class="certificate-card">
             <img src="Intermediate_Data_Modeling_in_Power_BI.png" onclick="openPopup(this.src)">
             <div class="cert-info">
-                <h3>Intermediate Data Modeling in Power BI</h3>
-                <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/6241db4e965e2b2e4b57a85def5ee487f4b05814" target="_blank" class="view-cert-btn">Verify Certificate</a>
+                <h3>Data Modeling in Power BI</h3>
+                <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/6241db4e965e2b2e4b57a85def5ee487f4b05814" target="_blank" class="view-cert-btn">Verify Link</a>
             </div>
         </div>
     </div>
 </section>
 
-<div id="popup" class="popup" onclick="this.classList.remove('active')"><img id="popup-img"></div>
+<div id="popup" class="popup" onclick="this.classList.remove('active')">
+    <img id="popup-img" src="">
+</div>
 
 <section id="contact" class="contact">
     <div class="container">
-        <h2>Let's Build Something Great</h2>
+        <h2>Contact Me</h2>
         <div class="contact-info">
             <div class="contact-item"><i>Email</i><a href="mailto:mohamed3mad131@gmail.com">mohamed3mad131@gmail.com</a></div>
-            <div class="contact-item"><i>LinkedIn</i><a href="https://www.linkedin.com/in/mohamed-emad-76b24a294" target="_blank">View Profile</a></div>
+            <div class="contact-item"><i>LinkedIn</i><a href="https://www.linkedin.com/in/mohamed-emad-76b24a294" target="_blank">LinkedIn Profile</a></div>
             <div class="contact-item"><i>Phone</i><a href="tel:01040699963">01040699963</a></div>
         </div>
     </div>
@@ -220,29 +246,29 @@
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    AOS.init();
+    AOS.init({ duration: 800, once: true });
 
     function changeSlide(sliderId, direction) {
         const slider = document.getElementById(sliderId);
         const images = slider.getElementsByTagName('img');
-        let activeIndex = 0;
-        for (let i = 0; i < images.length; i++) {
-            if (images[i].classList.contains('active')) {
-                activeIndex = i;
+        let activeIdx = 0;
+        for(let i=0; i<images.length; i++) {
+            if(images[i].classList.contains('active')) {
+                activeIdx = i;
                 images[i].classList.remove('active');
                 break;
             }
         }
-        let nextIndex = (activeIndex + direction + images.length) % images.length;
-        images[nextIndex].classList.add('active');
+        let nextIdx = (activeIdx + direction + images.length) % images.length;
+        images[nextIdx].classList.add('active');
     }
 
     function openTab(evt, tabName) {
-        const container = evt.currentTarget.closest('.project-details');
-        const panes = container.getElementsByClassName("tab-pane");
-        const links = container.getElementsByClassName("tab-link");
-        for (let i = 0; i < panes.length; i++) panes[i].classList.remove("active");
-        for (let i = 0; i < links.length; i++) links[i].classList.remove("active");
+        const parent = evt.currentTarget.closest('.project-details');
+        const panes = parent.getElementsByClassName("tab-pane");
+        const links = parent.getElementsByClassName("tab-link");
+        for(let i=0; i<panes.length; i++) panes[i].classList.remove("active");
+        for(let i=0; i<links.length; i++) links[i].classList.remove("active");
         document.getElementById(tabName).classList.add("active");
         evt.currentTarget.classList.add("active");
     }
@@ -252,7 +278,7 @@
         const en = tab.querySelector('.en');
         const ar = tab.querySelector('.ar');
         const btn = tab.querySelector('.translate-btn');
-        if (en.style.display === "none") {
+        if(en.style.display === "none") {
             en.style.display = "block"; ar.style.display = "none";
             btn.innerText = "Translate to Arabic";
         } else {
@@ -262,8 +288,8 @@
     }
 
     function openPopup(src) {
-        document.getElementById("popup").classList.add("active");
         document.getElementById("popup-img").src = src;
+        document.getElementById("popup").classList.add("active");
     }
 </script>
 </body>
