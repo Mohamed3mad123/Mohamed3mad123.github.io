@@ -6,107 +6,147 @@
     <title>دراسة حالة: كشف أسرار الربحية | محمد عماد حمدي</title>
     <style>
         :root {
-            --primary-bg: #0f0c29;
-            --secondary-bg: #1b1464;
-            --accent-color: #ff00cc;
+            --primary-bg: #0d0b21;
+            --secondary-bg: #16123f;
+            --accent-color: #7d5fff;
             --text-color: #e0e0e0;
-            --card-bg: #241b7a;
+            --card-bg: #1e1b4d;
+            --danger-color: #ff4d4d;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+            background-color: var(--primary-bg);
             color: var(--text-color);
             margin: 0;
             padding: 20px;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         header {
             text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 { color: #fff; font-size: 2.2em; margin-bottom: 10px; }
+        .subtitle { color: var(--accent-color); font-weight: bold; font-size: 1.3em; margin-bottom: 20px; }
+        .summary-box { background: var(--card-bg); padding: 20px; border-radius: 10px; margin-top: 20px; font-style: italic; }
+
+        /* Tabs Navigation */
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
             margin-bottom: 40px;
-            border-bottom: 2px solid var(--accent-color);
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding-bottom: 20px;
         }
 
-        h1 { color: #fff; margin-bottom: 10px; }
-        .subtitle { color: var(--accent-color); font-weight: bold; font-size: 1.2em; }
-
-        /* Tabs Styling */
-        .tabs {
-            display: flex;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .tab-link {
-            padding: 12px 25px;
-            background: var(--secondary-bg);
-            border: none;
+        .tab-btn {
+            padding: 12px 30px;
+            background: transparent;
+            border: 2px solid var(--accent-color);
             color: #fff;
             cursor: pointer;
-            border-radius: 5px;
-            transition: 0.3s;
-            font-weight: bold;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1em;
         }
 
-        .tab-link.active {
+        .tab-btn.active {
             background: var(--accent-color);
-            box-shadow: 0 0 15px var(--accent-color);
+            box-shadow: 0 0 20px rgba(125, 95, 255, 0.4);
         }
 
-        .tab-content {
+        .tab-btn:hover {
+            background: rgba(125, 95, 255, 0.2);
+        }
+
+        /* Tab Content */
+        .tab-pane {
             display: none;
-            animation: fadeIn 0.5s ease;
+            animation: slideUp 0.6s ease forwards;
         }
 
-        .tab-content.active { display: block; }
+        .tab-pane.active {
+            display: block;
+        }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Content Styling */
-        .project-image {
+        /* Project Imagery */
+        .img-container {
             width: 100%;
-            border-radius: 10px;
-            margin: 20px 0;
-            border: 2px solid var(--secondary-bg);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            margin: 30px 0;
+            text-align: center;
         }
 
-        .insight-card {
+        .project-img {
+            max-width: 100%;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .question-box {
+            background: rgba(125, 95, 255, 0.1);
+            border-right: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            font-size: 1.1em;
+            color: #fff;
+        }
+
+        .discovery-text {
+            border-right: 4px solid #00d2d3;
+            padding: 20px;
+            background: rgba(0, 210, 211, 0.05);
+            margin: 25px 0;
+        }
+
+        .highlight-red { color: var(--danger-color); font-weight: bold; }
+        .highlight-purple { color: var(--accent-color); font-weight: bold; }
+
+        ul.tool-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .tool-item {
             background: var(--card-bg);
             padding: 20px;
-            border-right: 5px solid var(--accent-color);
-            margin: 20px 0;
-            border-radius: 5px;
+            border-radius: 10px;
+            border-bottom: 3px solid var(--accent-color);
         }
-
-        .highlight { color: var(--accent-color); font-weight: bold; }
-
-        ul { list-style-type: square; }
-        li { margin-bottom: 10px; }
 
         footer {
             text-align: center;
-            margin-top: 50px;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.9em;
-            opacity: 0.7;
+            opacity: 0.8;
         }
+
     </style>
 </head>
 <body>
@@ -115,102 +155,130 @@
     <header>
         <h1>دراسة حالة: كشف أسرار الربحية في التجارة الإلكترونية</h1>
         <div class="subtitle">E-commerce Diagnostic Analysis: From Growth to Profitability</div>
-        <p>تحليل 5,000+ طلب لربط النقاط بين الخصومات العنيفة، تكاليف الشحن اللوجستية، وصافي الربح الحقيقي.</p>
+        
+        <div class="summary-box">
+            <strong>📝 ملخص القصة:</strong> في هذا المشروع، لم نكتفِ بعرض الأرقام، بل قمنا برحلة استقصائية داخل بيانات متجر إلكتروني عالمي لنكتشف لماذا تتبخر الأرباح رغم ضخامة المبيعات. قمنا بتحليل 5,000+ طلب لربط النقاط بين الخصومات العنيفة، تكاليف الشحن اللوجستية، وصافي الربح الحقيقي.
+        </div>
     </header>
 
-    <div class="tabs">
-        <button class="tab-link active" onclick="openTab(event, 'Overview')">Overview</button>
-        <button class="tab-link" onclick="openTab(event, 'Discounts')">Discounts</button>
-        <button class="tab-link" onclick="openTab(event, 'Operations')">Operations</button>
-        <button class="tab-link" onclick="openTab(event, 'Recommendations')">Recommendations</button>
-        <button class="tab-link" onclick="openTab(event, 'Tools')">Tools</button>
-    </div>
+    <nav class="tabs-nav">
+        <button class="tab-btn active" onclick="showTab('Overview')">Overview</button>
+        <button class="tab-btn" onclick="showTab('Discounts')">Discounts</button>
+        <button class="tab-btn" onclick="showTab('Operations')">Operations</button>
+        <button class="tab-btn" onclick="showTab('Recommendations')">Recommendations</button>
+        <button class="tab-btn" onclick="showTab('Tools')">Tools</button>
+    </nav>
 
-    <div id="Overview" class="tab-content active">
-        <h2>🔍 الفصل الأول: "خدعة النمو البراقة"</h2>
-        <p>بدأت القصة بمشهد مبهج؛ مبيعات إجمالية بلغت <span class="highlight">2.3 مليون دولار</span> مع نمو سنوي قوي بنسبة <span class="highlight">20.4%</span>. للوهلة الأولى، يبدو أن كل شيء يسير على ما يرام.</p>
-        
-        <div class="insight-card">
-            <strong>السؤال المحير:</strong> "إذا كانت مبيعاتنا تنمو بهذا الشكل، لماذا لا تنعكس هذه القوة في خزينة الشركة؟"
-        </div>
-        
-        <img src="11.jpg" alt="Overview Dashboard" class="project-image">
-        
-        <p><strong>الاكتشاف من البيانات:</strong> بمقارنة إجمالي المبيعات بصافي الربح، وجدنا هامشاً ضئيلاً لا يتجاوز <span class="highlight">12.5%</span>. وعندما نظرنا لمؤشر الخصومات (322.6 ألف دولار)، أدركنا الحقيقة المرة: نحن نمنح خصومات للعملاء تتجاوز إجمالي أرباحنا الصافية!</p>
-        <p><strong>خلاصة الصفحة:</strong> النمو بدون ربحية هو مجرد "رقم للمفاخرة"، وهنا قررنا التعمق لنعرف أين يكمن النزيف.</p>
-    </div>
+    <main>
+        <div id="Overview" class="tab-pane active">
+            <h2>🔍 الفصل الأول: "خدعة النمو البراقة" (نظرة عامة)</h2>
+            <p>بدأت القصة بمشهد مبهج؛ مبيعات إجمالية بلغت <span class="highlight-purple">2.3 مليون دولار</span> مع نمو سنوي قوي بنسبة <span class="highlight-purple">20.4%</span>. للوهلة الأولى، يبدو أن كل شيء يسير على ما يرام.</p>
 
-    <div id="Discounts" class="tab-content">
-        <h2>💸 الفصل الثاني: "لغز الخصومات والارتباط المفقود"</h2>
-        <p>انتقلنا إلى الصفحة الثانية للإجابة على سؤال استراتيجي: "هل الخصومات العالية هي المحرك الحقيقي للبيع؟"</p>
-        
-        <div class="insight-card">
-            <strong>السؤال الجوهري:</strong> "هل العميل الذي يحصل على خصم 80% يشتري كميات أكبر تبرر خسارتنا؟"
+            <div class="question-box">
+                <strong>السؤال المحير:</strong> "إذا كانت مبيعاتنا تنمو بهذا الشكل، لماذا لا تنعكس هذه القوة في خزينة الشركة؟"
+            </div>
+
+            <div class="img-container">
+                <img src="11.jpg" alt="Overview Dashboard" class="project-img">
+            </div>
+
+            <div class="discovery-text">
+                <strong>الاكتشاف من البيانات:</strong> بمقارنة إجمالي المبيعات بصافي الربح، وجدنا هامشاً ضئيلاً لا يتجاوز <span class="highlight-red">12.5%</span>. وعندما نظرنا لمؤشر الخصومات (322.6 ألف دولار)، أدركنا الحقيقة المرة: نحن نمنح خصومات للعملاء تتجاوز إجمالي أرباحنا الصافية!
+            </div>
+            <p><strong>خلاصة الصفحة:</strong> النمو بدون ربحية هو مجرد "رقم للمفاخرة"، وهنا قررنا التعمق لنعرف أين يكمن النزيف.</p>
         </div>
 
-        <img src="22.jpg" alt="Discount Analysis Dashboard" class="project-image">
+        <div id="Discounts" class="tab-pane">
+            <h2>💸 الفصل الثاني: "لغز الخصومات والارتباط المفقود"</h2>
+            <p>انتقلنا إلى الصفحة الثانية للإجابة على سؤال استراتيجي: "هل الخصومات العالية هي المحرك الحقيقي للبيع؟"</p>
 
-        <p><strong>ما قالته الشارتات:</strong> من خلال رسم التشتت (Impact of Discount on Quantity)، صُدمنا بأن الخط شبه أفقي! هذا يعني أن زيادة الخصم لا تؤدي لزيادة ملحوظة في الكمية المباعة. نحن نخسر الربح دون كسب حجم مبيعات إضافي.</p>
-        <p><strong>منطقة الموت:</strong> حددنا عبر شارت (Discount Vs Profit) أن أي خصم يتجاوز <span class="highlight">20%</span> يحول الصفقة فوراً إلى خسارة تشغيلية.</p>
-        <p><strong>مؤشر الكفاءة:</strong> قمنا بابتكار مؤشر <span class="highlight">Discount Efficiency</span> الذي سجل <span class="highlight">(0.82- دولار)</span>، وهو "جرس إنذار" يقول للمديرين: كل دولار خصم نمنحه، يكلفنا عملياً ضياع كفاءة ربحية وتآكل للميزانية.</p>
-    </div>
+            <div class="question-box">
+                <strong>السؤال الجوهري:</strong> "هل العميل الذي يحصل على خصم 80% يشتري كميات أكبر تبرر خسارتنا؟"
+            </div>
 
-    <div id="Operations" class="tab-content">
-        <h2>🚚 الفصل الثالث: "الثقوب السوداء في العمليات"</h2>
-        <p>في المرحلة الأخيرة، كان علينا تحديد المسؤول عن استنزاف الأرباح؛ هل هو المنتج أم طريقة توصيله؟</p>
+            <div class="img-container">
+                <img src="22.jpg" alt="Discounts Analysis" class="project-img">
+            </div>
 
-        <div class="insight-card">
-            <strong>السؤال الاستراتيجي:</strong> "أين تذهب الأموال بعد بيع المنتج؟"
+            <div class="discovery-text">
+                <strong>ما قالته الشارتات:</strong> من خلال رسم التشتت (Impact of Discount on Quantity)، صُدمنا بأن الخط شبه أفقي! هذا يعني أن زيادة الخصم لا تؤدي لزيادة ملحوظة في الكمية المباعة. نحن نخسر الربح دون كسب حجم مبيعات إضافي.
+            </div>
+            <p><strong>منطقة الموت:</strong> حددنا عبر شارت (Discount Vs Profit) أن أي خصم يتجاوز <span class="highlight-red">20%</span> يحول الصفقة فوراً إلى خسارة تشغيلية.</p>
+            <p><strong>مؤشر الكفاءة:</strong> قمنا بابتكار مؤشر <span class="highlight-red">Discount Efficiency</span> الذي سجل <span class="highlight-red">(0.82- دولار)</span>، وهو "جرس إنذار" يقول للمديرين: كل دولار خصم نمنحه، يكلفنا عملياً ضياع كفاءة ربحية وتآكل للميزانية.</p>
         </div>
 
-        <img src="33.jpg" alt="Operations Dashboard" class="project-image">
+        <div id="Operations" class="tab-pane">
+            <h2>🚚 الفصل الثالث: "الثقوب السوداء في العمليات"</h2>
+            <p>في المرحلة الأخيرة، كان علينا تحديد المسؤول عن استنزاف الأرباح؛ هل هو المنتج أم طريقة توصيله؟</p>
 
-        <p><strong>التشريح الرقمي:</strong> باستخدام شجرة التفكيك (Decomposition Tree)، تتبعنا الخسائر واكتشفنا أن قسم "الطاولات" (Tables) في فئة الأثاث هو "ثقب أسود" يبتلع الأرباح بخسارة صافية قدرها <span class="highlight">16.6 ألف دولار</span>.</p>
-        <p><strong>صدمة الشحن:</strong> عند تحليل تكاليف الشحن لكل ولاية، اكتشفنا أن ولايات مثل Alabama و South Carolina تستهلك مبالغ طائلة تصل لـ <span class="highlight">45 دولاراً</span> للشحنة الواحدة، مما يجعل بيع المنتجات منخفضة الهامش هناك قراراً انتحارياً تجارياً.</p>
-        <p><strong>النتيجة النهائية:</strong> أثبتنا بالبيانات أن الجمع بين "خصم مرتفع" و "تكلفة شحن عالية" هو السبب الرئيسي وراء قائمة المنتجات الخاسرة التي رصدناها في الجداول التفصيلية.</p>
-    </div>
+            <div class="question-box">
+                <strong>السؤال الاستراتيجي:</strong> "أين تذهب الأموال بعد بيع المنتج؟"
+            </div>
 
-    <div id="Recommendations" class="tab-content">
-        <h2>💡 التوصيات الختامية (Actionable Insights)</h2>
-        <p>بناءً على هذه القصة الرقمية، خرجنا بـ 3 توصيات لا غنى عنها:</p>
-        <ul>
-            <li><span class="highlight">حظر الخصومات العمياء:</span> وضع سقف صارم للخصومات عند 15-20%، حيث أثبتت البيانات أن ما بعد ذلك هو خسارة محققة.</li>
-            <li><span class="highlight">إعادة هندسة اللوجستيات:</span> فرض "حد أدنى للطلب" في الولايات البعيدة لتغطية تكاليف الشحن المرتفعة.</li>
-            <li><span class="highlight">تطهير المحفظة:</span> مراجعة المنتجات في فئة (Furniture/Tables) وإعادة تسعيرها أو تقليل الاعتماد عليها في المناطق ذات التكلفة العالية.</li>
-        </ul>
-    </div>
+            <div class="img-container">
+                <img src="33.jpg" alt="Operations Analysis" class="project-img">
+            </div>
 
-    <div id="Tools" class="tab-content">
-        <h2>🛠️ الأدوات التي استخدمتها في هذه الرحلة</h2>
-        <ul>
-            <li><strong>Power BI:</strong> لبناء لوحات التحكم التفاعلية وسرد القصة بصرياً.</li>
-            <li><strong>Power Query:</strong> لتنظيف وهيكلة البيانات وتحويلها من بيانات جافة إلى معلومات قيمة.</li>
-            <li><strong>DAX:</strong> لابتكار مؤشرات قياس أداء (KPIs) مخصصة مثل كفاءة الخصم ونسب الشحن.</li>
-            <li><strong>Star Schema Modeling:</strong> لضمان ترابط الجداول وسهولة التحليل المتقاطع.</li>
-        </ul>
-        <img src="Screenshot 2026-04-20 212306.jpg" alt="Data Model Star Schema" class="project-image">
-    </div>
+            <div class="discovery-text">
+                <strong>التشريح الرقمي:</strong> باستخدام شجرة التفكيك (Decomposition Tree)، تتبعنا الخسائر واكتشفنا أن قسم "الطاولات" (Tables) في فئة الأثاث هو "ثقب أسود" يبتلع الأرباح بخسارة صافية قدرها <span class="highlight-red">16.6 ألف دولار</span>.
+            </div>
+            <p><strong>صدمة الشحن:</strong> عند تحليل تكاليف الشحن لكل ولاية، اكتشفنا أن ولايات مثل <span class="highlight-purple">Alabama</span> و <span class="highlight-purple">South Carolina</span> تستهلك مبالغ طائلة تصل لـ <span class="highlight-red">45 دولاراً</span> للشحنة الواحدة، مما يجعل بيع المنتجات منخفضة الهامش هناك قراراً انتحارياً تجارياً.</p>
+            <p><strong>النتيجة النهائية:</strong> أثبتنا بالبيانات أن الجمع بين "خصم مرتفع" و "تكلفة شحن عالية" هو السبب الرئيسي وراء قائمة المنتجات الخاسرة التي رصدناها في الجداول التفصيلية.</p>
+        </div>
+
+        <div id="Recommendations" class="tab-pane">
+            <h2>💡 التوصيات الختامية (Actionable Insights)</h2>
+            <div class="discovery-text">
+                بناءً على هذه القصة الرقمية، خرجنا بـ 3 توصيات لا غنى عنها لضمان استدامة العمل:
+            </div>
+            <ul>
+                <li><strong>حظر الخصومات العمياء:</strong> وضع سقف صارم للخصومات عند <span class="highlight-purple">15-20%</span>، حيث أثبتت البيانات أن ما بعد ذلك هو خسارة محققة.</li>
+                <li><strong>إعادة هندسة اللوجستيات:</strong> فرض "حد أدنى للطلب" في الولايات البعيدة لتغطية تكاليف الشحن المرتفعة.</li>
+                <li><strong>تطهير المحفظة:</strong> مراجعة المنتجات في فئة (Furniture/Tables) وإعادة تسعيرها أو تقليل الاعتماد عليها في المناطق ذات التكلفة العالية.</li>
+            </ul>
+        </div>
+
+        <div id="Tools" class="tab-pane">
+            <h2>🛠️ الأدوات التقنية المستخدمة</h2>
+            <ul class="tool-list">
+                <li class="tool-item">
+                    <strong>Power BI</strong><br>لبناء لوحات التحكم التفاعلية وسرد القصة بصرياً بشكل احترافي.
+                </li>
+                <li class="tool-item">
+                    <strong>Power Query</strong><br>لتنظيف وهيكلة البيانات وتحويلها من بيانات جافة إلى معلومات قيمة.
+                </li>
+                <li class="tool-item">
+                    <strong>DAX</strong><br>لابتكار مؤشرات قياس أداء (KPIs) مخصصة مثل كفاءة الخصم ونسب الشحن.
+                </li>
+                <li class="tool-item">
+                    <strong>Star Schema Modeling</strong><br>لضمان ترابط الجداول وسهولة التحليل المتقاطع وتدفق البيانات.
+                </li>
+            </ul>
+            <div class="img-container">
+                <p>نموذج البيانات المنفذ للمشروع:</p>
+                <img src="Screenshot 2026-04-20 212306.jpg" alt="Data Model" class="project-img">
+            </div>
+        </div>
+    </main>
 
     <footer>
-        <p>إعداد المحلل: <strong>محمد عماد حمدي</strong> | 2026</p>
+        <p>إعداد وتحليل: <strong>محمد عماد حمدي</strong> | 2026</p>
     </footer>
 </div>
 
 <script>
-    function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-            tabcontent[i].classList.remove("active");
-        }
-        tablinks = document.getElementsByClassName("tab-link");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(tabName).style.display = "block";
-        document.getElementById(tabName).classList.add("active");
-        evt.currentTarget.className += " active";
+    function showTab(tabId) {
+        // إخفاء كل المحتويات
+        const contents = document.querySelectorAll('.tab-pane');
+        contents.forEach(content => content.classList.remove('active'));
+
+        // إلغاء تفعيل كل الأزرار
+        const buttons = document.querySelectorAll('.tab-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+
+        // إظهار التبويب المحدد وتفعيل الزر الخاص به
+        document.getElementById(tabId).classList.add('active');
+        event.currentTarget.classList.add('active');
     }
 </script>
 
