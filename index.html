@@ -27,7 +27,7 @@
         .nav-links { display: flex; gap: 15px; list-style: none; padding: 0; margin: 10px 0 0 0; } 
         .nav-links a { text-decoration: none; color: var(--secondary-color); font-weight: 500; font-size: 13px; transition: 0.3s; } 
 
-        .hero { padding: 100px 0 60px; text-align: center; } 
+        .hero { padding: 80px 0 40px; text-align: center; } 
         .hero h1 { font-size: clamp(32px, 8vw, 55px); margin: 0; font-weight: 700; } 
         .hero .subtitle { font-size: clamp(14px, 4vw, 20px); color: #64748b; margin-top: 10px; } 
 
@@ -37,10 +37,10 @@
 
         .projects-header { text-align: center; padding: 40px 0 20px; font-size: 28px; font-weight: 700; } 
         
-        /* Slider & Zoom Logic */
-        .project-card { background: var(--card-bg); border-radius: 20px; overflow: visible; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 60px; border: 1px solid #f1f5f9; position: relative; } 
+        /* Slider with External Buttons */
+        .project-card { background: var(--card-bg); border-radius: 20px; overflow: visible; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 50px; border: 1px solid #f1f5f9; position: relative; } 
         
-        .slider-wrapper { position: relative; padding: 0 50px; margin-top: 20px; } /* Space for buttons */
+        .slider-wrapper { position: relative; padding: 0 45px; margin-top: 15px; }
         .slider-container { 
             position: relative; 
             width: 100%; 
@@ -49,38 +49,37 @@
             overflow: hidden; 
             border-radius: 12px;
             cursor: crosshair;
+            display: flex;
+            align-items: center;
         } 
         .slider-container img { 
             width: 100%; 
             height: 100%; 
             object-fit: contain; 
             display: none; 
-            transition: transform 0.1s ease-out;
+            transition: transform 0.2s ease-out;
             transform-origin: center;
         } 
         .slider-container img.active { display: block; } 
 
-        /* External Buttons */
         .slider-btn { 
             position: absolute; 
             top: 50%; 
             transform: translateY(-50%); 
             background: var(--primary-color); 
-            color: white;
+            color: white; 
             border: none; 
-            width: 40px; 
-            height: 40px; 
+            width: 35px; 
+            height: 35px; 
             cursor: pointer; 
             border-radius: 50%; 
-            font-size: 18px; 
-            z-index: 100; 
+            font-size: 16px; 
+            z-index: 10; 
             display: flex; 
             align-items: center; 
             justify-content: center;
-            transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         } 
-        .slider-btn:hover { background: var(--secondary-color); transform: translateY(-50%) scale(1.1); }
         .prev { left: 0px; } 
         .next { right: 0px; } 
 
@@ -91,7 +90,7 @@
          
         .tab-pane { display: none; animation: fadeIn 0.4s ease; } 
         .tab-pane.active { display: block; } 
-        .translate-btn { background: #e2e8f0; border: none; padding: 6px 12px; border-radius: 5px; font-size: 11px; font-weight: 700; cursor: pointer; margin-bottom: 12px; }
+        .translate-btn { background: #e2e8f0; border: none; padding: 6px 12px; border-radius: 5px; font-size: 11px; font-weight: 700; cursor: pointer; margin-bottom: 12px; display: block; }
         .tab-content-text { font-size: 14px; line-height: 1.6; color: #475569; }
         .rtl { direction: rtl; text-align: right; }
 
@@ -99,13 +98,23 @@
 
         .certificates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; } 
         .certificate-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; } 
-        .certificate-card:hover { transform: translateY(-10px); }
+        .certificate-card img { width: 100%; height: 180px; object-fit: cover; cursor: pointer; }
+        .cert-info { padding: 15px; text-align: center; }
+        .view-cert-btn { display: inline-block; background: var(--primary-color); color: #fff; text-decoration: none; padding: 7px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; }
 
-        .contact { padding: 80px 0; background: var(--secondary-color); color: white; text-align: center; border-radius: 40px 40px 0 0; } 
+        .popup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 10000; padding: 20px; } 
+        .popup.active { display: flex; } 
+        .popup img { max-width: 100%; max-height: 90%; object-fit: contain; } 
+
+        .contact { padding: 60px 0; background: var(--secondary-color); color: white; text-align: center; border-radius: 30px 30px 0 0; } 
         .contact-info { display: flex; flex-direction: column; gap: 20px; align-items: center; margin-top: 30px; } 
         .contact-item a { color: #fff; text-decoration: none; font-size: 16px; }
 
         footer { text-align: center; padding: 20px; background: #0f172a; color: #94a3b8; font-size: 14px; }
+
+        @media (min-width: 768px) {
+            .contact-info { flex-direction: row; justify-content: center; gap: 40px; }
+        }
     </style> 
 </head>
 
@@ -128,7 +137,7 @@
     </div>
 </header>
 
-<section class="hero" data-aos="zoom-out-up">
+<section class="hero" data-aos="zoom-in">
     <div class="container">
         <h1>Mohamed Emad Hamdy</h1>
         <p class="subtitle">DATA Analyst • SQL • POWER BI • EXCEL</p>
@@ -142,7 +151,7 @@
     </div>
 </section>
 
-<div id="projects" class="projects-header" data-aos="fade-up">Featured Projects</div>
+<div id="projects" class="projects-header">Featured Projects</div>
 
 <section class="container">
     <div class="project-card" data-aos="fade-up">
@@ -161,13 +170,13 @@
             <h3>Ice Cream Shop Analysis</h3>
             <div class="tabs-menu">
                 <button class="tab-link active" onclick="openTab(event, 'p1-over')">Overview</button>
-                <button class="tab-link" onclick="openTab(event, 'p1-insight')">Insights</button>
+                <button class="tab-link" onclick="openTab(event, 'p1-insights')">Insights</button>
             </div>
             <div id="p1-over" class="tab-pane active">
-                <div class="tab-content-text en">Comprehensive analysis of sales performance from 2023 to 2025 identifying growth drivers and product combinations.</div>
+                <div class="tab-content-text en">Analysis of sales performance identifying growth drivers and product combinations.</div>
             </div>
-            <div id="p1-insight" class="tab-pane">
-                <div class="tab-content-text en">Cairo branch leads revenue ($111K). "Waffles" show the highest profit margin (73%).</div>
+            <div id="p1-insights" class="tab-pane">
+                <div class="tab-content-text en">Cairo branch leads revenue ($111K). High margin on Waffles (73%).</div>
             </div>
         </div>
     </div>
@@ -186,31 +195,45 @@
             <h3>E-commerce Business Health Analysis</h3>
             <div class="tabs-menu">
                 <button class="tab-link active" onclick="openTab(event, 'eco-story')">Story</button>
-                <button class="tab-link" onclick="openTab(event, 'eco-insight')">Insights</button>
+                <button class="tab-link" onclick="openTab(event, 'eco-overview')">Overview</button>
+                <button class="tab-link" onclick="openTab(event, 'eco-discounts')">Discounts</button>
+                <button class="tab-link" onclick="openTab(event, 'eco-ops')">Operations</button>
                 <button class="tab-link" onclick="openTab(event, 'eco-rec')">Recommendations</button>
                 <button class="tab-link" onclick="openTab(event, 'eco-tools')">Tools</button>
             </div>
 
             <div id="eco-story" class="tab-pane active">
-                <button class="translate-btn" onclick="toggleLang('eco-story')">AR/EN</button>
-                <div class="tab-content-text en">Diagnostic analysis of 5,000+ orders to map correlations between aggressive discounting and net profitability.</div>
-                <div class="tab-content-text ar rtl" style="display:none;">تحليل استقصائي لأكثر من 5000 طلب لربط العلاقة بين الخصومات العنيفة وصافي الربحية.</div>
+                <button class="translate-btn" onclick="toggleLang('eco-story')">Translate to Arabic</button>
+                <div class="tab-content-text en">Investigative deep-dive into global e-commerce data analyzing 5,000+ orders.</div>
+                <div class="tab-content-text ar rtl" style="display:none;">رحلة استقصائية داخل بيانات متجر إلكتروني عالمي لتحليل 5,000+ طلب.</div>
             </div>
 
-            <div id="eco-insight" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('eco-insight')">AR/EN</button>
-                <div class="tab-content-text en">Discounts over 20% lead to operational losses. Shipping costs in Alabama/South Carolina reach $45 per order.</div>
-                <div class="tab-content-text ar rtl" style="display:none;">الخصومات التي تتجاوز 20% تؤدي لخسائر تشغيلية. تكاليف الشحن في بعض الولايات تصل لـ 45 دولار.</div>
+            <div id="eco-overview" class="tab-pane">
+                <button class="translate-btn" onclick="toggleLang('eco-overview')">Translate to Arabic</button>
+                <div class="tab-content-text en">Total sales reached $2.3M with 20.4% growth, but thin profit margins.</div>
+                <div class="tab-content-text ar rtl" style="display:none;">مبيعات إجمالية بلغت 2.3 مليون دولار، لكن هوامش الربح كانت ضئيلة.</div>
+            </div>
+
+            <div id="eco-discounts" class="tab-pane">
+                <button class="translate-btn" onclick="toggleLang('eco-discounts')">Translate to Arabic</button>
+                <div class="tab-content-text en">Discounts over 20% lead to immediate operational losses.</div>
+                <div class="tab-content-text ar rtl" style="display:none;">أي خصم يتجاوز 20% يحول الصفقة فوراً إلى خسارة تشغيلية.</div>
+            </div>
+
+            <div id="eco-ops" class="tab-pane">
+                <button class="translate-btn" onclick="toggleLang('eco-ops')">Translate to Arabic</button>
+                <div class="tab-content-text en">Tables category acting as a profit black hole. Logistics costs hit $45 in some states.</div>
+                <div class="tab-content-text ar rtl" style="display:none;">قسم الطاولات يمثل ثقباً أسوداً للأرباح. تكاليف الشحن مرتفعة في بعض الولايات.</div>
             </div>
 
             <div id="eco-rec" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('eco-rec')">AR/EN</button>
-                <div class="tab-content-text en">1. Cap discounts at 15%. 2. Set minimum order value for distant states. 3. Re-price Furniture/Tables category.</div>
-                <div class="tab-content-text ar rtl" style="display:none;">1. وضع سقف للخصومات 15%. 2. فرض حد أدنى للطلب للولايات البعيدة. 3. إعادة تسعير فئة الطاولات.</div>
+                <button class="translate-btn" onclick="toggleLang('eco-rec')">Translate to Arabic</button>
+                <div class="tab-content-text en">1. Cap discounts at 20%. 2. Set min order for distant states. 3. Re-price Furniture.</div>
+                <div class="tab-content-text ar rtl" style="display:none;">1. سقف للخصومات 20%. 2. حد أدنى للطلب للولايات البعيدة. 3. إعادة تسعير الأثاث.</div>
             </div>
 
             <div id="eco-tools" class="tab-pane">
-                <div class="tab-content-text en">Power BI, DAX (Discount Efficiency KPI), Star Schema Modeling, Power Query.</div>
+                <div class="tab-content-text en">Power BI, Power Query, DAX, Star Schema.</div>
             </div>
         </div>
     </div>
@@ -220,15 +243,19 @@
     <h2 style="text-align:center;">Professional Certificates</h2>
     <div class="certificates-grid">
         <div class="certificate-card" data-aos="zoom-in">
-            <img src="Data%20Transformation%20in%20power%20bi.png" style="width:100%; height:200px; object-fit:cover;">
-            <div style="padding:15px; text-align:center;"><h3>Data Transformation</h3></div>
+            <img src="Data Transformation in power bi.png" onclick="openPopup(this.src)">
+            <div class="cert-info"><h3>Data Transformation</h3></div>
         </div>
-        <div class="certificate-card" data-aos="zoom-in" data-aos-delay="100">
-            <img src="intermediante%20Sql.jpg" style="width:100%; height:200px; object-fit:cover;">
-            <div style="padding:15px; text-align:center;"><h3>Intermediate SQL</h3></div>
+        <div class="certificate-card" data-aos="zoom-in">
+            <img src="intermediante Sql.jpg" onclick="openPopup(this.src)">
+            <div class="cert-info"><h3>Intermediate SQL</h3></div>
         </div>
     </div>
 </section>
+
+<div id="popup" class="popup" onclick="this.classList.remove('active')">
+    <img id="popup-img" src="">
+</div>
 
 <section id="contact" class="contact" data-aos="fade-up">
     <div class="container">
@@ -236,20 +263,17 @@
         <div class="contact-info">
             <div class="contact-item"><a href="mailto:mohamed3mad131@gmail.com">mohamed3mad131@gmail.com</a></div>
             <div class="contact-item"><a href="https://www.linkedin.com/in/mohamed-emad-76b24a294" target="_blank">LinkedIn Profile</a></div>
+            <div class="contact-item"><a href="tel:01040699963">01040699963</a></div>
         </div>
     </div>
 </section>
 
-<footer><p>© 2026 Mohamed Emad Hamdy | Data Portfolio</p></footer>
+<footer><p>© 2026 Mohamed Emad Hamdy</p></footer>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    AOS.init({ duration: 1000, once: true });
-    
-    // Smooth scroll and force top
-    window.onbeforeunload = function () { window.scrollTo(0, 0); }
+    AOS.init({ duration: 800, once: true });
 
-    // Slider Logic
     function changeSlide(sliderId, direction) {
         const slider = document.getElementById(sliderId);
         const images = slider.getElementsByTagName('img');
@@ -265,20 +289,12 @@
         images[nextIdx].classList.add('active');
     }
 
-    // Zoom Lens Effect Logic
     function zoomIn(event) {
         const img = event.currentTarget.querySelector('img.active');
-        const posX = event.offsetX;
-        const posY = event.offsetY;
-        const width = event.currentTarget.offsetWidth;
-        const height = event.currentTarget.offsetHeight;
-        
-        // Calculate percentages
-        const xPercent = (posX / width) * 100;
-        const yPercent = (posY / height) * 100;
-
-        img.style.transformOrigin = `${xPercent}% ${yPercent}%`;
-        img.style.transform = "scale(2.5)";
+        const x = (event.offsetX / event.currentTarget.offsetWidth) * 100;
+        const y = (event.offsetY / event.currentTarget.offsetHeight) * 100;
+        img.style.transformOrigin = `${x}% ${y}%`;
+        img.style.transform = "scale(1.6)"; // Reduced zoom level
     }
 
     function zoomOut(event) {
@@ -300,11 +316,19 @@
         const tab = document.getElementById(tabId);
         const en = tab.querySelector('.en');
         const ar = tab.querySelector('.ar');
+        const btn = tab.querySelector('.translate-btn');
         if(en.style.display === "none") {
             en.style.display = "block"; ar.style.display = "none";
+            btn.innerText = "Translate to Arabic";
         } else {
             en.style.display = "none"; ar.style.display = "block";
+            btn.innerText = "Translate to English";
         }
+    }
+
+    function openPopup(src) {
+        document.getElementById("popup-img").src = src;
+        document.getElementById("popup").classList.add("active");
     }
 </script>
 </body>
