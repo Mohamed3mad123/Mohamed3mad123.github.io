@@ -1,372 +1,218 @@
 <!DOCTYPE html>
-<html lang="en">
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Mohamed Emad Hamdy | Data Portfolio</title> 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> 
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> 
-    <style> 
-        :root { 
-            --primary-color: #007bff; 
-            --secondary-color: #1e293b; 
-            --accent-color: #3b82f6; 
-            --bg-color: #f8fafc; 
-            --card-bg: #ffffff; 
-        } 
-        body { font-family: 'Poppins', sans-serif; margin: 0; background-color: var(--bg-color); color: var(--secondary-color); scroll-behavior: smooth; overflow-x: hidden; } 
-        .container { width: 92%; max-width: 1100px; margin: 0 auto; padding: 10px 0; } 
-        
-        header { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); padding: 10px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; } 
-        nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; } 
-        .profile-brand { display: flex; align-items: center; gap: 12px; } 
-        .profile-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-color); } 
-        .logo { font-size: 18px; font-weight: 700; color: var(--secondary-color); line-height: 1.1; } 
-        .logo span { display: block; font-size: 12px; color: var(--primary-color); font-weight: 600; } 
-        
-        .nav-links { display: flex; gap: 15px; list-style: none; padding: 0; margin: 10px 0 0 0; } 
-        .nav-links a { text-decoration: none; color: var(--secondary-color); font-weight: 500; font-size: 13px; transition: 0.3s; } 
-
-        .hero { padding: 80px 0 40px; text-align: center; } 
-        .hero h1 { font-size: clamp(32px, 8vw, 55px); margin: 0; font-weight: 700; } 
-        .hero .subtitle { font-size: clamp(14px, 4vw, 20px); color: #64748b; margin-top: 10px; } 
-
-        .about-section { padding: 60px 0; background: #fff; }
-        .about-container { max-width: 850px; margin: 0 auto; text-align: center; }
-        .about-section p { font-size: 16px; line-height: 1.7; color: #475569; padding: 0 15px; }
-
-        .projects-header { text-align: center; padding: 40px 0 20px; font-size: 28px; font-weight: 700; } 
-        .project-card { background: var(--card-bg); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 40px; border: 1px solid #f1f5f9; } 
-        
-        .slider-container { position: relative; width: 100%; background: #eee; aspect-ratio: 16/9; display: flex; align-items: center; overflow: hidden; } 
-        .slider-container img { width: 100%; height: 100%; object-fit: contain; display: none; } 
-        .slider-container img.active { display: block; } 
-        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; width: 35px; height: 35px; cursor: pointer; border-radius: 50%; font-size: 16px; z-index: 10; display: flex; align-items: center; justify-content: center; } 
-        .prev { left: 10px; } .next { right: 10px; } 
-
-        .project-details { padding: 20px; } 
-        .tabs-menu { display: flex; gap: 8px; border-bottom: 2px solid #f1f5f9; margin-bottom: 15px; overflow-x: auto; padding-bottom: 8px; -webkit-overflow-scrolling: touch; } 
-        .tab-link { padding: 8px 15px; border: none; background: #f8fafc; font-family: inherit; font-weight: 600; color: #64748b; cursor: pointer; transition: 0.3s; border-radius: 6px; white-space: nowrap; font-size: 13px; } 
-        .tab-link.active { color: #fff; background: var(--primary-color); } 
-        
-        .tab-pane { display: none; animation: fadeIn 0.4s ease; } 
-        .tab-pane.active { display: block; } 
-        .translate-btn { background: #e2e8f0; border: none; padding: 6px 12px; border-radius: 5px; font-size: 11px; font-weight: 700; cursor: pointer; margin-bottom: 12px; display: block; }
-        .tab-content-text { font-size: 14px; line-height: 1.6; color: #475569; }
-        .tab-content-text ul { padding-left: 20px; }
-        .rtl { direction: rtl; text-align: right; }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        .certificates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; } 
-        .certificate-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); } 
-        .certificate-card img { width: 100%; height: 180px; object-fit: cover; cursor: pointer; } 
-        .cert-info { padding: 15px; text-align: center; }
-        .cert-info h3 { font-size: 14px; margin-bottom: 12px; min-height: 40px; }
-        .view-cert-btn { display: inline-block; background: var(--primary-color); color: #fff; text-decoration: none; padding: 7px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; }
-
-        .popup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 10000; padding: 20px; box-sizing: border-box; } 
-        .popup.active { display: flex; } 
-        .popup img { max-width: 100%; max-height: 90%; object-fit: contain; } 
-
-        .contact { padding: 60px 0; background: var(--secondary-color); color: white; text-align: center; border-radius: 30px 30px 0 0; } 
-        .contact-info { display: flex; flex-direction: column; gap: 20px; align-items: center; margin-top: 30px; } 
-        .contact-item i { display: block; color: var(--primary-color); font-size: 11px; margin-bottom: 5px; font-style: normal; font-weight: 700; }
-        .contact-item a { color: #fff; text-decoration: none; font-size: 16px; word-break: break-all; }
-
-        @media (min-width: 768px) {
-            nav { flex-wrap: nowrap; }
-            .nav-links { margin: 0; }
-            .contact-info { flex-direction: row; justify-content: center; gap: 40px; }
-            .project-details { padding: 30px; }
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دراسة حالة: كشف أسرار الربحية | محمد عماد حمدي</title>
+    <style>
+        :root {
+            --primary-bg: #0f0c29;
+            --secondary-bg: #1b1464;
+            --accent-color: #ff00cc;
+            --text-color: #e0e0e0;
+            --card-bg: #241b7a;
         }
-    </style> 
-</head>
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 20px;
+        }
+
+        h1 { color: #fff; margin-bottom: 10px; }
+        .subtitle { color: var(--accent-color); font-weight: bold; font-size: 1.2em; }
+
+        /* Tabs Styling */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .tab-link {
+            padding: 12px 25px;
+            background: var(--secondary-bg);
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .tab-link.active {
+            background: var(--accent-color);
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content Styling */
+        .project-image {
+            width: 100%;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid var(--secondary-bg);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .insight-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-right: 5px solid var(--accent-color);
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .highlight { color: var(--accent-color); font-weight: bold; }
+
+        ul { list-style-type: square; }
+        li { margin-bottom: 10px; }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+    </style>
+</head>
 <body>
 
-<header>
-    <div class="container">
-        <nav>
-            <div class="profile-brand">
-                <img src="Mohamed Emad.jpg" class="profile-img">
-                <div class="logo">Mohamed Emad Hamdy<span>Data Analyst</span></div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#certificates">Certificates</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+<div class="container">
+    <header>
+        <h1>دراسة حالة: كشف أسرار الربحية في التجارة الإلكترونية</h1>
+        <div class="subtitle">E-commerce Diagnostic Analysis: From Growth to Profitability</div>
+        <p>تحليل 5,000+ طلب لربط النقاط بين الخصومات العنيفة، تكاليف الشحن اللوجستية، وصافي الربح الحقيقي.</p>
+    </header>
 
-<section class="hero" data-aos="zoom-in">
-    <div class="container">
-        <h1>Mohamed Emad Hamdy</h1>
-        <p class="subtitle">DATA Analyst • SQL • POWER BI • EXCEL</p>
-    </div>
-</section>
-
-<section id="about" class="about-section" data-aos="fade-up">
-    <div class="container about-container">
-        <h2>About Me</h2>
-        <p>
-            Professional Data Analyst with expertise in SQL, Power BI, and Excel. I specialize in transforming raw data into meaningful business insights through interactive dashboards, performance optimization, and strategic data modeling.
-        </p>
-    </div>
-</section>
-
-<div id="projects" class="projects-header">Featured Projects</div>
-
-<section class="container">
-    <div class="project-card" data-aos="fade-up">
-        <div class="slider-container" id="slider-icecream">
-            <img src="fb_project1.jpg" class="active">
-            <img src="fb_project2.jpg">
-            <img src="fb_project3.jpg">
-            <img src="fb_project4.jpg">
-            <img src="fb_project5.jpg">
-            <button class="slider-btn prev" onclick="changeSlide('slider-icecream', -1)">❮</button>
-            <button class="slider-btn next" onclick="changeSlide('slider-icecream', 1)">❯</button>
-        </div>
-        <div class="project-details">
-            <h3 style="margin-top:0;">Ice Cream Shop Analysis</h3>
-            <div class="tabs-menu">
-                <button class="tab-link active" onclick="openTab(event, 'overview-tab')">Overview</button>
-                <button class="tab-link" onclick="openTab(event, 'problem-tab')">Problem</button>
-                <button class="tab-link" onclick="openTab(event, 'prep-tab')">Preparation</button>
-                <button class="tab-link" onclick="openTab(event, 'insights-tab')">Insights</button>
-                <button class="tab-link" onclick="openTab(event, 'rec-tab')">Recommendations</button>
-            </div>
-
-            <div id="overview-tab" class="tab-pane active">
-                <button class="translate-btn" onclick="toggleLang('overview-tab')">Translate to Arabic</button>
-                <div class="tab-content-text en">This project identifies top product combinations and evaluates how discounts and increased demand impact sales and profit. It covers performance from 2023 to 2025, providing a 360-degree view of the business including revenue, net profit, and order trends.</div>
-                <div class="tab-content-text ar rtl" style="display:none;">يحدد هذا المشروع أفضل مجموعات المنتجات ويقيم كيفية تأثير الخصومات وزيادة الطلب على المبيعات والأرباح. يغطي المشروع الأداء من 2023 إلى 2025، مما يوفر رؤية شاملة للعمل تتضمن الإيرادات وصافي الربح واتجاهات الطلبات.</div>
-            </div>
-
-            <div id="problem-tab" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('problem-tab')">Translate to Arabic</button>
-                <div class="tab-content-text en">Management lacked clear insights into branch performance (Cairo vs Alex), couldn't track employee efficiency, and had no automated way to simulate the effects of changing discount rates on future profits.</div>
-                <div class="tab-content-text ar rtl" style="display:none;">كانت الإدارة تفتقر إلى رؤى واضحة حول أداء الفروع (القاهرة مقابل الإسكندرية)، ولم تتمكن من تتبع كفاءة الموظفين، ولم يكن لديها وسيلة تلقائية لمحاكاة تأثير تغيير معدلات الخصم على الأرباح المستقبلية.</div>
-            </div>
-
-            <div id="prep-tab" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('prep-tab')">Translate to Arabic</button>
-                <div class="tab-content-text en">Data was extracted and cleaned using Power Query. I created a star schema data model, calculated advanced KPIs using DAX (AVO, Profit Margin), and implemented "What-if" parameters to allow dynamic scenario testing.</div>
-                <div class="tab-content-text ar rtl" style="display:none;">تم استخراج البيانات وتنظيفها باستخدام Power Query. قمت بإنشاء نموذج بيانات (Star Schema)، وحساب مؤشرات أداء متقدمة باستخدام DAX، وتطبيق بارامترات "What-if" للسماح باختبار السيناريوهات بشكل ديناميكي.</div>
-            </div>
-
-            <div id="insights-tab" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('insights-tab')">Translate to Arabic</button>
-                <div class="tab-content-text en">
-                    <ul>
-                        <li>Cairo branch leads revenue with $111K.</li>
-                        <li>Cash is the preferred payment method ($116K), followed by Cards.</li>
-                        <li>The most frequent product pair is "Cone" and "Ice Cream Cup" (87 pairs).</li>
-                        <li>A 5% discount combined with a 10% order increase leads to a 2.29% profit growth.</li>
-                    </ul>
-                </div>
-                <div class="tab-content-text ar rtl" style="display:none;">
-                    <ul>
-                        <li>فرع القاهرة يتصدر الإيرادات بـ 111 ألف دولار.</li>
-                        <li>الكاش هو وسيلة الدفع المفضلة (116 ألف دولار)، يليه البطاقات البنكية.</li>
-                        <li>أكثر زوج منتجات تكراراً هو "الكون" و "كوب الآيس كريم" (87 مرة).</li>
-                        <li>تطبيق خصم 5% مع زيادة طلبات 10% يؤدي لنمو أرباح بنسبة 2.29%.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div id="rec-tab" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('rec-tab')">Translate to Arabic</button>
-                <div class="tab-content-text en">
-                    <ul>
-                        <li>Focus marketing on "Waffles" as they yield the highest margin (73%).</li>
-                        <li>Expand digital payment options (Vodafone Cash/Instapay) to capture more "Evening" shift customers.</li>
-                        <li>Implement a 5% discount strategy for low-demand periods to boost overall volume and net profit.</li>
-                    </ul>
-                </div>
-                <div class="tab-content-text ar rtl" style="display:none;">
-                    <ul>
-                        <li>التركيز التسويقي على "الوافل" لأنه يحقق أعلى هامش ربح (73%).</li>
-                        <li>توسيع خيارات الدفع الرقمي (فودافون كاش/إنستاباي) لجذب المزيد من عملاء الفترة المسائية.</li>
-                        <li>تطبيق استراتيجية خصم 5% في فترات الطلب المنخفض لزيادة حجم المبيعات وصافي الربح.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <div class="tabs">
+        <button class="tab-link active" onclick="openTab(event, 'Overview')">Overview</button>
+        <button class="tab-link" onclick="openTab(event, 'Discounts')">Discounts</button>
+        <button class="tab-link" onclick="openTab(event, 'Operations')">Operations</button>
+        <button class="tab-link" onclick="openTab(event, 'Recommendations')">Recommendations</button>
+        <button class="tab-link" onclick="openTab(event, 'Tools')">Tools</button>
     </div>
 
-    <div class="project-card" data-aos="fade-up">
-        <div class="slider-container" id="slider-ecommerce">
-            <img src="E-commerce_1.jpg" class="active">
-            <img src="E-commerce_2.jpg">
-            <img src="E-commerce_3.jpg">
-            <button class="slider-btn prev" onclick="changeSlide('slider-ecommerce', -1)">❮</button>
-            <button class="slider-btn next" onclick="changeSlide('slider-ecommerce', 1)">❯</button>
+    <div id="Overview" class="tab-content active">
+        <h2>🔍 الفصل الأول: "خدعة النمو البراقة"</h2>
+        <p>بدأت القصة بمشهد مبهج؛ مبيعات إجمالية بلغت <span class="highlight">2.3 مليون دولار</span> مع نمو سنوي قوي بنسبة <span class="highlight">20.4%</span>. للوهلة الأولى، يبدو أن كل شيء يسير على ما يرام.</p>
+        
+        <div class="insight-card">
+            <strong>السؤال المحير:</strong> "إذا كانت مبيعاتنا تنمو بهذا الشكل، لماذا لا تنعكس هذه القوة في خزينة الشركة؟"
         </div>
-        <div class="project-details">
-            <h3 style="margin-top:0;">E-commerce Business Health Analysis</h3>
-            <div class="tabs-menu">
-                <button class="tab-link active" onclick="openTab(event, 'eco-story')">Story</button>
-                <button class="tab-link" onclick="openTab(event, 'eco-overview')">Overview</button>
-                <button class="tab-link" onclick="openTab(event, 'eco-discounts')">Discounts</button>
-                <button class="tab-link" onclick="openTab(event, 'eco-ops')">Operations</button>
-                <button class="tab-link" onclick="openTab(event, 'eco-rec')">Recommendations</button>
-                <button class="tab-link" onclick="openTab(event, 'eco-tools')">Tools</button>
-            </div>
-
-            <div id="eco-story" class="tab-pane active">
-                <button class="translate-btn" onclick="toggleLang('eco-story')">Translate to English</button>
-                <div class="tab-content-text en" style="display:none;">In this project, we explored global e-commerce data to discover why profits evaporate despite massive sales. We analyzed 5,000+ orders to link aggressive discounts, logistics costs, and real net profit.</div>
-                <div class="tab-content-text ar rtl">في هذا المشروع، قمنا برحلة استقصائية داخل بيانات متجر إلكتروني عالمي لنكتشف لماذا تتبخر الأرباح رغم ضخامة المبيعات. قمنا بتحليل 5,000+ طلب لربط النقاط بين الخصومات العنيفة، تكاليف الشحن اللوجستية، وصافي الربح الحقيقي.</div>
-            </div>
-
-            <div id="eco-overview" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('eco-overview')">Translate to English</button>
-                <div class="tab-content-text en" style="display:none;">Total sales reached $2.3M with 20.4% annual growth. However, net profit margin is only 12.5%. High discounts ($322.6K) are exceeding our total net profit! Growth without profitability is just a "vanity metric."</div>
-                <div class="tab-content-text ar rtl">مبيعات إجمالية بلغت 2.3 مليون دولار مع نمو سنوي بنسبة 20.4%. بمقارنة المبيعات بالربح، وجدنا هامشاً ضئيلاً لا يتجاوز 12.5%. نحن نمنح خصومات (322.6 ألف دولار) تتجاوز أرباحنا الصافية! النمو بدون ربحية هو مجرد "رقم للمفاخرة".</div>
-            </div>
-
-            <div id="eco-discounts" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('eco-discounts')">Translate to English</button>
-                <div class="tab-content-text en" style="display:none;">Data shows that increasing discounts does not lead to a significant increase in quantity sold. Any discount exceeding 20% turns the deal into an operational loss. Our "Discount Efficiency" index is at (-0.82), a serious red flag.</div>
-                <div class="tab-content-text ar rtl">أثبتت البيانات أن زيادة الخصم لا تؤدي لزيادة ملحوظة في الكمية المباعة. أي خصم يتجاوز 20% يحول الصفقة فوراً إلى خسارة تشغيلية. مؤشر "كفاءة الخصم" سجل (0.82-)، وهو جرس إنذار لتآكل الميزانية.</div>
-            </div>
-
-            <div id="eco-ops" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('eco-ops')">Translate to English</button>
-                <div class="tab-content-text en" style="display:none;">The "Tables" sub-category is a profit black hole with a $16.6K loss. Shipping costs in states like Alabama reach $45 per shipment, making low-margin sales there a "business suicide." High discounts + high shipping = loss.</div>
-                <div class="tab-content-text ar rtl">اكتشفنا أن قسم "الطاولات" (Tables) هو ثقب أسود يبتلع الأرباح بخسارة 16.6 ألف دولار. تكاليف الشحن في ولايات مثل Alabama تصل لـ 45 دولاراً للشحنة، مما يجعل بيع المنتجات هناك بخصم مرتفع قراراً انتحارياً.</div>
-            </div>
-
-            <div id="eco-rec" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('eco-rec')">Translate to English</button>
-                <div class="tab-content-text en" style="display:none;">
-                    <ul>
-                        <li>Stop blind discounts: Cap discounts at 15-20%.</li>
-                        <li>Logistics re-engineering: Enforce "Minimum Order Value" for distant states.</li>
-                        <li>Portfolio Cleaning: Review and re-price products in the Furniture/Tables category.</li>
-                    </ul>
-                </div>
-                <div class="tab-content-text ar rtl">
-                    <ul>
-                        <li>حظر الخصومات العمياء: وضع سقف صارم للخصومات عند 15-20%.</li>
-                        <li>إعادة هندسة اللوجستيات: فرض "حد أدنى للطلب" في الولايات البعيدة لتغطية تكاليف الشحن.</li>
-                        <li>تطهير المحفظة: مراجعة منتجات (Furniture/Tables) وإعادة تسعيرها في المناطق ذات التكلفة العالية.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div id="eco-tools" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('eco-tools')">Translate to English</button>
-                <div class="tab-content-text en" style="display:none;">Power BI, Power Query, DAX (KPIs for discount efficiency), and Star Schema Modeling.</div>
-                <div class="tab-content-text ar rtl">
-                    <ul>
-                        <li><b>Power BI:</b> لبناء لوحات التحكم وسرد القصة بصرياً.</li>
-                        <li><b>Power Query:</b> لتنظيف وهيكلة البيانات.</li>
-                        <li><b>DAX:</b> لابتكار مؤشرات قياس أداء مخصصة.</li>
-                        <li><b>Star Schema:</b> لضمان ترابط الجداول وسهولة التحليل.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        
+        <img src="11.jpg" alt="Overview Dashboard" class="project-image">
+        
+        <p><strong>الاكتشاف من البيانات:</strong> بمقارنة إجمالي المبيعات بصافي الربح، وجدنا هامشاً ضئيلاً لا يتجاوز <span class="highlight">12.5%</span>. وعندما نظرنا لمؤشر الخصومات (322.6 ألف دولار)، أدركنا الحقيقة المرة: نحن نمنح خصومات للعملاء تتجاوز إجمالي أرباحنا الصافية!</p>
+        <p><strong>خلاصة الصفحة:</strong> النمو بدون ربحية هو مجرد "رقم للمفاخرة"، وهنا قررنا التعمق لنعرف أين يكمن النزيف.</p>
     </div>
-</section>
 
-<section id="certificates" class="container" style="padding: 40px 0;">
-    <h2 style="text-align:center;">Professional Certificates</h2>
-    <div class="certificates-grid">
-        <div class="certificate-card">
-            <img src="Data%20Transformation%20in%20power%20bi.png" onclick="openPopup(this.src)">
-            <div class="cert-info">
-                <h3>Data Transformation in Power BI</h3>
-                <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/e686cfc0c0906f9569fc3c411b468fa769c9b0cc" target="_blank" class="view-cert-btn">Verify Link</a>
-            </div>
+    <div id="Discounts" class="tab-content">
+        <h2>💸 الفصل الثاني: "لغز الخصومات والارتباط المفقود"</h2>
+        <p>انتقلنا إلى الصفحة الثانية للإجابة على سؤال استراتيجي: "هل الخصومات العالية هي المحرك الحقيقي للبيع؟"</p>
+        
+        <div class="insight-card">
+            <strong>السؤال الجوهري:</strong> "هل العميل الذي يحصل على خصم 80% يشتري كميات أكبر تبرر خسارتنا؟"
         </div>
-        <div class="certificate-card">
-            <img src="intermediante%20Sql.jpg" onclick="openPopup(this.src)">
-            <div class="cert-info">
-                <h3>Intermediate SQL</h3>
-                <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/fe2ff1270f4fb6187ad25757aeba17846d8b42bb" target="_blank" class="view-cert-btn">Verify Link</a>
-            </div>
-        </div>
-        <div class="certificate-card">
-            <img src="Intermediate_Data_Modeling_in_Power_BI.png" onclick="openPopup(this.src)">
-            <div class="cert-info">
-                <h3>Data Modeling in Power BI</h3>
-                <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/6241db4e965e2b2e4b57a85def5ee487f4b05814" target="_blank" class="view-cert-btn">Verify Link</a>
-            </div>
-        </div>
+
+        <img src="22.jpg" alt="Discount Analysis Dashboard" class="project-image">
+
+        <p><strong>ما قالته الشارتات:</strong> من خلال رسم التشتت (Impact of Discount on Quantity)، صُدمنا بأن الخط شبه أفقي! هذا يعني أن زيادة الخصم لا تؤدي لزيادة ملحوظة في الكمية المباعة. نحن نخسر الربح دون كسب حجم مبيعات إضافي.</p>
+        <p><strong>منطقة الموت:</strong> حددنا عبر شارت (Discount Vs Profit) أن أي خصم يتجاوز <span class="highlight">20%</span> يحول الصفقة فوراً إلى خسارة تشغيلية.</p>
+        <p><strong>مؤشر الكفاءة:</strong> قمنا بابتكار مؤشر <span class="highlight">Discount Efficiency</span> الذي سجل <span class="highlight">(0.82- دولار)</span>، وهو "جرس إنذار" يقول للمديرين: كل دولار خصم نمنحه، يكلفنا عملياً ضياع كفاءة ربحية وتآكل للميزانية.</p>
     </div>
-</section>
 
-<div id="popup" class="popup" onclick="this.classList.remove('active')">
-    <img id="popup-img" src="">
+    <div id="Operations" class="tab-content">
+        <h2>🚚 الفصل الثالث: "الثقوب السوداء في العمليات"</h2>
+        <p>في المرحلة الأخيرة، كان علينا تحديد المسؤول عن استنزاف الأرباح؛ هل هو المنتج أم طريقة توصيله؟</p>
+
+        <div class="insight-card">
+            <strong>السؤال الاستراتيجي:</strong> "أين تذهب الأموال بعد بيع المنتج؟"
+        </div>
+
+        <img src="33.jpg" alt="Operations Dashboard" class="project-image">
+
+        <p><strong>التشريح الرقمي:</strong> باستخدام شجرة التفكيك (Decomposition Tree)، تتبعنا الخسائر واكتشفنا أن قسم "الطاولات" (Tables) في فئة الأثاث هو "ثقب أسود" يبتلع الأرباح بخسارة صافية قدرها <span class="highlight">16.6 ألف دولار</span>.</p>
+        <p><strong>صدمة الشحن:</strong> عند تحليل تكاليف الشحن لكل ولاية، اكتشفنا أن ولايات مثل Alabama و South Carolina تستهلك مبالغ طائلة تصل لـ <span class="highlight">45 دولاراً</span> للشحنة الواحدة، مما يجعل بيع المنتجات منخفضة الهامش هناك قراراً انتحارياً تجارياً.</p>
+        <p><strong>النتيجة النهائية:</strong> أثبتنا بالبيانات أن الجمع بين "خصم مرتفع" و "تكلفة شحن عالية" هو السبب الرئيسي وراء قائمة المنتجات الخاسرة التي رصدناها في الجداول التفصيلية.</p>
+    </div>
+
+    <div id="Recommendations" class="tab-content">
+        <h2>💡 التوصيات الختامية (Actionable Insights)</h2>
+        <p>بناءً على هذه القصة الرقمية، خرجنا بـ 3 توصيات لا غنى عنها:</p>
+        <ul>
+            <li><span class="highlight">حظر الخصومات العمياء:</span> وضع سقف صارم للخصومات عند 15-20%، حيث أثبتت البيانات أن ما بعد ذلك هو خسارة محققة.</li>
+            <li><span class="highlight">إعادة هندسة اللوجستيات:</span> فرض "حد أدنى للطلب" في الولايات البعيدة لتغطية تكاليف الشحن المرتفعة.</li>
+            <li><span class="highlight">تطهير المحفظة:</span> مراجعة المنتجات في فئة (Furniture/Tables) وإعادة تسعيرها أو تقليل الاعتماد عليها في المناطق ذات التكلفة العالية.</li>
+        </ul>
+    </div>
+
+    <div id="Tools" class="tab-content">
+        <h2>🛠️ الأدوات التي استخدمتها في هذه الرحلة</h2>
+        <ul>
+            <li><strong>Power BI:</strong> لبناء لوحات التحكم التفاعلية وسرد القصة بصرياً.</li>
+            <li><strong>Power Query:</strong> لتنظيف وهيكلة البيانات وتحويلها من بيانات جافة إلى معلومات قيمة.</li>
+            <li><strong>DAX:</strong> لابتكار مؤشرات قياس أداء (KPIs) مخصصة مثل كفاءة الخصم ونسب الشحن.</li>
+            <li><strong>Star Schema Modeling:</strong> لضمان ترابط الجداول وسهولة التحليل المتقاطع.</li>
+        </ul>
+        <img src="Screenshot 2026-04-20 212306.jpg" alt="Data Model Star Schema" class="project-image">
+    </div>
+
+    <footer>
+        <p>إعداد المحلل: <strong>محمد عماد حمدي</strong> | 2026</p>
+    </footer>
 </div>
 
-<section id="contact" class="contact">
-    <div class="container">
-        <h2>Contact Me</h2>
-        <div class="contact-info">
-            <div class="contact-item"><i>Email</i><a href="mailto:mohamed3mad131@gmail.com">mohamed3mad131@gmail.com</a></div>
-            <div class="contact-item"><i>LinkedIn</i><a href="https://www.linkedin.com/in/mohamed-emad-76b24a294" target="_blank">LinkedIn Profile</a></div>
-            <div class="contact-item"><i>Phone</i><a href="tel:01040699963">01040699963</a></div>
-        </div>
-    </div>
-</section>
-
-<footer><p>© 2026 Mohamed Emad Hamdy</p></footer>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    AOS.init({ duration: 800, once: true });
-
-    function changeSlide(sliderId, direction) {
-        const slider = document.getElementById(sliderId);
-        const images = slider.getElementsByTagName('img');
-        let activeIdx = 0;
-        for(let i=0; i<images.length; i++) {
-            if(images[i].classList.contains('active')) {
-                activeIdx = i;
-                images[i].classList.remove('active');
-                break;
-            }
-        }
-        let nextIdx = (activeIdx + direction + images.length) % images.length;
-        images[nextIdx].classList.add('active');
-    }
-
     function openTab(evt, tabName) {
-        const parent = evt.currentTarget.closest('.project-details');
-        const panes = parent.getElementsByClassName("tab-pane");
-        const links = parent.getElementsByClassName("tab-link");
-        for(let i=0; i<panes.length; i++) panes[i].classList.remove("active");
-        for(let i=0; i<links.length; i++) links[i].classList.remove("active");
-        document.getElementById(tabName).classList.add("active");
-        evt.currentTarget.classList.add("active");
-    }
-
-    function toggleLang(tabId) {
-        const tab = document.getElementById(tabId);
-        const en = tab.querySelector('.en');
-        const ar = tab.querySelector('.ar');
-        const btn = tab.querySelector('.translate-btn');
-        if(en.style.display === "none") {
-            en.style.display = "block"; ar.style.display = "none";
-            btn.innerText = (tabId.startsWith('eco')) ? "Translate to English" : "Translate to Arabic";
-        } else {
-            en.style.display = "none"; ar.style.display = "block";
-            btn.innerText = (tabId.startsWith('eco')) ? "Translate to Arabic" : "Translate to English";
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            tabcontent[i].classList.remove("active");
         }
-    }
-
-    function openPopup(src) {
-        document.getElementById("popup-img").src = src;
-        document.getElementById("popup").classList.add("active");
+        tablinks = document.getElementsByClassName("tab-link");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.className += " active";
     }
 </script>
+
 </body>
 </html>
