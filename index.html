@@ -198,6 +198,82 @@
             </div>
         </div>
     </div>
+
+    <div class="project-card" data-aos="fade-up">
+        <div class="slider-container" id="slider-ecommerce">
+            <img src="E-commerce_1.jpg" class="active">
+            <img src="E-commerce_2.jpg">
+            <img src="E-commerce_3.jpg">
+            <button class="slider-btn prev" onclick="changeSlide('slider-ecommerce', -1)">❮</button>
+            <button class="slider-btn next" onclick="changeSlide('slider-ecommerce', 1)">❯</button>
+        </div>
+        <div class="project-details">
+            <h3 style="margin-top:0;">E-commerce Business Health Analysis</h3>
+            <div class="tabs-menu">
+                <button class="tab-link active" onclick="openTab(event, 'eco-story')">Story</button>
+                <button class="tab-link" onclick="openTab(event, 'eco-overview')">Overview</button>
+                <button class="tab-link" onclick="openTab(event, 'eco-discounts')">Discounts</button>
+                <button class="tab-link" onclick="openTab(event, 'eco-ops')">Operations</button>
+                <button class="tab-link" onclick="openTab(event, 'eco-rec')">Recommendations</button>
+                <button class="tab-link" onclick="openTab(event, 'eco-tools')">Tools</button>
+            </div>
+
+            <div id="eco-story" class="tab-pane active">
+                <button class="translate-btn" onclick="toggleLang('eco-story')">Translate to English</button>
+                <div class="tab-content-text en" style="display:none;">In this project, we explored global e-commerce data to discover why profits evaporate despite massive sales. We analyzed 5,000+ orders to link aggressive discounts, logistics costs, and real net profit.</div>
+                <div class="tab-content-text ar rtl">في هذا المشروع، قمنا برحلة استقصائية داخل بيانات متجر إلكتروني عالمي لنكتشف لماذا تتبخر الأرباح رغم ضخامة المبيعات. قمنا بتحليل 5,000+ طلب لربط النقاط بين الخصومات العنيفة، تكاليف الشحن اللوجستية، وصافي الربح الحقيقي.</div>
+            </div>
+
+            <div id="eco-overview" class="tab-pane">
+                <button class="translate-btn" onclick="toggleLang('eco-overview')">Translate to English</button>
+                <div class="tab-content-text en" style="display:none;">Total sales reached $2.3M with 20.4% annual growth. However, net profit margin is only 12.5%. High discounts ($322.6K) are exceeding our total net profit! Growth without profitability is just a "vanity metric."</div>
+                <div class="tab-content-text ar rtl">مبيعات إجمالية بلغت 2.3 مليون دولار مع نمو سنوي بنسبة 20.4%. بمقارنة المبيعات بالربح، وجدنا هامشاً ضئيلاً لا يتجاوز 12.5%. نحن نمنح خصومات (322.6 ألف دولار) تتجاوز أرباحنا الصافية! النمو بدون ربحية هو مجرد "رقم للمفاخرة".</div>
+            </div>
+
+            <div id="eco-discounts" class="tab-pane">
+                <button class="translate-btn" onclick="toggleLang('eco-discounts')">Translate to English</button>
+                <div class="tab-content-text en" style="display:none;">Data shows that increasing discounts does not lead to a significant increase in quantity sold. Any discount exceeding 20% turns the deal into an operational loss. Our "Discount Efficiency" index is at (-0.82), a serious red flag.</div>
+                <div class="tab-content-text ar rtl">أثبتت البيانات أن زيادة الخصم لا تؤدي لزيادة ملحوظة في الكمية المباعة. أي خصم يتجاوز 20% يحول الصفقة فوراً إلى خسارة تشغيلية. مؤشر "كفاءة الخصم" سجل (0.82-)، وهو جرس إنذار لتآكل الميزانية.</div>
+            </div>
+
+            <div id="eco-ops" class="tab-pane">
+                <button class="translate-btn" onclick="toggleLang('eco-ops')">Translate to English</button>
+                <div class="tab-content-text en" style="display:none;">The "Tables" sub-category is a profit black hole with a $16.6K loss. Shipping costs in states like Alabama reach $45 per shipment, making low-margin sales there a "business suicide." High discounts + high shipping = loss.</div>
+                <div class="tab-content-text ar rtl">اكتشفنا أن قسم "الطاولات" (Tables) هو ثقب أسود يبتلع الأرباح بخسارة 16.6 ألف دولار. تكاليف الشحن في ولايات مثل Alabama تصل لـ 45 دولاراً للشحنة، مما يجعل بيع المنتجات هناك بخصم مرتفع قراراً انتحارياً.</div>
+            </div>
+
+            <div id="eco-rec" class="tab-pane">
+                <button class="translate-btn" onclick="toggleLang('eco-rec')">Translate to English</button>
+                <div class="tab-content-text en" style="display:none;">
+                    <ul>
+                        <li>Stop blind discounts: Cap discounts at 15-20%.</li>
+                        <li>Logistics re-engineering: Enforce "Minimum Order Value" for distant states.</li>
+                        <li>Portfolio Cleaning: Review and re-price products in the Furniture/Tables category.</li>
+                    </ul>
+                </div>
+                <div class="tab-content-text ar rtl">
+                    <ul>
+                        <li>حظر الخصومات العمياء: وضع سقف صارم للخصومات عند 15-20%.</li>
+                        <li>إعادة هندسة اللوجستيات: فرض "حد أدنى للطلب" في الولايات البعيدة لتغطية تكاليف الشحن.</li>
+                        <li>تطهير المحفظة: مراجعة منتجات (Furniture/Tables) وإعادة تسعيرها في المناطق ذات التكلفة العالية.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="eco-tools" class="tab-pane">
+                <button class="translate-btn" onclick="toggleLang('eco-tools')">Translate to English</button>
+                <div class="tab-content-text en" style="display:none;">Power BI, Power Query, DAX (KPIs for discount efficiency), and Star Schema Modeling.</div>
+                <div class="tab-content-text ar rtl">
+                    <ul>
+                        <li><b>Power BI:</b> لبناء لوحات التحكم وسرد القصة بصرياً.</li>
+                        <li><b>Power Query:</b> لتنظيف وهيكلة البيانات.</li>
+                        <li><b>DAX:</b> لابتكار مؤشرات قياس أداء مخصصة.</li>
+                        <li><b>Star Schema:</b> لضمان ترابط الجداول وسهولة التحليل.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <section id="certificates" class="container" style="padding: 40px 0;">
@@ -280,10 +356,10 @@
         const btn = tab.querySelector('.translate-btn');
         if(en.style.display === "none") {
             en.style.display = "block"; ar.style.display = "none";
-            btn.innerText = "Translate to Arabic";
+            btn.innerText = (tabId.startsWith('eco')) ? "Translate to English" : "Translate to Arabic";
         } else {
             en.style.display = "none"; ar.style.display = "block";
-            btn.innerText = "Translate to English";
+            btn.innerText = (tabId.startsWith('eco')) ? "Translate to Arabic" : "Translate to English";
         }
     }
 
