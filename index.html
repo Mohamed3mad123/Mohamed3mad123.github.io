@@ -27,7 +27,11 @@
         .nav-links { display: flex; gap: 15px; list-style: none; padding: 0; margin: 10px 0 0 0; } 
         .nav-links a { text-decoration: none; color: var(--secondary-color); font-weight: 500; font-size: 13px; transition: 0.3s; } 
 
-        .hero { padding: 80px 0 40px; text-align: center; } 
+        /* Hero Animation */
+        .hero { padding: 80px 0 40px; text-align: center; opacity: 0; transform: translateY(30px); animation: heroFadeIn 1s ease forwards; } 
+        @keyframes heroFadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
         .hero h1 { font-size: clamp(32px, 8vw, 55px); margin: 0; font-weight: 700; } 
         .hero .subtitle { font-size: clamp(14px, 4vw, 20px); color: #64748b; margin-top: 10px; } 
 
@@ -36,11 +40,12 @@
         .about-section p { font-size: 16px; line-height: 1.7; color: #475569; padding: 0 15px; }
 
         .projects-header { text-align: center; padding: 40px 0 20px; font-size: 28px; font-weight: 700; } 
-        .project-card { background: var(--card-bg); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 40px; border: 1px solid #f1f5f9; } 
+        .project-card { background: var(--card-bg); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 40px; border: 1px solid #f1f5f9; transition: transform 0.3s ease; } 
+        .project-card:hover { transform: translateY(-5px); }
          
         .slider-container { position: relative; width: 100%; background: #eee; aspect-ratio: 16/9; display: flex; align-items: center; overflow: hidden; } 
         .slider-container img { width: 100%; height: 100%; object-fit: contain; display: none; } 
-        .slider-container img.active { display: block; } 
+        .slider-container img.active { display: block; animation: fadeIn 0.5s; } 
         .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; width: 35px; height: 35px; cursor: pointer; border-radius: 50%; font-size: 16px; z-index: 10; display: flex; align-items: center; justify-content: center; } 
         .prev { left: 10px; } .next { right: 10px; } 
 
@@ -59,7 +64,8 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .certificates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; } 
-        .certificate-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); } 
+        .certificate-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s; } 
+        .certificate-card:hover { transform: scale(1.02); }
         .certificate-card img { width: 100%; height: 180px; object-fit: cover; cursor: pointer; } 
         .cert-info { padding: 15px; text-align: center; }
         .cert-info h3 { font-size: 14px; margin-bottom: 12px; min-height: 40px; }
@@ -102,7 +108,7 @@
     </div>
 </header>
 
-<section class="hero" data-aos="zoom-in">
+<section class="hero" data-aos="fade-down">
     <div class="container">
         <h1>Mohamed Emad Hamdy</h1>
         <p class="subtitle">DATA Analyst • SQL • POWER BI • EXCEL</p>
@@ -118,7 +124,7 @@
     </div>
 </section>
 
-<div id="projects" class="projects-header">Featured Projects</div>
+<div id="projects" class="projects-header" data-aos="fade-up">Featured Projects</div>
 
 <section class="container">
     <div class="project-card" data-aos="fade-up">
@@ -146,7 +152,6 @@
                 <div class="tab-content-text en">This project identifies top product combinations and evaluates how discounts and increased demand impact sales and profit. It covers performance from 2023 to 2025, providing a 360-degree view of the business including revenue, net profit, and order trends.</div>
                 <div class="tab-content-text ar rtl" style="display:none;">يحدد هذا المشروع أفضل مجموعات المنتجات ويقيم كيفية تأثير الخصومات وزيادة الطلب على المبيعات والأرباح. يغطي المشروع الأداء من 2023 إلى 2025، مما يوفر رؤية شاملة للعمل تتضمن الإيرادات وصافي الربح واتجاهات الطلبات.</div>
             </div>
-
             <div id="problem-tab" class="tab-pane">
                 <button class="translate-btn" onclick="toggleLang('problem-tab')">Translate to Arabic</button>
                 <div class="tab-content-text en">Management lacked clear insights into branch performance (Cairo vs Alex), couldn't track employee efficiency, and had no automated way to simulate the effects of changing discount rates on future profits.</div>
@@ -218,168 +223,38 @@
                 <button class="tab-link" onclick="openTab(event, 'eco-tools')">Tools</button>
             </div>
 
-           <div id="eco-story" class="tab-pane active">
-    <button class="translate-btn" onclick="toggleLang('eco-story')">Translate to Arabic</button>
-    <div class="tab-content-text en">
-        <strong>Case Study: Unlocking the Secrets of E-commerce Profitability</strong><br>
-        E-commerce Diagnostic Analysis: From Growth to Profitability<br><br>
-        In this project, I went beyond surface-level metrics to conduct an investigative deep-dive into global e-commerce data. By analyzing 5,000+ orders, I mapped the critical correlations between aggressive discounting, logistical overhead, and actual net profitability.
-    </div>
-    <div class="tab-content-text ar rtl" style="display:none;">
-        <strong>دراسة حالة: كشف أسرار الربحية في التجارة الإلكترونية</strong><br>
-        E-commerce Diagnostic Analysis: From Growth to Profitability<br><br>
-        في هذا المشروع، لم نكتفِ بعرض الأرقام، بل قمنا برحلة استقصائية داخل بيانات متجر إلكتروني عالمي لنكتشف لماذا تتبخر الأرباح رغم ضخامة المبيعات. قمنا بتحليل 5,000+ طلب لربط النقاط بين الخصومات العنيفة، تكاليف الشحن اللوجستية، وصافي الربح الحقيقي.
-    </div>
-</div>
-
-<div id="eco-overview" class="tab-pane">
-    <button class="translate-btn" onclick="toggleLang('eco-overview')">Translate to Arabic</button>
-    <div class="tab-content-text en">
-        <strong>Chapter I: The "Growth Mirage" (Overview)</strong><br>
-        The story began with a promising outlook: total sales reached $2.3M with a robust 20.4% annual growth. At first glance, the business seemed to be thriving.<br><br>
-        <strong>The Puzzling Question:</strong> "If sales are scaling this rapidly, why isn't that strength reflected in the bottom line?"<br>
-        <strong>Data Revelation:</strong> Comparing gross sales to net profit revealed a thin margin of just 12.5%. Analyzing the discount index ($322.6K) uncovered the hard truth: we were granting customer discounts that exceeded our entire net profit!<br>
-        <strong>Key Takeaway:</strong> Growth without profitability is merely a "vanity metric." This realization prompted a deeper dive to identify where the capital was hemorrhaging.
-    </div>
-    <div class="tab-content-text ar rtl" style="display:none;">
-        <strong> الفصل الأول: "خدعة النمو البراقة" (نظرة عامة)</strong><br>
-        بدأت القصة بمشهد مبهج؛ مبيعات إجمالية بلغت 2.3 مليون دولار مع نمو سنوي قوي بنسبة 20.4%. للوهلة الأولى، يبدو أن كل شيء يسير على ما يرام.<br><br>
-        السؤال المحير: "إذا كانت مبيعاتنا تنمو بهذا الشكل، لماذا لا تنعكس هذه القوة في خزينة الشركة؟"<br>
-        الاكتشاف من البيانات: بمقارنة إجمالي المبيعات بصافي الربح، وجدنا هامشاً ضئيلاً لا يتجاوز 12.5%. وعندما نظرنا لمؤشر الخصومات (322.6 ألف دولار)، أدركنا الحقيقة المرة: نحن نمنح خصومات للعملاء تتجاوز إجمالي أرباحنا الصافية!<br>
-        خلاصة الصفحة: النمو بدون ربحية هو مجرد "رقم للمفاخرة"، وهنا قررنا التعمق لنعرف أين يكمن النزيف.
-    </div>
-</div>
-
-<div id="eco-discounts" class="tab-pane">
-    <button class="translate-btn" onclick="toggleLang('eco-discounts')">Translate to Arabic</button>
-    <div class="tab-content-text en">
-        <strong>Chapter II: The Discount Paradox (Discount Analysis)</strong><br>
-        The second stage addressed a strategic hypothesis: "Are steep discounts the true driver of sales volume?"<br><br>
-        <strong>The Core Question:</strong> "Does a customer receiving an 80% discount purchase enough additional quantity to justify the loss?"<br>
-        <strong>What the Charts Told Us:</strong> Through scatter plots (Impact of Discount on Quantity), we were surprised to find a near-flat trendline! This indicates that increasing discounts does not yield a significant boost in volume. We were sacrificing profit without gaining market scale.<br>
-        <strong>The "Kill Zone":</strong> Using a "Discount Vs Profit" analysis, we determined that any discount exceeding 20% immediately turned the transaction into an operational loss.<br>
-        <strong>Efficiency Index:</strong> I developed a "Discount Efficiency" metric, which recorded -$0.82. This served as a red flag for management, signaling that every dollar given in discounts was actively eroding capital efficiency.
-    </div>
-    <div class="tab-content-text ar rtl" style="display:none;">
-        <strong> الفصل الثاني: "لغز الخصومات والارتباط المفقود" (تحليل الخصومات)</strong><br>
-        انتقلنا إلى الصفحة الثانية للإجابة على سؤال استراتيجي: "هل الخصومات العالية هي المحرك الحقيقي للبيع؟"<br><br>
-        السؤال الجوهري: "هل العميل الذي يحصل على خصم 80% يشتري كميات أكبر تبرر خسارتنا؟"<br>
-        ما قالته الشارتات: من خلال رسم التشتت (Impact of Discount on Quantity)، صُدمنا بأن الخط شبه أفقي! هذا يعني أن زيادة الخصم لا تؤدي لزيادة ملحوظة في الكمية المباعة. نحن نخسر الربح دون كسب حجم مبيعات إضافي.<br>
-        منطقة الموت: حددنا عبر شارت (Discount Vs Profit) أن أي خصم يتجاوز 20% يحول الصفقة فوراً إلى خسارة تشغيلية.<br>
-        مؤشر الكفاءة: قمنا بابتكار مؤشر Discount Efficiency الذي سجل (0.82- دولار)، وهو "جرس إنذار" يقول للمديرين: كل دولار خصم نمنحه، يكلفنا عملياً ضياع كفاءة ربحية وتآكل للميزانية.
-    </div>
-</div>
-
-<div id="eco-ops" class="tab-pane">
-    <button class="translate-btn" onclick="toggleLang('eco-ops')">Translate to Arabic</button>
-    <div class="tab-content-text en">
-        <strong>Chapter III: Operational Black Holes (Products & Logistics)</strong><br>
-        In the final stage, we identified the primary culprits behind profit erosion: Was it the product or the delivery method?<br><br>
-        <strong>Strategic Question:</strong> "Where exactly is the money going post-sale?"<br>
-        <strong>Digital Anatomy:</strong> Using a Decomposition Tree, I tracked the losses and discovered that the "Tables" sub-category within Furniture acted as a "black hole," swallowing profits with a net loss of $16.6K.<br>
-        <strong>Logistical Shock:</strong> Analyzing shipping costs by state revealed that regions like Alabama and South Carolina incur massive overhead, reaching $45 per shipment. This makes selling low-margin products in those areas a "business suicide" decision.<br>
-        <strong>Conclusion:</strong> The data proved that the combination of high discounts and high shipping costs was the primary driver behind the loss-making products identified in our detailed reports.
-    </div>
-    <div class="tab-content-text ar rtl" style="display:none;">
-        <strong> الفصل الثالث: "الثقوب السوداء في العمليات" (المنتجات والشحن)</strong><br>
-        في المرحلة الأخيرة، كان علينا تحديد المسؤول عن استنزاف الأرباح؛ هل هو المنتج أم طريقة توصيله؟<br><br>
-        السؤال الاستراتيجي: "أين تذهب الأموال بعد بيع المنتج؟"<br>
-        التشريح الرقمي: باستخدام شجرة التفكيك (Decomposition Tree)، تتبعنا الخسائر واكتشفنا أن قسم "الطاولات" (Tables) في فئة الأثاث هو "ثقب أسود" يبتلع الأرباح بخسارة صافية قدرها 16.6 ألف دولار.<br>
-        صدمة الشحن: عند تحليل تكاليف الشحن لكل ولاية، اكتشفنا أن ولايات مثل Alabama و South Carolina تستهلك مبالغ طائلة تصل لـ 45 دولاراً للشحنة الواحدة، مما يجعل بيع المنتجات منخفضة الهامش هناك قراراً انتحارياً تجارياً.<br>
-        النتيجة النهائية: أثبتنا بالبيانات أن الجمع بين "خصم مرتفع" و "تكلفة شحن عالية" هو السبب الرئيسي وراء قائمة المنتجات الخاسرة التي رصدناها في الجداول التفصيلية.
-    </div>
-</div>
-
-<div id="eco-rec" class="tab-pane">
-    <button class="translate-btn" onclick="toggleLang('eco-rec')">Translate to Arabic</button>
-    <div class="tab-content-text en">
-        <strong>Final Strategic Recommendations (Actionable Insights)</strong><br>
-        Based on this data-driven narrative, I proposed three critical interventions:
-        <ul>
-            <li><strong>Eliminate Blind Discounting:</strong> Implement a strict discount ceiling at 15-20%, as the data confirms anything beyond this is a guaranteed loss.</li>
-            <li><strong>Logistical Re-engineering:</strong> Enforce a "Minimum Order Value" for distant states to offset high shipping overhead.</li>
-            <li><strong>Portfolio Optimization:</strong> Review and re-price the "Furniture/Tables" category, or reduce its weight in high-cost shipping zones.</li>
-        </ul>
-    </div>
-    <div class="tab-content-text ar rtl" style="display:none;">
-        <strong> التوصيات الختامية (Actionable Insights)</strong><br>
-        بناءً على هذه القصة الرقمية، خرجنا بـ 3 توصيات لا غنى عنها:
-        <ul>
-            <li>حظر الخصومات العمياء: وضع سقف صارم للخصومات عند 15-20%، حيث أثبتت البيانات أن ما بعد ذلك هو خسارة محققة.</li>
-            <li>إعادة هندسة اللوجستيات: فرض "حد أدنى للطلب" في الولايات البعيدة لتغطية تكاليف الشحن المرتفعة.</li>
-            <li>تطهير المحفظة: مراجعة المنتجات في فئة (Furniture/Tables) وإعادة تسعيرها أو تقليل الاعتماد عليها في المناطق ذات التكلفة العالية.</li>
-        </ul>
-    </div>
-</div>
-
-            <div id="eco-ops" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('eco-ops')">Translate to English</button>
-                <div class="tab-content-text en" style="display:none;">The "Tables" sub-category is a profit black hole with a $16.6K loss. Shipping costs in states like Alabama reach $45 per shipment, making low-margin sales there a "business suicide." High discounts + high shipping = loss.</div>
-                <div class="tab-content-text ar rtl">
-                    <strong> الفصل الثالث: "الثقوب السوداء في العمليات" (المنتجات والشحن)</strong><br>
-                    في المرحلة الأخيرة، كان علينا تحديد المسؤول عن استنزاف الأرباح؛ هل هو المنتج أم طريقة توصيله؟<br><br>
-                    السؤال الاستراتيجي: "أين تذهب الأموال بعد بيع المنتج؟"<br>
-                    التشريح الرقمي: باستخدام شجرة التفكيك (Decomposition Tree)، تتبعنا الخسائر واكتشفنا أن قسم "الطاولات" (Tables) في فئة الأثاث هو "ثقب أسود" يبتلع الأرباح بخسارة صافية قدرها 16.6 ألف دولار.<br>
-                    صدمة الشحن: عند تحليل تكاليف الشحن لكل ولاية، اكتشفنا أن ولايات مثل Alabama و South Carolina تستهلك مبالغ طائلة تصل لـ 45 دولاراً للشحنة الواحدة، مما يجعل بيع المنتجات منخفضة الهامش هناك قراراً انتحارياً تجارياً.<br>
-                    النتيجة النهائية: أثبتنا بالبيانات أن الجمع بين "خصم مرتفع" و "تكلفة شحن عالية" هو السبب الرئيسي وراء قائمة المنتجات الخاسرة التي رصدناها في الجداول التفصيلية.
-                </div>
+            <div id="eco-story" class="tab-pane active">
+                <button class="translate-btn" onclick="toggleLang('eco-story')">Translate to Arabic</button>
+                <div class="tab-content-text en">Detailed deep-dive into global e-commerce data mapping correlations between discounts and profit.</div>
+                <div class="tab-content-text ar rtl" style="display:none;">تحليل استقصائي لبيانات التجارة الإلكترونية العالمية لربط الخصومات بالربحية.</div>
             </div>
-
-            <div id="eco-rec" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('eco-rec')">Translate to English</button>
-                <div class="tab-content-text en" style="display:none;">
-                    <ul>
-                        <li>Stop blind discounts: Cap discounts at 15-20%.</li>
-                        <li>Logistics re-engineering: Enforce "Minimum Order Value" for distant states.</li>
-                        <li>Portfolio Cleaning: Review and re-price products in the Furniture/Tables category.</li>
-                    </ul>
-                </div>
-                <div class="tab-content-text ar rtl">
-                    <strong> التوصيات الختامية (Actionable Insights)</strong><br>
-                    بناءً على هذه القصة الرقمية، خرجنا بـ 3 توصيات لا غنى عنها:
-                    <ul>
-                        <li>حظر الخصومات العمياء: وضع سقف صارم للخصومات عند 15-20%، حيث أثبتت البيانات أن ما بعد ذلك هو خسارة محققة.</li>
-                        <li>إعادة هندسة اللوجستيات: فرض "حد أدنى للطلب" في الولايات البعيدة لتغطية تكاليف الشحن المرتفعة.</li>
-                        <li>تطهير المحفظة: مراجعة المنتجات في فئة (Furniture/Tables) وإعادة تسعيرها أو تقليل الاعتماد عليها في المناطق ذات التكلفة العالية.</li>
-                    </ul>
-                </div>
+            <div id="eco-overview" class="tab-pane">
+                <button class="translate-btn" onclick="toggleLang('eco-overview')">Translate to Arabic</button>
+                <div class="tab-content-text en">Total sales reached $2.3M with 20.4% growth, but thin profit margins of 12.5%.</div>
+                <div class="tab-content-text ar rtl" style="display:none;">بلغت المبيعات 2.3 مليون دولار بنمو 20.4٪ ، لكن بهامش ربح ضئيل 12.5٪.</div>
             </div>
-
-            <div id="eco-tools" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('eco-tools')">Translate to English</button>
-                <div class="tab-content-text en" style="display:none;">Power BI, Power Query, DAX (KPIs for discount efficiency), and Star Schema Modeling.</div>
-                <div class="tab-content-text ar rtl">
-                    <strong> الأدوات التي استخدمتها في هذه الرحلة:</strong>
-                    <ul>
-                        <li><b>Power BI:</b> لبناء لوحات التحكم التفاعلية وسرد القصة بصرياً.</li>
-                        <li><b>Power Query:</b> لتنظيف وهيكلة البيانات وتحويلها من بيانات جافة إلى معلومات قيمة.</li>
-                        <li><b>DAX:</b> لابتكار مؤشرات قياس أداء (KPIs) مخصصة مثل كفاءة الخصم ونسب الشحن.</li>
-                        <li><b>Star Schema Modeling:</b> لضمان ترابط الجداول وسهولة التحليل المتقاطع.</li>
-                    </ul>
-                </div>
             </div>
-        </div>
     </div>
 </section>
 
 <section id="certificates" class="container" style="padding: 40px 0;">
-    <h2 style="text-align:center;">Professional Certificates</h2>
+    <h2 style="text-align:center;" data-aos="fade-up">Professional Certificates</h2>
     <div class="certificates-grid">
-        <div class="certificate-card">
+        <div class="certificate-card" data-aos="zoom-in">
             <img src="Data%20Transformation%20in%20power%20bi.png" onclick="openPopup(this.src)">
             <div class="cert-info">
                 <h3>Data Transformation in Power BI</h3>
                 <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/e686cfc0c0906f9569fc3c411b468fa769c9b0cc" target="_blank" class="view-cert-btn">Verify Link</a>
             </div>
         </div>
-        <div class="certificate-card">
+        <div class="certificate-card" data-aos="zoom-in" data-aos-delay="100">
             <img src="intermediante%20Sql.jpg" onclick="openPopup(this.src)">
             <div class="cert-info">
                 <h3>Intermediate SQL</h3>
                 <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/fe2ff1270f4fb6187ad25757aeba17846d8b42bb" target="_blank" class="view-cert-btn">Verify Link</a>
             </div>
         </div>
-        <div class="certificate-card">
+        <div class="certificate-card" data-aos="zoom-in" data-aos-delay="200">
             <img src="Intermediate_Data_Modeling_in_Power_BI.png" onclick="openPopup(this.src)">
             <div class="cert-info">
                 <h3>Data Modeling in Power BI</h3>
@@ -393,7 +268,7 @@
     <img id="popup-img" src="">
 </div>
 
-<section id="contact" class="contact">
+<section id="contact" class="contact" data-aos="fade-up">
     <div class="container">
         <h2>Contact Me</h2>
         <div class="contact-info">
@@ -408,7 +283,25 @@
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    AOS.init({ duration: 800, once: true });
+    // Force page to start at top on load/refresh
+    window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+    }
+    
+    if (history.scrollRestoration) {
+        history.scrollRestoration = 'manual';
+    } else {
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        }
+    }
+
+    // Initialize Animations
+    AOS.init({ 
+        duration: 1000, 
+        once: true,
+        offset: 100
+    });
 
     function changeSlide(sliderId, direction) {
         const slider = document.getElementById(sliderId);
