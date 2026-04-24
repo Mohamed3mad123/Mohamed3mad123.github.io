@@ -16,14 +16,14 @@
         } 
         body { font-family: 'Poppins', sans-serif; margin: 0; background-color: var(--bg-color); color: var(--secondary-color); scroll-behavior: smooth; overflow-x: hidden; } 
         .container { width: 92%; max-width: 1100px; margin: 0 auto; padding: 10px 0; } 
-        
+         
         header { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); padding: 10px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; } 
         nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; } 
         .profile-brand { display: flex; align-items: center; gap: 12px; } 
         .profile-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-color); } 
         .logo { font-size: 18px; font-weight: 700; color: var(--secondary-color); line-height: 1.1; } 
         .logo span { display: block; font-size: 12px; color: var(--primary-color); font-weight: 600; } 
-        
+         
         .nav-links { display: flex; gap: 15px; list-style: none; padding: 0; margin: 10px 0 0 0; } 
         .nav-links a { text-decoration: none; color: var(--secondary-color); font-weight: 500; font-size: 13px; transition: 0.3s; } 
 
@@ -37,7 +37,7 @@
 
         .projects-header { text-align: center; padding: 40px 0 20px; font-size: 28px; font-weight: 700; } 
         .project-card { background: var(--card-bg); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 40px; border: 1px solid #f1f5f9; } 
-        
+         
         .slider-container { position: relative; width: 100%; background: #eee; aspect-ratio: 16/9; display: flex; align-items: center; overflow: hidden; } 
         .slider-container img { width: 100%; height: 100%; object-fit: contain; display: none; } 
         .slider-container img.active { display: block; } 
@@ -48,7 +48,7 @@
         .tabs-menu { display: flex; gap: 8px; border-bottom: 2px solid #f1f5f9; margin-bottom: 15px; overflow-x: auto; padding-bottom: 8px; -webkit-overflow-scrolling: touch; } 
         .tab-link { padding: 8px 15px; border: none; background: #f8fafc; font-family: inherit; font-weight: 600; color: #64748b; cursor: pointer; transition: 0.3s; border-radius: 6px; white-space: nowrap; font-size: 13px; } 
         .tab-link.active { color: #fff; background: var(--primary-color); } 
-        
+         
         .tab-pane { display: none; animation: fadeIn 0.4s ease; } 
         .tab-pane.active { display: block; } 
         .translate-btn { background: #e2e8f0; border: none; padding: 6px 12px; border-radius: 5px; font-size: 11px; font-weight: 700; cursor: pointer; margin-bottom: 12px; display: block; }
@@ -201,9 +201,9 @@
 
     <div class="project-card" data-aos="fade-up">
         <div class="slider-container" id="slider-ecommerce">
-            <img src="11.jpg" class="active">
-            <img src="22.jpg">
-            <img src="33.jpg">
+            <img src="E-commerce Business Health Analysis/11.jpg" class="active">
+            <img src="E-commerce Business Health Analysis/22.jpg">
+            <img src="E-commerce Business Health Analysis/33.jpg">
             <button class="slider-btn prev" onclick="changeSlide('slider-ecommerce', -1)">❮</button>
             <button class="slider-btn next" onclick="changeSlide('slider-ecommerce', 1)">❯</button>
         </div>
@@ -221,25 +221,49 @@
             <div id="eco-story" class="tab-pane active">
                 <button class="translate-btn" onclick="toggleLang('eco-story')">Translate to English</button>
                 <div class="tab-content-text en" style="display:none;">In this project, we explored global e-commerce data to discover why profits evaporate despite massive sales. We analyzed 5,000+ orders to link aggressive discounts, logistics costs, and real net profit.</div>
-                <div class="tab-content-text ar rtl">في هذا المشروع، قمنا برحلة استقصائية داخل بيانات متجر إلكتروني عالمي لنكتشف لماذا تتبخر الأرباح رغم ضخامة المبيعات. قمنا بتحليل 5,000+ طلب لربط النقاط بين الخصومات العنيفة، تكاليف الشحن اللوجستية، وصافي الربح الحقيقي.</div>
+                <div class="tab-content-text ar rtl">
+                    <strong>دراسة حالة: كشف أسرار الربحية في التجارة الإلكترونية</strong><br>
+                    E-commerce Diagnostic Analysis: From Growth to Profitability<br><br>
+                    في هذا المشروع، لم نكتفِ بعرض الأرقام، بل قمنا برحلة استقصائية داخل بيانات متجر إلكتروني عالمي لنكتشف لماذا تتبخر الأرباح رغم ضخامة المبيعات. قمنا بتحليل 5,000+ طلب لربط النقاط بين الخصومات العنيفة، تكاليف الشحن اللوجستية، وصافي الربح الحقيقي.
+                </div>
             </div>
 
             <div id="eco-overview" class="tab-pane">
                 <button class="translate-btn" onclick="toggleLang('eco-overview')">Translate to English</button>
                 <div class="tab-content-text en" style="display:none;">Total sales reached $2.3M with 20.4% annual growth. However, net profit margin is only 12.5%. High discounts ($322.6K) are exceeding our total net profit! Growth without profitability is just a "vanity metric."</div>
-                <div class="tab-content-text ar rtl">مبيعات إجمالية بلغت 2.3 مليون دولار مع نمو سنوي بنسبة 20.4%. بمقارنة المبيعات بالربح، وجدنا هامشاً ضئيلاً لا يتجاوز 12.5%. نحن نمنح خصومات (322.6 ألف دولار) تتجاوز أرباحنا الصافية! النمو بدون ربحية هو مجرد "رقم للمفاخرة".</div>
+                <div class="tab-content-text ar rtl">
+                    <strong>🔍 الفصل الأول: "خدعة النمو البراقة" (نظرة عامة)</strong><br>
+                    بدأت القصة بمشهد مبهج؛ مبيعات إجمالية بلغت 2.3 مليون دولار مع نمو سنوي قوي بنسبة 20.4%. للوهلة الأولى، يبدو أن كل شيء يسير على ما يرام.<br><br>
+                    السؤال المحير: "إذا كانت مبيعاتنا تنمو بهذا الشكل، لماذا لا تنعكس هذه القوة في خزينة الشركة؟"<br>
+                    الاكتشاف من البيانات: بمقارنة إجمالي المبيعات بصافي الربح، وجدنا هامشاً ضئيلاً لا يتجاوز 12.5%. وعندما نظرنا لمؤشر الخصومات (322.6 ألف دولار)، أدركنا الحقيقة المرة: نحن نمنح خصومات للعملاء تتجاوز إجمالي أرباحنا الصافية!<br>
+                    خلاصة الصفحة: النمو بدون ربحية هو مجرد "رقم للمفاخرة"، وهنا قررنا التعمق لنعرف أين يكمن النزيف.
+                </div>
             </div>
 
             <div id="eco-discounts" class="tab-pane">
                 <button class="translate-btn" onclick="toggleLang('eco-discounts')">Translate to English</button>
                 <div class="tab-content-text en" style="display:none;">Data shows that increasing discounts does not lead to a significant increase in quantity sold. Any discount exceeding 20% turns the deal into an operational loss. Our "Discount Efficiency" index is at (-0.82), a serious red flag.</div>
-                <div class="tab-content-text ar rtl">أثبتت البيانات أن زيادة الخصم لا تؤدي لزيادة ملحوظة في الكمية المباعة. أي خصم يتجاوز 20% يحول الصفقة فوراً إلى خسارة تشغيلية. مؤشر "كفاءة الخصم" سجل (0.82-)، وهو جرس إنذار لتآكل المبيعات.</div>
+                <div class="tab-content-text ar rtl">
+                    <strong>💸 الفصل الثاني: "لغز الخصومات والارتباط المفقود" (تحليل الخصومات)</strong><br>
+                    انتقلنا إلى الصفحة الثانية للإجابة على سؤال استراتيجي: "هل الخصومات العالية هي المحرك الحقيقي للبيع؟"<br><br>
+                    السؤال الجوهري: "هل العميل الذي يحصل على خصم 80% يشتري كميات أكبر تبرر خسارتنا؟"<br>
+                    ما قالته الشارتات: من خلال رسم التشتت (Impact of Discount on Quantity)، صُدمنا بأن الخط شبه أفقي! هذا يعني أن زيادة الخصم لا تؤدي لزيادة ملحوظة في الكمية المباعة. نحن نخسر الربح دون كسب حجم مبيعات إضافي.<br>
+                    منطقة الموت: حددنا عبر شارت (Discount Vs Profit) أن أي خصم يتجاوز 20% يحول الصفقة فوراً إلى خسارة تشغيلية.<br>
+                    مؤشر الكفاءة: قمنا بابتكار مؤشر Discount Efficiency الذي سجل (0.82- دولار)، وهو "جرس إنذار" يقول للمديرين: كل دولار خصم نمنحه، يكلفنا عملياً ضياع كفاءة ربحية وتآكل للميزانية.
+                </div>
             </div>
 
             <div id="eco-ops" class="tab-pane">
                 <button class="translate-btn" onclick="toggleLang('eco-ops')">Translate to English</button>
                 <div class="tab-content-text en" style="display:none;">The "Tables" sub-category is a profit black hole with a $16.6K loss. Shipping costs in states like Alabama reach $45 per shipment, making low-margin sales there a "business suicide." High discounts + high shipping = loss.</div>
-                <div class="tab-content-text ar rtl">اكتشفنا أن قسم "الطاولات" (Tables) هو ثقب أسود يبتلع الأرباح بخسارة 16.6 ألف دولار. تكاليف الشحن في ولايات مثل Alabama تصل لـ 45 دولاراً للشحنة، مما يجعل بيع المنتجات هناك بخصم مرتفع قراراً انتحارياً.</div>
+                <div class="tab-content-text ar rtl">
+                    <strong>🚚 الفصل الثالث: "الثقوب السوداء في العمليات" (المنتجات والشحن)</strong><br>
+                    في المرحلة الأخيرة، كان علينا تحديد المسؤول عن استنزاف الأرباح؛ هل هو المنتج أم طريقة توصيله؟<br><br>
+                    السؤال الاستراتيجي: "أين تذهب الأموال بعد بيع المنتج؟"<br>
+                    التشريح الرقمي: باستخدام شجرة التفكيك (Decomposition Tree)، تتبعنا الخسائر واكتشفنا أن قسم "الطاولات" (Tables) في فئة الأثاث هو "ثقب أسود" يبتلع الأرباح بخسارة صافية قدرها 16.6 ألف دولار.<br>
+                    صدمة الشحن: عند تحليل تكاليف الشحن لكل ولاية، اكتشفنا أن ولايات مثل Alabama و South Carolina تستهلك مبالغ طائلة تصل لـ 45 دولاراً للشحنة الواحدة، مما يجعل بيع المنتجات منخفضة الهامش هناك قراراً انتحارياً تجارياً.<br>
+                    النتيجة النهائية: أثبتنا بالبيانات أن الجمع بين "خصم مرتفع" و "تكلفة شحن عالية" هو السبب الرئيسي وراء قائمة المنتجات الخاسرة التي رصدناها في الجداول التفصيلية.
+                </div>
             </div>
 
             <div id="eco-rec" class="tab-pane">
@@ -252,10 +276,12 @@
                     </ul>
                 </div>
                 <div class="tab-content-text ar rtl">
+                    <strong>💡 التوصيات الختامية (Actionable Insights)</strong><br>
+                    بناءً على هذه القصة الرقمية، خرجنا بـ 3 توصيات لا غنى عنها:
                     <ul>
-                        <li>حظر الخصومات العمياء: وضع سقف صارم للخصومات عند 15-20%.</li>
-                        <li>إعادة هندسة اللوجستيات: فرض "حد أدنى للطلب" في الولايات البعيدة لتغطية تكاليف الشحن.</li>
-                        <li>تطهير المحفظة: مراجعة منتجات (Furniture/Tables) وإعادة تسعيرها في المناطق ذات التكلفة العالية.</li>
+                        <li>حظر الخصومات العمياء: وضع سقف صارم للخصومات عند 15-20%، حيث أثبتت البيانات أن ما بعد ذلك هو خسارة محققة.</li>
+                        <li>إعادة هندسة اللوجستيات: فرض "حد أدنى للطلب" في الولايات البعيدة لتغطية تكاليف الشحن المرتفعة.</li>
+                        <li>تطهير المحفظة: مراجعة المنتجات في فئة (Furniture/Tables) وإعادة تسعيرها أو تقليل الاعتماد عليها في المناطق ذات التكلفة العالية.</li>
                     </ul>
                 </div>
             </div>
@@ -264,11 +290,12 @@
                 <button class="translate-btn" onclick="toggleLang('eco-tools')">Translate to English</button>
                 <div class="tab-content-text en" style="display:none;">Power BI, Power Query, DAX (KPIs for discount efficiency), and Star Schema Modeling.</div>
                 <div class="tab-content-text ar rtl">
+                    <strong>🛠️ الأدوات التي استخدمتها في هذه الرحلة:</strong>
                     <ul>
-                        <li><b>Power BI:</b> لبناء لوحات التحكم وسرد القصة بصرياً.</li>
-                        <li><b>Power Query:</b> لتنظيف وهيكلة البيانات.</li>
-                        <li><b>DAX:</b> لابتكار مؤشرات قياس أداء مخصصة.</li>
-                        <li><b>Star Schema:</b> لضمان ترابط الجداول وسهولة التحليل.</li>
+                        <li><b>Power BI:</b> لبناء لوحات التحكم التفاعلية وسرد القصة بصرياً.</li>
+                        <li><b>Power Query:</b> لتنظيف وهيكلة البيانات وتحويلها من بيانات جافة إلى معلومات قيمة.</li>
+                        <li><b>DAX:</b> لابتكار مؤشرات قياس أداء (KPIs) مخصصة مثل كفاءة الخصم ونسب الشحن.</li>
+                        <li><b>Star Schema Modeling:</b> لضمان ترابط الجداول وسهولة التحليل المتقاطع.</li>
                     </ul>
                 </div>
             </div>
@@ -346,7 +373,6 @@
         for(let i=0; i<panes.length; i++) panes[i].classList.remove("active");
         for(let i=0; i<links.length; i++) links[i].classList.remove("active");
         
-        // Find the specific tab-pane within the whole document by ID
         document.getElementById(tabName).classList.add("active");
         evt.currentTarget.classList.add("active");
     }
@@ -358,10 +384,10 @@
         const btn = tab.querySelector('.translate-btn');
         if(en.style.display === "none") {
             en.style.display = "block"; ar.style.display = "none";
-            btn.innerText = (tabId.startsWith('eco')) ? "Translate to Arabic" : "Translate to Arabic";
+            btn.innerText = "Translate to Arabic";
         } else {
             en.style.display = "none"; ar.style.display = "block";
-            btn.innerText = (tabId.startsWith('eco')) ? "Translate to English" : "Translate to English";
+            btn.innerText = "Translate to English";
         }
     }
 
