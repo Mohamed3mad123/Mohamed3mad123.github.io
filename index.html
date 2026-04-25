@@ -1,695 +1,622 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Mohamed Emad Hamdy | Data Portfolio</title> 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet"> 
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> 
-    <style> 
-        :root { 
-            --bg-main: #0b1120;
-            --bg-card: #131c31;
-            --bg-card-hover: #182340;
-            --bg-header: rgba(11,17,32,0.92);
-            --border: #1e2d4a;
-            --border-light: #243352;
-            --text-primary: #e2e8f0;
-            --text-secondary: #8896b0;
-            --text-muted: #5a6a85;
-            --accent: #38bdf8;
-            --accent-dim: rgba(56,189,248,0.08);
-            --accent-border: rgba(56,189,248,0.2);
-        } 
-
-        *, *::before, *::after { box-sizing: border-box; }
-
-        body { 
-            font-family: 'Poppins', sans-serif; 
-            margin: 0; 
-            background-color: var(--bg-main); 
-            color: var(--text-primary); 
-            scroll-behavior: smooth; 
-            overflow-x: hidden;
-        } 
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: 
-                radial-gradient(ellipse 600px 400px at 15% 10%, rgba(56,189,248,0.03), transparent),
-                radial-gradient(ellipse 500px 500px at 85% 80%, rgba(56,189,248,0.025), transparent);
-            pointer-events: none;
-            z-index: 0;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Emad Hamdy | Data Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f0f4f8;
+            --card: rgba(255,255,255,0.55);
+            --card-hover: rgba(255,255,255,0.75);
+            --header: rgba(255,255,255,0.8);
+            --border: rgba(0,0,0,0.07);
+            --border-h: rgba(0,0,0,0.12);
+            --t1: #1e293b;
+            --t2: #475569;
+            --t3: #94a3b8;
+            --accent: #0284c7;
+            --accent-bg: rgba(2,132,199,0.07);
+            --accent-bd: rgba(2,132,199,0.22);
+            --slider-bg: #e2e8f0;
+            --anim-o: 0.04;
+            --grid-o: 0.03;
+            --line-o: 0.07;
+            --dot-o: 0.15;
+            --shadow: rgba(0,0,0,0.04);
         }
 
-        .content-layer { position: relative; z-index: 1; }
+        [data-theme="dark"] {
+            --bg: #0b1120;
+            --card: rgba(19,28,49,0.55);
+            --card-hover: rgba(24,35,64,0.7);
+            --header: rgba(11,17,32,0.88);
+            --border: rgba(255,255,255,0.07);
+            --border-h: rgba(255,255,255,0.12);
+            --t1: #e2e8f0;
+            --t2: #8896b0;
+            --t3: #5a6a85;
+            --accent: #38bdf8;
+            --accent-bg: rgba(56,189,248,0.08);
+            --accent-bd: rgba(56,189,248,0.22);
+            --slider-bg: #0a0f1c;
+            --anim-o: 0.025;
+            --grid-o: 0.018;
+            --line-o: 0.04;
+            --dot-o: 0.12;
+            --shadow: rgba(0,0,0,0.15);
+        }
 
-        .container { width: 92%; max-width: 1100px; margin: 0 auto; padding: 10px 0; } 
-         
-        header { 
-            background: var(--bg-header); 
-            backdrop-filter: blur(16px); 
-            padding: 12px 0; 
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--t1);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            transition: background 0.5s, color 0.5s;
+        }
+
+        /* ── Background Animation ── */
+        .bg-layer { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+        .orb { position: absolute; border-radius: 50%; background: var(--accent); opacity: var(--anim-o); transition: opacity 0.5s; }
+        .orb.o1 { width: 340px; height: 340px; top: -90px; right: -70px; animation: drift1 22s ease-in-out infinite; }
+        .orb.o2 { width: 240px; height: 240px; bottom: 12%; left: -80px; animation: drift2 26s ease-in-out infinite; }
+        .orb.o3 { width: 170px; height: 170px; top: 38%; right: -25px; animation: drift3 18s ease-in-out infinite; }
+        .orb.o4 { width: 280px; height: 280px; bottom: -70px; right: 22%; animation: drift1 24s ease-in-out infinite reverse; }
+        .orb.o5 { width: 140px; height: 140px; top: 16%; left: 10%; animation: drift2 20s ease-in-out infinite reverse; }
+        .orb.o6 { width: 200px; height: 200px; top: 62%; left: 32%; animation: drift3 28s ease-in-out infinite; }
+
+        @keyframes drift1 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(35px,-45px) scale(1.05)} 66%{transform:translate(-25px,25px) scale(.95)} }
+        @keyframes drift2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(45px,-35px) scale(1.07)} }
+        @keyframes drift3 { 0%,100%{transform:translate(0,0)} 25%{transform:translate(-30px,40px)} 75%{transform:translate(25px,-30px)} }
+
+        .bg-dots {
+            position: fixed; inset: 0; pointer-events: none; z-index: 0;
+            opacity: var(--grid-o); transition: opacity 0.5s;
+            background-image: radial-gradient(circle, var(--t3) 1px, transparent 1px);
+            background-size: 46px 46px;
+        }
+
+        .bg-lines { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+        .sline { position: absolute; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: var(--line-o); transition: opacity 0.5s; }
+        .sline.s1 { width: 440px; top: 26%; left: -440px; animation: slideR 14s linear infinite; }
+        .sline.s2 { width: 340px; top: 56%; right: -340px; animation: slideL 12s linear infinite; animation-delay: -4s; }
+        .sline.s3 { width: 380px; top: 84%; left: -380px; animation: slideR 16s linear infinite; animation-delay: -9s; }
+        @keyframes slideR { 0%{left:-440px} 100%{left:calc(100% + 440px)} }
+        @keyframes slideL { 0%{right:-340px} 100%{right:calc(100% + 340px)} }
+
+        .bg-particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+        .ptcl { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: var(--accent); opacity: var(--dot-o); transition: opacity 0.5s; }
+        .ptcl.p1{top:8%;left:18%;animation:ptclF 9s ease-in-out infinite}
+        .ptcl.p2{top:22%;left:62%;animation:ptclF 12s ease-in-out infinite -3s}
+        .ptcl.p3{top:48%;left:78%;animation:ptclF 10s ease-in-out infinite -6s}
+        .ptcl.p4{top:68%;left:12%;animation:ptclF 14s ease-in-out infinite -2s}
+        .ptcl.p5{top:82%;left:48%;animation:ptclF 11s ease-in-out infinite -5s}
+        .ptcl.p6{top:38%;left:38%;animation:ptclF 15s ease-in-out infinite -8s}
+        .ptcl.p7{top:14%;left:82%;animation:ptclF 8s ease-in-out infinite -1s}
+        .ptcl.p8{top:58%;left:52%;animation:ptclF 13s ease-in-out infinite -7s}
+        @keyframes ptclF { 0%,100%{transform:translateY(0) scale(1);opacity:var(--dot-o)} 50%{transform:translateY(-22px) scale(1.6);opacity:calc(var(--dot-o) + 0.12)} }
+
+        .z1 { position: relative; z-index: 1; }
+
+        /* ── Header ── */
+        header {
+            background: var(--header);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
-        } 
-        nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; } 
-        .profile-brand { display: flex; align-items: center; gap: 12px; } 
-        .profile-img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-border); } 
-        .logo { font-size: 17px; font-weight: 700; color: var(--text-primary); line-height: 1.2; } 
-        .logo span { display: block; font-size: 11px; color: var(--text-muted); font-weight: 500; letter-spacing: 0.5px; } 
-         
-        .nav-links { display: flex; gap: 20px; list-style: none; padding: 0; margin: 8px 0 0 0; } 
-        .nav-links a { text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 13px; transition: color 0.3s; } 
+            position: sticky; top: 0; z-index: 1000;
+            padding: 12px 0;
+            transition: background 0.5s, border-color 0.5s;
+        }
+        .wrap { width: 92%; max-width: 1100px; margin: 0 auto; }
+        nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .brand { display: flex; align-items: center; gap: 12px; }
+        .avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-bd); }
+        .brand-text h1 { font-size: 17px; font-weight: 700; line-height: 1.2; color: var(--t1); transition: color 0.5s; }
+        .brand-text span { font-size: 11px; color: var(--t3); font-weight: 500; letter-spacing: .5px; }
+        .nav-end { display: flex; align-items: center; gap: 18px; }
+        .nav-links { display: flex; gap: 18px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--t2); font-size: 13px; font-weight: 500; transition: color 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
-        .hero { padding: 100px 0 60px; text-align: center; } 
-        .hero h1 { font-size: clamp(34px, 8vw, 56px); margin: 0; font-weight: 700; letter-spacing: -1px; color: var(--text-primary); } 
-        .hero-role { font-size: clamp(16px, 4vw, 21px); font-weight: 500; color: var(--text-secondary); margin-top: 8px; }
-        .hero-tools { font-size: clamp(12px, 3vw, 14px); font-weight: 600; color: var(--accent); margin-top: 6px; letter-spacing: 3px; text-transform: uppercase; }
-
-        .section-divider { width: 50px; height: 2px; background: var(--accent); margin: 0 auto 16px; border-radius: 2px; }
-
-        .about-section { padding: 60px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        .about-container { max-width: 800px; margin: 0 auto; text-align: center; }
-        .about-section h2 { font-size: 22px; font-weight: 600; margin-bottom: 18px; color: var(--text-primary); }
-        .about-section p { font-size: 15px; line-height: 1.8; color: var(--text-secondary); padding: 0 15px; }
-
-        /* Skills */
-        .skills-section { padding: 70px 0; }
-        .skills-header { text-align: center; font-size: 22px; font-weight: 600; margin-bottom: 40px; color: var(--text-primary); }
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-        .skill-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 28px 22px;
-            transition: border-color 0.3s, background 0.3s;
+        .theme-btn {
+            width: 38px; height: 38px; border-radius: 50%;
+            border: 1px solid var(--border); background: var(--card);
+            color: var(--t2); cursor: pointer; font-size: 17px;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s; flex-shrink: 0;
+            backdrop-filter: blur(8px);
         }
-        .skill-card:hover {
-            border-color: var(--accent-border);
-            background: var(--bg-card-hover);
+        .theme-btn:hover { border-color: var(--accent-bd); color: var(--accent); }
+        .theme-btn .ico-sun, .theme-btn .ico-moon { display: none; }
+        [data-theme="light"] .ico-sun { display: block; }
+        [data-theme="dark"] .ico-moon { display: block; }
+
+        /* ── Hero ── */
+        .hero { padding: 100px 0 60px; text-align: center; }
+        .hero h2 { font-size: clamp(34px,8vw,56px); font-weight: 700; letter-spacing: -1px; color: var(--t1); transition: color 0.5s; }
+        .hero-sub { font-size: clamp(16px,4vw,21px); font-weight: 500; color: var(--t2); margin-top: 8px; transition: color 0.5s; }
+        .hero-tools { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+        .ht-item { display: inline-flex; align-items: center; gap: 7px; font-size: clamp(12px,2.5vw,14px); font-weight: 600; color: var(--accent); letter-spacing: .8px; }
+        .ht-icon { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .ht-icon svg { width: 17px; height: 17px; }
+        .ht-sep { color: var(--t3); font-size: 10px; opacity: .4; }
+
+        .divider { width: 46px; height: 2px; background: var(--accent); margin: 0 auto 16px; border-radius: 2px; }
+
+        /* ── About ── */
+        .about { padding: 60px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); transition: border-color 0.5s; }
+        .about-inner { max-width: 780px; margin: 0 auto; text-align: center; }
+        .about h3 { font-size: 22px; font-weight: 600; margin-bottom: 16px; color: var(--t1); transition: color 0.5s; }
+        .about p { font-size: 15px; line-height: 1.8; color: var(--t2); padding: 0 12px; transition: color 0.5s; }
+
+        /* ── Skills ── */
+        .skills { padding: 70px 0; }
+        .skills h3 { text-align: center; font-size: 22px; font-weight: 600; margin-bottom: 36px; color: var(--t1); transition: color 0.5s; }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; }
+        .sk-card {
+            background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+            padding: 26px 22px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            transition: all 0.3s;
         }
-        .skill-card h3 { font-size: 14px; font-weight: 600; margin: 0 0 18px 0; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; }
-        .skill-tags { display: flex; flex-direction: column; gap: 10px; }
-        .skill-item { display: flex; align-items: center; gap: 10px; }
-        .skill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; opacity: 0.7; }
-        .skill-item span { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+        .sk-card:hover { border-color: var(--accent-bd); background: var(--card-hover); }
+        .sk-card h4 { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--t3); margin-bottom: 16px; transition: color 0.5s; }
+        .sk-list { display: flex; flex-direction: column; gap: 9px; }
+        .sk-row { display: flex; align-items: center; gap: 10px; }
+        .sk-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); opacity: .7; flex-shrink: 0; }
+        .sk-row span { font-size: 14px; font-weight: 500; color: var(--t1); transition: color 0.5s; }
 
-        .projects-header { text-align: center; padding: 60px 0 20px; font-size: 22px; font-weight: 600; color: var(--text-primary); } 
-        
-        .project-card { 
-            background: var(--bg-card); 
-            border: 1px solid var(--border); 
-            border-radius: 16px; 
-            overflow: visible; 
-            margin-bottom: 40px; 
-            position: relative; 
-            transition: border-color 0.3s;
+        /* ── Projects ── */
+        .proj-head { text-align: center; padding: 60px 0 20px; font-size: 22px; font-weight: 600; color: var(--t1); transition: color 0.5s; }
+        .p-card {
+            background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+            margin-bottom: 40px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            transition: all 0.3s;
         }
-        .project-card:hover { border-color: var(--border-light); }
-        
-        .slider-wrapper { position: relative; padding: 0 45px; margin-top: 16px; }
-        .slider-container { 
-            position: relative; 
-            width: 100%; 
-            background: #0a0f1c; 
-            aspect-ratio: 16/9; 
-            overflow: hidden; 
-            border-radius: 10px;
-            cursor: crosshair;
-            display: flex;
-            align-items: center;
-            border: 1px solid var(--border);
-        } 
-        .slider-container img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: contain; 
-            display: none; 
-            transition: transform 0.2s ease-out;
-            transform-origin: center;
-        } 
-        .slider-container img.active { display: block; } 
-
-        .slider-btn { 
-            position: absolute; 
-            top: 50%; 
-            transform: translateY(-50%); 
-            background: var(--bg-card); 
-            color: var(--text-secondary); 
-            border: 1px solid var(--border);
-            width: 34px; 
-            height: 34px; 
-            cursor: pointer; 
-            border-radius: 50%; 
-            font-size: 14px; 
-            z-index: 10; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            transition: border-color 0.3s, color 0.3s;
-        } 
-        .slider-btn:hover { border-color: var(--accent-border); color: var(--accent); }
-        .prev { left: 0px; } 
-        .next { right: 0px; } 
-
-        .project-details { padding: 24px; } 
-        .project-title-ar { 
-            font-family: 'Cairo', sans-serif;
-            font-size: 16px; 
-            font-weight: 700; 
-            color: var(--text-primary); 
-            direction: rtl; 
-            text-align: right; 
-            line-height: 1.7; 
+        .p-card:hover { border-color: var(--border-h); }
+        .slider-wrap { position: relative; padding: 0 44px; margin-top: 16px; }
+        .slider-box {
+            position: relative; width: 100%; background: var(--slider-bg);
+            aspect-ratio: 16/9; overflow: hidden; border-radius: 10px;
+            cursor: crosshair; display: flex; align-items: center;
+            border: 1px solid var(--border); transition: all 0.5s;
         }
-        .project-title-en { font-size: 13px; font-weight: 500; color: var(--text-muted); margin-top: 3px; line-height: 1.5; }
-
-        .tabs-menu { display: flex; gap: 6px; border-bottom: 1px solid var(--border); margin-bottom: 18px; margin-top: 14px; overflow-x: auto; padding-bottom: 10px; } 
-        .tab-link { 
-            padding: 7px 14px; 
-            border: 1px solid var(--border); 
-            background: transparent; 
-            font-weight: 500; 
-            color: var(--text-secondary); 
-            cursor: pointer; 
-            transition: 0.3s; 
-            border-radius: 6px; 
-            white-space: nowrap; 
-            font-size: 12px;
-            font-family: 'Poppins', sans-serif;
-        } 
-        .tab-link:hover { border-color: var(--border-light); color: var(--text-primary); }
-        .tab-link.active { 
-            color: var(--accent); 
-            border-color: var(--accent-border); 
-            background: var(--accent-dim);
-        } 
-         
-        .tab-pane { display: none; animation: fadeIn 0.4s ease; } 
-        .tab-pane.active { display: block; } 
-
-        .translate-btn { 
-            background: transparent; 
-            border: 1px solid var(--border); 
-            padding: 5px 12px; 
-            border-radius: 5px; 
-            font-size: 11px; 
-            font-weight: 500; 
-            cursor: pointer; 
-            margin-bottom: 14px; 
-            display: block; 
-            color: var(--text-muted);
-            font-family: 'Poppins', sans-serif;
-            transition: border-color 0.3s, color 0.3s;
+        .slider-box img { width: 100%; height: 100%; object-fit: contain; display: none; transition: transform .2s ease-out; transform-origin: center; }
+        .slider-box img.on { display: block; }
+        .s-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: var(--card); color: var(--t2); border: 1px solid var(--border);
+            width: 33px; height: 33px; border-radius: 50%; cursor: pointer;
+            font-size: 13px; z-index: 10; display: flex; align-items: center; justify-content: center;
+            backdrop-filter: blur(8px); transition: all 0.3s;
         }
-        .translate-btn:hover { border-color: var(--border-light); color: var(--text-secondary); }
+        .s-btn:hover { border-color: var(--accent-bd); color: var(--accent); }
+        .s-btn.prv { left: 0; }
+        .s-btn.nxt { right: 0; }
 
-        .tab-content-text { font-size: 13.5px; line-height: 1.85; color: var(--text-secondary); }
-        .tab-content-text strong { color: var(--text-primary); font-weight: 600; }
+        .p-body { padding: 22px 24px; }
+        .p-title-ar { font-family: 'Cairo', sans-serif; font-size: 16px; font-weight: 700; color: var(--t1); direction: rtl; text-align: right; line-height: 1.7; transition: color 0.5s; }
+        .p-title-en { font-size: 13px; font-weight: 500; color: var(--t3); margin-top: 3px; line-height: 1.5; transition: color 0.5s; }
 
-        .tab-content-text.ar {
-            font-family: 'Cairo', sans-serif;
-            font-size: 15px;
-            line-height: 2.1;
-            direction: rtl;
-            text-align: right;
-            color: var(--text-secondary);
+        .tabs { display: flex; gap: 6px; border-bottom: 1px solid var(--border); margin: 14px 0 16px; overflow-x: auto; padding-bottom: 10px; transition: border-color 0.5s; }
+        .t-btn {
+            padding: 6px 13px; border: 1px solid var(--border); background: transparent;
+            font-weight: 500; color: var(--t2); cursor: pointer; border-radius: 6px;
+            white-space: nowrap; font-size: 12px; font-family: 'Poppins', sans-serif; transition: all 0.3s;
         }
-        .tab-content-text.ar strong { color: var(--text-primary); }
+        .t-btn:hover { border-color: var(--border-h); color: var(--t1); }
+        .t-btn.on { color: var(--accent); border-color: var(--accent-bd); background: var(--accent-bg); }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .pane { display: none; animation: fadeUp .4s ease; }
+        .pane.on { display: block; }
+        @keyframes fadeUp { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
 
-        .certificates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; } 
-        .certificate-card { 
-            background: var(--bg-card); 
-            border: 1px solid var(--border);
-            border-radius: 14px; 
-            overflow: hidden; 
-            transition: border-color 0.3s; 
-        } 
-        .certificate-card:hover { border-color: var(--border-light); }
-        .certificate-card img { width: 100%; height: 180px; object-fit: cover; cursor: pointer; }
-        .cert-info { padding: 14px; text-align: center; }
-        .cert-info h3 { margin: 0; font-size: 14px; font-weight: 500; color: var(--text-secondary); }
-
-        .popup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); display: none; align-items: center; justify-content: center; z-index: 10000; padding: 20px; cursor: pointer; } 
-        .popup.active { display: flex; } 
-        .popup img { max-width: 100%; max-height: 90%; object-fit: contain; } 
-
-        .contact { 
-            padding: 60px 0; 
-            background: var(--bg-card); 
-            border-top: 1px solid var(--border);
-            color: var(--text-primary); 
-            text-align: center; 
-            border-radius: 20px 20px 0 0; 
-        } 
-        .contact h2 { font-size: 22px; font-weight: 600; }
-        .contact-info { display: flex; flex-direction: column; gap: 18px; align-items: center; margin-top: 28px; } 
-        .contact-item a { color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.3s; }
-        .contact-item a:hover { color: var(--accent); }
-
-        footer { text-align: center; padding: 18px; background: #060a14; color: var(--text-muted); font-size: 13px; border-top: 1px solid var(--border); }
-
-        @media (min-width: 768px) {
-            .contact-info { flex-direction: row; justify-content: center; gap: 40px; }
+        .lang-btn {
+            background: transparent; border: 1px solid var(--border); padding: 5px 12px;
+            border-radius: 5px; font-size: 11px; font-weight: 500; cursor: pointer;
+            margin-bottom: 12px; display: block; color: var(--t3);
+            font-family: 'Poppins', sans-serif; transition: all 0.3s;
         }
+        .lang-btn:hover { border-color: var(--border-h); color: var(--t2); }
+        .txt { font-size: 13.5px; line-height: 1.85; color: var(--t2); transition: color 0.5s; }
+        .txt strong { color: var(--t1); font-weight: 600; }
+        .txt.ar { font-family: 'Cairo', sans-serif; font-size: 15px; line-height: 2.1; direction: rtl; text-align: right; color: var(--t2); }
+        .txt.ar strong { color: var(--t1); }
 
+        /* ── Certificates ── */
+        .certs { padding: 50px 0; }
+        .certs h3 { text-align: center; font-size: 22px; font-weight: 600; margin-bottom: 30px; color: var(--t1); transition: color 0.5s; }
+        .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px; }
+        .cert-card {
+            background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+            overflow: hidden; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            transition: all 0.3s;
+        }
+        .cert-card:hover { border-color: var(--border-h); }
+        .cert-img-w { overflow: hidden; }
+        .cert-card img { width: 100%; height: 180px; object-fit: cover; cursor: pointer; transition: transform 0.3s; }
+        .cert-card:hover img { transform: scale(1.04); }
+        .cert-info { padding: 14px 16px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .cert-info h4 { margin: 0; font-size: 13px; font-weight: 500; color: var(--t2); transition: color 0.5s; }
+        .cert-btns { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+        .cb {
+            display: inline-flex; align-items: center; gap: 5px;
+            padding: 6px 13px; border-radius: 6px; font-size: 11px; font-weight: 600;
+            font-family: 'Poppins', sans-serif; cursor: pointer; text-decoration: none; transition: all 0.3s;
+        }
+        .cb-prev { background: transparent; border: 1px solid var(--border); color: var(--t3); }
+        .cb-prev:hover { border-color: var(--accent-bd); color: var(--accent); }
+        .cb-link { background: var(--accent-bg); border: 1px solid var(--accent-bd); color: var(--accent); }
+        .cb-link:hover { background: var(--accent); color: #fff; }
+
+        /* ── Popup ── */
+        .popup {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.88);
+            display: none; align-items: flex-start; justify-content: center;
+            z-index: 10000; padding: 28px 16px; cursor: pointer; overflow-y: auto;
+        }
+        .popup.on { display: flex; }
+        .popup img { max-width: 900px; width: 100%; height: auto; object-fit: contain; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+
+        /* ── Contact ── */
+        .contact {
+            padding: 60px 0; background: var(--card); border-top: 1px solid var(--border);
+            text-align: center; border-radius: 20px 20px 0 0;
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            transition: all 0.5s;
+        }
+        .contact h3 { font-size: 22px; font-weight: 600; color: var(--t1); transition: color 0.5s; }
+        .contact-links { display: flex; flex-direction: column; gap: 16px; align-items: center; margin-top: 26px; }
+        .contact-links a { color: var(--t2); text-decoration: none; font-size: 14px; transition: color 0.3s; }
+        .contact-links a:hover { color: var(--accent); }
+
+        footer { text-align: center; padding: 16px; background: #0f172a; color: #64748b; font-size: 13px; }
+
+        @media(min-width:768px) { .contact-links { flex-direction: row; gap: 36px; } .nav-links { margin: 0; } }
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--bg-main); }
-        ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
-    </style> 
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border-h); border-radius: 3px; }
+    </style>
 </head>
 
-<body>
+<body data-theme="light">
 
-<div class="content-layer">
+<!-- Background -->
+<div class="bg-layer">
+    <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+    <div class="orb o4"></div><div class="orb o5"></div><div class="orb o6"></div>
+</div>
+<div class="bg-dots"></div>
+<div class="bg-lines">
+    <div class="sline s1"></div><div class="sline s2"></div><div class="sline s3"></div>
+</div>
+<div class="bg-particles">
+    <div class="ptcl p1"></div><div class="ptcl p2"></div><div class="ptcl p3"></div><div class="ptcl p4"></div>
+    <div class="ptcl p5"></div><div class="ptcl p6"></div><div class="ptcl p7"></div><div class="ptcl p8"></div>
+</div>
+
+<div class="z1">
 
 <header>
-    <div class="container">
+    <div class="wrap">
         <nav>
-            <div class="profile-brand">
-                <img src="Mohamed Emad.jpg" class="profile-img">
-                <div class="logo">Mohamed Emad Hamdy<span>Data Analyst</span></div>
+            <div class="brand">
+                <img src="Mohamed Emad.jpg" class="avatar">
+                <div class="brand-text"><h1>Mohamed Emad Hamdy</h1><span>Data Analyst</span></div>
             </div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#certificates">Certificates</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div class="nav-end">
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#certs">Certificates</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="theme-btn" onclick="toggleTheme()" title="Toggle Theme">
+                    <span class="ico-moon">&#9789;</span><span class="ico-sun">&#9728;</span>
+                </button>
+            </div>
         </nav>
     </div>
 </header>
 
 <section class="hero" data-aos="fade-up">
-    <div class="container">
-        <h1>Mohamed Emad Hamdy</h1>
-        <p class="hero-role">Data Analyst</p>
-        <p class="hero-tools">SQL &bull; Power BI &bull; Excel</p>
+    <div class="wrap">
+        <h2>Mohamed Emad Hamdy</h2>
+        <p class="hero-sub">Data Analyst</p>
+        <div class="hero-tools">
+            <div class="ht-item">
+                <div class="ht-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)">
+                        <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/>
+                    </svg>
+                </div>SQL
+            </div>
+            <span class="ht-sep">&#8226;</span>
+            <div class="ht-item">
+                <div class="ht-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#f2c811" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+                        <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+                    </svg>
+                </div>Power BI
+            </div>
+            <span class="ht-sep">&#8226;</span>
+            <div class="ht-item">
+                <div class="ht-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#217346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/>
+                    </svg>
+                </div>Excel
+            </div>
+        </div>
     </div>
 </section>
 
-<section id="about" class="about-section" data-aos="fade-up">
-    <div class="container about-container">
-        <div class="section-divider"></div>
-        <h2>About Me</h2>
+<section id="about" class="about" data-aos="fade-up">
+    <div class="wrap about-inner">
+        <div class="divider"></div>
+        <h3>About Me</h3>
         <p>Professional Data Analyst with expertise in SQL, Power BI, and Excel. I specialize in transforming raw data into meaningful business insights through interactive dashboards and strategic data modeling.</p>
     </div>
 </section>
 
-<section id="skills" class="skills-section" data-aos="fade-up">
-    <div class="container">
-        <div class="section-divider"></div>
-        <div class="skills-header">Skills & Expertise</div>
+<section id="skills" class="skills" data-aos="fade-up">
+    <div class="wrap">
+        <div class="divider"></div>
+        <h3>Skills & Expertise</h3>
         <div class="skills-grid">
-            <div class="skill-card" data-aos="fade-up" data-aos-delay="0">
-                <h3>Tools</h3>
-                <div class="skill-tags">
-                    <div class="skill-item"><div class="skill-dot"></div><span>Power BI</span></div>
-                    <div class="skill-item"><div class="skill-dot"></div><span>Power Query</span></div>
-                    <div class="skill-item"><div class="skill-dot"></div><span>SQL Server</span></div>
-                    <div class="skill-item"><div class="skill-dot"></div><span>Excel</span></div>
+            <div class="sk-card" data-aos="fade-up">
+                <h4>Tools</h4>
+                <div class="sk-list">
+                    <div class="sk-row"><div class="sk-dot"></div><span>Power BI</span></div>
+                    <div class="sk-row"><div class="sk-dot"></div><span>Power Query</span></div>
+                    <div class="sk-row"><div class="sk-dot"></div><span>SQL Server</span></div>
+                    <div class="sk-row"><div class="sk-dot"></div><span>Excel</span></div>
                 </div>
             </div>
-            <div class="skill-card" data-aos="fade-up" data-aos-delay="80">
-                <h3>Technical</h3>
-                <div class="skill-tags">
-                    <div class="skill-item"><div class="skill-dot"></div><span>DAX Formulas</span></div>
-                    <div class="skill-item"><div class="skill-dot"></div><span>Star Schema</span></div>
-                    <div class="skill-item"><div class="skill-dot"></div><span>ETL Pipelines</span></div>
-                    <div class="skill-item"><div class="skill-dot"></div><span>Data Cleaning</span></div>
+            <div class="sk-card" data-aos="fade-up" data-aos-delay="80">
+                <h4>Technical</h4>
+                <div class="sk-list">
+                    <div class="sk-row"><div class="sk-dot"></div><span>DAX Formulas</span></div>
+                    <div class="sk-row"><div class="sk-dot"></div><span>Star Schema</span></div>
+                    <div class="sk-row"><div class="sk-dot"></div><span>ETL Pipelines</span></div>
+                    <div class="sk-row"><div class="sk-dot"></div><span>Data Cleaning</span></div>
                 </div>
             </div>
-            <div class="skill-card" data-aos="fade-up" data-aos-delay="160">
-                <h3>Analytics</h3>
-                <div class="skill-tags">
-                    <div class="skill-item"><div class="skill-dot"></div><span>KPI Design</span></div>
-                    <div class="skill-item"><div class="skill-dot"></div><span>Data Storytelling</span></div>
-                    <div class="skill-item"><div class="skill-dot"></div><span>Root Cause Analysis</span></div>
-                    <div class="skill-item"><div class="skill-dot"></div><span>What-if Analysis</span></div>
+            <div class="sk-card" data-aos="fade-up" data-aos-delay="160">
+                <h4>Analytics</h4>
+                <div class="sk-list">
+                    <div class="sk-row"><div class="sk-dot"></div><span>KPI Design</span></div>
+                    <div class="sk-row"><div class="sk-dot"></div><span>Data Storytelling</span></div>
+                    <div class="sk-row"><div class="sk-dot"></div><span>Root Cause Analysis</span></div>
+                    <div class="sk-row"><div class="sk-dot"></div><span>What-if Analysis</span></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<div id="projects" class="projects-header" data-aos="fade-up">
-    <div class="section-divider"></div>
-    Featured Projects
-</div>
+<div id="projects" class="proj-head" data-aos="fade-up"><div class="divider"></div>Featured Projects</div>
 
-<section class="container">
+<section class="wrap">
 
-    <!-- Ice Cream Project -->
-    <div class="project-card" data-aos="fade-up">
-        <div class="slider-wrapper">
-            <button class="slider-btn prev" onclick="changeSlide('slider-icecream', -1)">&#10094;</button>
-            <div class="slider-container" id="slider-icecream" onmousemove="zoomIn(event)" onmouseleave="zoomOut(event)">
-                <img src="fb_project1.jpg" class="active">
-                <img src="fb_project2.jpg">
-                <img src="fb_project3.jpg">
-                <img src="fb_project4.jpg">
-                <img src="fb_project5.jpg">
+    <!-- Ice Cream -->
+    <div class="p-card" data-aos="fade-up">
+        <div class="slider-wrap">
+            <button class="s-btn prv" onclick="slide('s1',-1)">&#10094;</button>
+            <div class="slider-box" id="s1" onmousemove="zmIn(event)" onmouseleave="zmOut(event)">
+                <img src="fb_project1.jpg" class="on"><img src="fb_project2.jpg"><img src="fb_project3.jpg"><img src="fb_project4.jpg"><img src="fb_project5.jpg">
             </div>
-            <button class="slider-btn next" onclick="changeSlide('slider-icecream', 1)">&#10095;</button>
+            <button class="s-btn nxt" onclick="slide('s1',1)">&#10095;</button>
         </div>
-        <div class="project-details">
-            <div class="project-title-ar">دراسة حالة: تحليل الأداء التشغيلي لمتجر</div>
-            <div class="project-title-en">Business Intelligence: Optimizing Flavor & Branch Performance</div>
-            <div class="tabs-menu">
-                <button class="tab-link active" onclick="openTab(event, 'ic-over')">Overview</button>
-                <button class="tab-link" onclick="openTab(event, 'ic-ops')">Operations</button>
-                <button class="tab-link" onclick="openTab(event, 'ic-behavior')">Consumer Behavior</button>
-                <button class="tab-link" onclick="openTab(event, 'ic-pricing')">Pricing</button>
-                <button class="tab-link" onclick="openTab(event, 'ic-rec')">Recommendations</button>
+        <div class="p-body">
+            <div class="p-title-ar">دراسة حالة: تحليل الأداء التشغيلي لمتجر</div>
+            <div class="p-title-en">Business Intelligence: Optimizing Flavor & Branch Performance</div>
+            <div class="tabs">
+                <button class="t-btn on" onclick="tab(event,'i-ov')">Overview</button>
+                <button class="t-btn" onclick="tab(event,'i-op')">Operations</button>
+                <button class="t-btn" onclick="tab(event,'i-be')">Consumer Behavior</button>
+                <button class="t-btn" onclick="tab(event,'i-pr')">Pricing</button>
+                <button class="t-btn" onclick="tab(event,'i-re')">Recommendations</button>
             </div>
 
-            <div id="ic-over" class="tab-pane active">
-                <button class="translate-btn" onclick="toggleLang('ic-over')">Translate to Arabic</button>
-                <div class="tab-content-text en">
-                    <strong>"Beyond the Total Number" (Overview)</strong><br><br>
-                    In this project, I analyzed sales data for a store covering multiple branches in Egypt (Cairo, Tanta, Mansoura, Alexandria) to decode financial performance and understand customer behavior across different time periods.<br><br>
-                    The journey began with a general performance analysis that revealed <strong>total revenue of $327K</strong> and <strong>net profit of $224K</strong>.<br><br>
-                    <strong>The Numeric Paradox:</strong> Despite revenue declining slightly by 6.96% compared to last year, the profit margin remained very strong at <strong>68.64%</strong>.<br><br>
-                    <strong>Key Discovery:</strong> Data proved that ice cream sales don't depend entirely on summer as commonly believed; winter recorded sales very close to spring and autumn, breaking the stereotype of product seasonality.
-                </div>
-                <div class="tab-content-text ar" style="display:none;">
-                    <strong>"ما وراء الرقم الإجمالي" (نظرة عامة)</strong><br><br>
-                    في هذا المشروع، قمت بتحليل بيانات المبيعات لمتجر يغطي عدة فروع في مصر (القاهرة، طنطا، المنصورة، الإسكندرية) لفك شفرة الأداء المالي وفهم سلوك العميل عبر فترات زمنية مختلفة.<br><br>
-                    بدأت الرحلة بتحليل الأداء العام الذي كشف عن إيرادات إجمالية قدرها <strong>327 ألف دولار</strong> وصافي ربح <strong>224 ألف دولار</strong>.<br><br>
-                    <strong>المفارقة الرقمية:</strong> رغم أن الإيرادات شهدت تراجعاً طفيفاً بنسبة 6.96% عن العام الماضي، إلا أن هامش الربح ظل قوياً جداً عند <strong>68.64%</strong>.<br><br>
-                    <strong>الاكتشاف الأهم:</strong> أثبتت البيانات أن مبيعات الآيس كريم لا تعتمد كلياً على الصيف كما هو شائع؛ حيث سجل فصل الشتاء مبيعات متقاربة جداً مع الربيع والخريف، مما يكسر الصورة النمطية لموسمية المنتج.
-                </div>
+            <div id="i-ov" class="pane on">
+                <button class="lang-btn" onclick="lang('i-ov')">Translate to Arabic</button>
+                <div class="txt en"><strong>"Beyond the Total Number" (Overview)</strong><br><br>In this project, I analyzed sales data for a store covering multiple branches in Egypt (Cairo, Tanta, Mansoura, Alexandria) to decode financial performance and understand customer behavior across different time periods.<br><br>The journey began with a general performance analysis that revealed <strong>total revenue of $327K</strong> and <strong>net profit of $224K</strong>.<br><br><strong>The Numeric Paradox:</strong> Despite revenue declining slightly by 6.96% compared to last year, the profit margin remained very strong at <strong>68.64%</strong>.<br><br><strong>Key Discovery:</strong> Data proved that ice cream sales don't depend entirely on summer as commonly believed; winter recorded sales very close to spring and autumn, breaking the stereotype of product seasonality.</div>
+                <div class="txt ar" style="display:none"><strong>"ما وراء الرقم الإجمالي" (نظرة عامة)</strong><br><br>في هذا المشروع، قمت بتحليل بيانات المبيعات لمتجر يغطي عدة فروع في مصر (القاهرة، طنطا، المنصورة، الإسكندرية) لفك شفرة الأداء المالي وفهم سلوك العميل عبر فترات زمنية مختلفة.<br><br>بدأت الرحلة بتحليل الأداء العام الذي كشف عن إيرادات إجمالية قدرها <strong>327 ألف دولار</strong> وصافي ربح <strong>224 ألف دولار</strong>.<br><br><strong>المفارقة الرقمية:</strong> رغم أن الإيرادات شهدت تراجعاً طفيفاً بنسبة 6.96% عن العام الماضي، إلا أن هامش الربح ظل قوياً جداً عند <strong>68.64%</strong>.<br><br><strong>الاكتشاف الأهم:</strong> أثبتت البيانات أن مبيعات الآيس كريم لا تعتمد كلياً على الصيف كما هو شائع؛ حيث سجل فصل الشتاء مبيعات متقاربة جداً مع الربيع والخريف، مما يكسر الصورة النمطية لموسمية المنتج.</div>
             </div>
 
-            <div id="ic-ops" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('ic-ops')">Translate to Arabic</button>
-                <div class="tab-content-text en">
-                    <strong>"Product & Branch Dissection" (Operational Performance)</strong><br><br>
-                    We moved to analyze the store's investment portfolio strengths:<br><br>
-                    <strong>The Star:</strong> Cone is the best-selling product with revenue of <strong>$89K</strong>, followed by Ice Cream Cup.<br><br>
-                    <strong>Sales Stronghold:</strong> Cairo branch sits at the top with revenue of <strong>$111K</strong>, making it the main growth engine.<br><br>
-                    <strong>Employee Efficiency:</strong> Analysis showed that "Ahmed" is the top performer with sales reaching <strong>$84K</strong>, representing a model that can be generalized to develop the rest of the team.
-                </div>
-                <div class="tab-content-text ar" style="display:none;">
-                    <strong>"تشريح المنتجات والفروع" (الأداء التشغيلي)</strong><br><br>
-                    انتقلنا لتحليل مكامن القوة في المحفظة الاستثمارية للمتجر:<br><br>
-                    <strong>نجم العرض (The Star):</strong> منتج الـ Cone هو الأكثر مبيعاً بإيرادات بلغت <strong>89 ألف دولار</strong>، يليه Ice Cream Cup.<br><br>
-                    <strong>معقل المبيعات:</strong> فرع القاهرة يتربع على القمة بإيرادات <strong>111 ألف دولار</strong>، مما يجعله المحرك الرئيسي للنمو.<br><br>
-                    <strong>كفاءة الموظفين:</strong> أظهر التحليل أن الموظف "أحمد" هو الأعلى أداءً بمبيعات وصلت إلى <strong>84 ألف دولار</strong>، وهو ما يمثل نموذجاً يمكن تعميمه لتطوير بقية الفريق.
-                </div>
+            <div id="i-op" class="pane">
+                <button class="lang-btn" onclick="lang('i-op')">Translate to Arabic</button>
+                <div class="txt en"><strong>"Product & Branch Dissection" (Operational Performance)</strong><br><br>We moved to analyze the store's investment portfolio strengths:<br><br><strong>The Star:</strong> Cone is the best-selling product with revenue of <strong>$89K</strong>, followed by Ice Cream Cup.<br><br><strong>Sales Stronghold:</strong> Cairo branch sits at the top with revenue of <strong>$111K</strong>, making it the main growth engine.<br><br><strong>Employee Efficiency:</strong> Analysis showed that "Ahmed" is the top performer with sales reaching <strong>$84K</strong>, representing a model that can be generalized to develop the rest of the team.</div>
+                <div class="txt ar" style="display:none"><strong>"تشريح المنتجات والفروع" (الأداء التشغيلي)</strong><br><br>انتقلنا لتحليل مكامن القوة في المحفظة الاستثمارية للمتجر:<br><br><strong>نجم العرض (The Star):</strong> منتج الـ Cone هو الأكثر مبيعاً بإيرادات بلغت <strong>89 ألف دولار</strong>، يليه Ice Cream Cup.<br><br><strong>معقل المبيعات:</strong> فرع القاهرة يتربع على القمة بإيرادات <strong>111 ألف دولار</strong>، مما يجعله المحرك الرئيسي للنمو.<br><br><strong>كفاءة الموظفين:</strong> أظهر التحليل أن الموظف "أحمد" هو الأعلى أداءً بمبيعات وصلت إلى <strong>84 ألف دولار</strong>، وهو ما يمثل نموذجاً يمكن تعميمه لتطوير بقية الفريق.</div>
             </div>
 
-            <div id="ic-behavior" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('ic-behavior')">Translate to Arabic</button>
-                <div class="tab-content-text en">
-                    <strong>"Consumer Behavior & Timing" (Time & Correlation Analysis)</strong><br><br>
-                    I analyzed "peak hour" and "market basket" to understand when and how customers buy:<br><br>
-                    <strong>Peak Timing:</strong> Most sales concentrate in the evening period (<strong>50.51%</strong>), and Friday is the peak of weekly activity.<br><br>
-                    <strong>Market Basket Analysis:</strong> We discovered a strong correlation between Cone and Ice Cream Cup (appeared together <strong>87 times</strong>), opening opportunities for bundling offers to increase average order value.
-                </div>
-                <div class="tab-content-text ar" style="display:none;">
-                    <strong>"سلوك المستهلك والوقت" (تحليل الوقت والارتباط)</strong><br><br>
-                    قمت بتحليل "ساعة الذروة" و"سلة المشتريات" لفهم متى وكيف يشتري العميل:<br><br>
-                    <strong>توقيت الذروة:</strong> تتركز أغلب المبيعات في الفترة المسائية (<strong>50.51%</strong>)، ويكون يوم الجمعة هو ذروة النشاط الأسبوعي.<br><br>
-                    <strong>تحليل سلة المشتريات (Market Basket):</strong> اكتشفنا ارتباطاً وثيقاً بين الـ Cone والـ Ice Cream Cup (تكرر <strong>87 مرة</strong> معاً)، مما يفتح فرصاً لعمل عروض مشتركة (Bundling) لزيادة متوسط قيمة الطلب.
-                </div>
+            <div id="i-be" class="pane">
+                <button class="lang-btn" onclick="lang('i-be')">Translate to Arabic</button>
+                <div class="txt en"><strong>"Consumer Behavior & Timing" (Time & Correlation Analysis)</strong><br><br>I analyzed "peak hour" and "market basket" to understand when and how customers buy:<br><br><strong>Peak Timing:</strong> Most sales concentrate in the evening period (<strong>50.51%</strong>), and Friday is the peak of weekly activity.<br><br><strong>Market Basket Analysis:</strong> We discovered a strong correlation between Cone and Ice Cream Cup (appeared together <strong>87 times</strong>), opening opportunities for bundling offers to increase average order value.</div>
+                <div class="txt ar" style="display:none"><strong>"سلوك المستهلك والوقت" (تحليل الوقت والارتباط)</strong><br><br>قمت بتحليل "ساعة الذروة" و"سلة المشتريات" لفهم متى وكيف يشتري العميل:<br><br><strong>توقيت الذروة:</strong> تتركز أغلب المبيعات في الفترة المسائية (<strong>50.51%</strong>)، ويكون يوم الجمعة هو ذروة النشاط الأسبوعي.<br><br><strong>تحليل سلة المشتريات (Market Basket):</strong> اكتشفنا ارتباطاً وثيقاً بين الـ Cone والـ Ice Cream Cup (تكرر <strong>87 مرة</strong> معاً)، مما يفتح فرصاً لعمل عروض مشتركة (Bundling) لزيادة متوسط قيمة الطلب.</div>
             </div>
 
-            <div id="ic-pricing" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('ic-pricing')">Translate to Arabic</button>
-                <div class="tab-content-text en">
-                    <strong>"Decision Lab" (Discount & What-if Analysis)</strong><br><br>
-                    I used advanced analysis to evaluate pricing policy:<br><br>
-                    <strong>Discount Efficiency:</strong> Total discounts granted reached <strong>$9K</strong>. Through the Profit vs Discount curve, it was clear that increasing discounts doesn't necessarily lead to a profit jump.<br><br>
-                    <strong>What-if Simulation:</strong> Simulation proved that applying a 5% discount with a 10% increase in orders would lead to only a <strong>2.29% profit increase</strong>, meaning maintaining current pricing with improved service may be more effective than aggressive discount policies.
-                </div>
-                <div class="tab-content-text ar" style="display:none;">
-                    <strong>"مختبر القرارات" (تحليل الخصومات وماذا لو؟)</strong><br><br>
-                    استخدمت التحليل المتقدم لتقييم سياسة التسعير:<br><br>
-                    <strong>كفاءة الخصم:</strong> وجدنا أن إجمالي الخصومات الممنوحة بلغت <strong>9 آلاف دولار</strong>. ومن خلال منحنى (Profit Vs Discount)، تبين أن زيادة الخصم لا تؤدي بالضرورة لقفزة في الأرباح.<br><br>
-                    <strong>محاكاة الواقع (What-if Analysis):</strong> أثبتت المحاكاة أن تطبيق خصم بنسبة 5% مع زيادة الطلبات بنسبة 10% سيؤدي إلى زيادة الأرباح بنسبة <strong>2.29% فقط</strong>، مما يعني أن الحفاظ على السعر الحالي مع تحسين الخدمة قد يكون أجدى من سياسة الخصومات العنيفة.
-                </div>
+            <div id="i-pr" class="pane">
+                <button class="lang-btn" onclick="lang('i-pr')">Translate to Arabic</button>
+                <div class="txt en"><strong>"Decision Lab" (Discount & What-if Analysis)</strong><br><br>I used advanced analysis to evaluate pricing policy:<br><br><strong>Discount Efficiency:</strong> Total discounts granted reached <strong>$9K</strong>. Through the Profit vs Discount curve, it was clear that increasing discounts doesn't necessarily lead to a profit jump.<br><br><strong>What-if Simulation:</strong> Simulation proved that applying a 5% discount with a 10% increase in orders would lead to only a <strong>2.29% profit increase</strong>, meaning maintaining current pricing with improved service may be more effective than aggressive discount policies.</div>
+                <div class="txt ar" style="display:none"><strong>"مختبر القرارات" (تحليل الخصومات وماذا لو؟)</strong><br><br>استخدمت التحليل المتقدم لتقييم سياسة التسعير:<br><br><strong>كفاءة الخصم:</strong> وجدنا أن إجمالي الخصومات الممنوحة بلغت <strong>9 آلاف دولار</strong>. ومن خلال منحنى (Profit Vs Discount)، تبين أن زيادة الخصم لا تؤدي بالضرورة لقفزة في الأرباح.<br><br><strong>محاكاة الواقع (What-if Analysis):</strong> أثبتت المحاكاة أن تطبيق خصم بنسبة 5% مع زيادة الطلبات بنسبة 10% سيؤدي إلى زيادة الأرباح بنسبة <strong>2.29% فقط</strong>، مما يعني أن الحفاظ على السعر الحالي مع تحسين الخدمة قد يكون أجدى من سياسة الخصومات العنيفة.</div>
             </div>
 
-            <div id="ic-rec" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('ic-rec')">Translate to Arabic</button>
-                <div class="tab-content-text en">
-                    <strong>Actionable Insights — Final Recommendations:</strong><br><br>
-                    <strong>1. Capitalize on Evenings:</strong> Intensify marketing campaigns and staffing during evening periods and Fridays to maximize peak time utilization.<br><br>
-                    <strong>2. Bundling Offers:</strong> Activate offers combining Cone and Cup based on market basket analysis results.<br><br>
-                    <strong>3. Expand in Cairo:</strong> Given Cairo branch strength, increasing investment there or transferring the successful branch experience to Mansoura and Tanta is recommended to raise their efficiency.<br><br>
-                    <strong>4. Break Seasonality:</strong> Continue marketing during winter with focus on warm flavors or special additions, as data proved real demand exists.
-                </div>
-                <div class="tab-content-text ar" style="display:none;">
-                    <strong>التوصيات الختامية (Actionable Insights):</strong><br><br>
-                    <strong>1. استغلال المساء:</strong> تكثيف الحملات التسويقية والعمالة في الفترة المسائية ويوم الجمعة لتعظيم الاستفادة من وقت الذروة.<br><br>
-                    <strong>2. عروض الربط (Bundling):</strong> تفعيل عروض تجمع بين الـ Cone والـ Cup بناءً على نتائج تحليل سلة المشتريات.<br><br>
-                    <strong>3. التوسع في القاهرة:</strong> بالنظر لقوة فرع القاهرة، يُنصح بزيادة الاستثمار هناك أو نقل تجربة الفرع الناجحة إلى المنصورة وطنطا لرفع كفاءتها.<br><br>
-                    <strong>4. كسر الموسمية:</strong> الاستمرار في التسويق خلال الشتاء مع التركيز على نكهات دافئة أو إضافات خاصة، لأن البيانات أثبتت وجود طلب حقيقي.
-                </div>
+            <div id="i-re" class="pane">
+                <button class="lang-btn" onclick="lang('i-re')">Translate to Arabic</button>
+                <div class="txt en"><strong>Actionable Insights — Final Recommendations:</strong><br><br><strong>1. Capitalize on Evenings:</strong> Intensify marketing campaigns and staffing during evening periods and Fridays to maximize peak time utilization.<br><br><strong>2. Bundling Offers:</strong> Activate offers combining Cone and Cup based on market basket analysis results.<br><br><strong>3. Expand in Cairo:</strong> Given Cairo branch strength, increasing investment there or transferring the successful branch experience to Mansoura and Tanta is recommended.<br><br><strong>4. Break Seasonality:</strong> Continue marketing during winter with focus on warm flavors or special additions, as data proved real demand exists.</div>
+                <div class="txt ar" style="display:none"><strong>التوصيات الختامية (Actionable Insights):</strong><br><br><strong>1. استغلال المساء:</strong> تكثيف الحملات التسويقية والعمالة في الفترة المسائية ويوم الجمعة لتعظيم الاستفادة من وقت الذروة.<br><br><strong>2. عروض الربط (Bundling):</strong> تفعيل عروض تجمع بين الـ Cone والـ Cup بناءً على نتائج تحليل سلة المشتريات.<br><br><strong>3. التوسع في القاهرة:</strong> بالنظر لقوة فرع القاهرة، يُنصح بزيادة الاستثمار هناك أو نقل تجربة الفرع الناجحة إلى المنصورة وطنطا لرفع كفاءتها.<br><br><strong>4. كسر الموسمية:</strong> الاستمرار في التسويق خلال الشتاء مع التركيز على نكهات دافئة أو إضافات خاصة، لأن البيانات أثبتت وجود طلب حقيقي.</div>
             </div>
         </div>
     </div>
 
-    <!-- E-commerce Project -->
-    <div class="project-card" data-aos="fade-up">
-        <div class="slider-wrapper">
-            <button class="slider-btn prev" onclick="changeSlide('slider-ecommerce', -1)">&#10094;</button>
-            <div class="slider-container" id="slider-ecommerce" onmousemove="zoomIn(event)" onmouseleave="zoomOut(event)">
-                <img src="E-commerce Business Health Analysis/E-commerce_1.jpg" class="active">
-                <img src="E-commerce Business Health Analysis/E-commerce_2.jpg">
-                <img src="E-commerce Business Health Analysis/E-commerce_3.jpg">
+    <!-- E-commerce -->
+    <div class="p-card" data-aos="fade-up">
+        <div class="slider-wrap">
+            <button class="s-btn prv" onclick="slide('s2',-1)">&#10094;</button>
+            <div class="slider-box" id="s2" onmousemove="zmIn(event)" onmouseleave="zmOut(event)">
+                <img src="E-commerce Business Health Analysis/E-commerce_1.jpg" class="on"><img src="E-commerce Business Health Analysis/E-commerce_2.jpg"><img src="E-commerce Business Health Analysis/E-commerce_3.jpg">
             </div>
-            <button class="slider-btn next" onclick="changeSlide('slider-ecommerce', 1)">&#10095;</button>
+            <button class="s-btn nxt" onclick="slide('s2',1)">&#10095;</button>
         </div>
-        <div class="project-details">
-            <div class="project-title-ar">دراسة حالة: كشف أسرار الربحية في التجارة الإلكترونية</div>
-            <div class="project-title-en">E-commerce Diagnostic Analysis: From Growth to Profitability</div>
-            <div class="tabs-menu">
-                <button class="tab-link active" onclick="openTab(event, 'eco-tools')">Tools</button>
-                <button class="tab-link" onclick="openTab(event, 'eco-story')">Summary</button>
-                <button class="tab-link" onclick="openTab(event, 'eco-overview')">Overview</button>
-                <button class="tab-link" onclick="openTab(event, 'eco-discounts')">Discounts</button>
-                <button class="tab-link" onclick="openTab(event, 'eco-ops')">Operations</button>
-                <button class="tab-link" onclick="openTab(event, 'eco-rec')">Recommendations</button>
+        <div class="p-body">
+            <div class="p-title-ar">دراسة حالة: كشف أسرار الربحية في التجارة الإلكترونية</div>
+            <div class="p-title-en">E-commerce Diagnostic Analysis: From Growth to Profitability</div>
+            <div class="tabs">
+                <button class="t-btn on" onclick="tab(event,'e-to')">Tools</button>
+                <button class="t-btn" onclick="tab(event,'e-st')">Summary</button>
+                <button class="t-btn" onclick="tab(event,'e-ov')">Overview</button>
+                <button class="t-btn" onclick="tab(event,'e-di')">Discounts</button>
+                <button class="t-btn" onclick="tab(event,'e-op')">Operations</button>
+                <button class="t-btn" onclick="tab(event,'e-re')">Recommendations</button>
             </div>
 
-            <div id="eco-tools" class="tab-pane active">
-                <button class="translate-btn" onclick="toggleLang('eco-tools')">Translate to Arabic</button>
-                <div class="tab-content-text en">
-                    <strong>Tools Used in This Journey:</strong><br><br>
-                    <strong>Power BI:</strong> To build interactive dashboards and tell the story visually.<br><br>
-                    <strong>Power Query:</strong> To clean, structure, and transform data from raw numbers into valuable information.<br><br>
-                    <strong>DAX:</strong> To create custom KPIs such as Discount Efficiency and Shipping Ratios.<br><br>
-                    <strong>Star Schema Modeling:</strong> To ensure table interconnectivity and ease of cross-analysis.
-                </div>
-                <div class="tab-content-text ar" style="display:none;">
-                    <strong>الأدوات التي استخدمتها في هذه الرحلة:</strong><br><br>
-                    <strong>Power BI:</strong> لبناء لوحات التحكم التفاعلية وسرد القصة بصرياً.<br><br>
-                    <strong>Power Query:</strong> لتنظيف وهيكلة البيانات وتحويلها من بيانات جافة إلى معلومات قيمة.<br><br>
-                    <strong>DAX:</strong> لابتكار مؤشرات قياس أداء (KPIs) مخصصة مثل كفاءة الخصم ونسب الشحن.<br><br>
-                    <strong>Star Schema Modeling:</strong> لضمان ترابط الجداول وسهولة التحليل المتقاطع.
-                </div>
+            <div id="e-to" class="pane on">
+                <button class="lang-btn" onclick="lang('e-to')">Translate to Arabic</button>
+                <div class="txt en"><strong>Tools Used in This Journey:</strong><br><br><strong>Power BI:</strong> To build interactive dashboards and tell the story visually.<br><br><strong>Power Query:</strong> To clean, structure, and transform data from raw numbers into valuable information.<br><br><strong>DAX:</strong> To create custom KPIs such as Discount Efficiency and Shipping Ratios.<br><br><strong>Star Schema Modeling:</strong> To ensure table interconnectivity and ease of cross-analysis.</div>
+                <div class="txt ar" style="display:none"><strong>الأدوات التي استخدمتها في هذه الرحلة:</strong><br><br><strong>Power BI:</strong> لبناء لوحات التحكم التفاعلية وسرد القصة بصرياً.<br><br><strong>Power Query:</strong> لتنظيف وهيكلة البيانات وتحويلها من بيانات جافة إلى معلومات قيمة.<br><br><strong>DAX:</strong> لابتكار مؤشرات قياس أداء (KPIs) مخصصة مثل كفاءة الخصم ونسب الشحن.<br><br><strong>Star Schema Modeling:</strong> لضمان ترابط الجداول وسهولة التحليل المتقاطع.</div>
             </div>
 
-            <div id="eco-story" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('eco-story')">Translate to Arabic</button>
-                <div class="tab-content-text en">
-                    <strong>Story Summary:</strong><br><br>
-                    In this project, we didn't just display numbers — we embarked on an investigative journey inside a global e-commerce store's data to discover why profits evaporate despite massive sales. We analyzed <strong>5,000+ orders</strong> to connect the dots between aggressive discounts, logistical shipping costs, and true net profit.
-                </div>
-                <div class="tab-content-text ar" style="display:none;">
-                    <strong>ملخص القصة:</strong><br><br>
-                    في هذا المشروع، لم نكتفِ بعرض الأرقام، بل قمنا برحلة استقصائية داخل بيانات متجر إلكتروني عالمي لنكتشف لماذا تتبخر الأرباح رغم ضخامة المبيعات. قمنا بتحليل <strong>5,000+ طلب</strong> لربط النقاط بين الخصومات العنيفة، تكاليف الشحن اللوجستية، وصافي الربح الحقيقي.
-                </div>
+            <div id="e-st" class="pane">
+                <button class="lang-btn" onclick="lang('e-st')">Translate to Arabic</button>
+                <div class="txt en"><strong>Story Summary:</strong><br><br>In this project, we didn't just display numbers — we embarked on an investigative journey inside a global e-commerce store's data to discover why profits evaporate despite massive sales. We analyzed <strong>5,000+ orders</strong> to connect the dots between aggressive discounts, logistical shipping costs, and true net profit.</div>
+                <div class="txt ar" style="display:none"><strong>ملخص القصة:</strong><br><br>في هذا المشروع، لم نكتفِ بعرض الأرقام، بل قمنا برحلة استقصائية داخل بيانات متجر إلكتروني عالمي لنكتشف لماذا تتبخر الأرباح رغم ضخامة المبيعات. قمنا بتحليل <strong>5,000+ طلب</strong> لربط النقاط بين الخصومات العنيفة، تكاليف الشحن اللوجستية، وصافي الربح الحقيقي.</div>
             </div>
 
-            <div id="eco-overview" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('eco-overview')">Translate to Arabic</button>
-                <div class="tab-content-text en">
-                    <strong>"The Illusion of Growth" (Overview)</strong><br><br>
-                    The story began with a cheerful scene; total sales reached <strong>$2.3 million</strong> with strong annual growth of <strong>20.4%</strong>. At first glance, everything seemed fine.<br><br>
-                    <strong>The Puzzling Question:</strong> "If our sales are growing like this, why doesn't this strength reflect in the company's treasury?"<br><br>
-                    <strong>Data Discovery:</strong> By comparing total sales to net profit, we found a thin margin of no more than <strong>12.5%</strong>. When we looked at the discount indicator ($322.6K), we realized the bitter truth: we give customers discounts that exceed our total net profits!<br><br>
-                    <strong>Conclusion:</strong> Growth without profitability is just a "bragging number," and here we decided to dig deeper to find where the bleeding lies.
-                </div>
-                <div class="tab-content-text ar" style="display:none;">
-                    <strong>"خدعة النمو البراقة" (نظرة عامة)</strong><br><br>
-                    بدأت القصة بمشهد مبهج؛ مبيعات إجمالية بلغت <strong>2.3 مليون دولار</strong> مع نمو سنوي قوي بنسبة <strong>20.4%</strong>. للوهلة الأولى، يبدو أن كل شيء يسير على ما يرام.<br><br>
-                    <strong>السؤال المحير:</strong> "إذا كانت مبيعاتنا تنمو بهذا الشكل، لماذا لا تنعكس هذه القوة في خزينة الشركة؟"<br><br>
-                    <strong>الاكتشاف من البيانات:</strong> بمقارنة إجمالي المبيعات بصافي الربح، وجدنا هامشاً ضئيلاً لا يتجاوز <strong>12.5%</strong>. وعندما نظرنا لمؤشر الخصومات (322.6 ألف دولار)، أدركنا الحقيقة المرة: نحن نمنح خصومات للعملاء تتجاوز إجمالي أرباحنا الصافية!<br><br>
-                    <strong>خلاصة الصفحة:</strong> النمو بدون ربحية هو مجرد "رقم للمفاخرة"، وهنا قررنا التعمق لنعرف أين يكمن النزيف.
-                </div>
+            <div id="e-ov" class="pane">
+                <button class="lang-btn" onclick="lang('e-ov')">Translate to Arabic</button>
+                <div class="txt en"><strong>"The Illusion of Growth" (Overview)</strong><br><br>The story began with a cheerful scene; total sales reached <strong>$2.3 million</strong> with strong annual growth of <strong>20.4%</strong>. At first glance, everything seemed fine.<br><br><strong>The Puzzling Question:</strong> "If our sales are growing like this, why doesn't this strength reflect in the company's treasury?"<br><br><strong>Data Discovery:</strong> By comparing total sales to net profit, we found a thin margin of no more than <strong>12.5%</strong>. When we looked at the discount indicator ($322.6K), we realized the bitter truth: we give customers discounts that exceed our total net profits!<br><br><strong>Conclusion:</strong> Growth without profitability is just a "bragging number," and here we decided to dig deeper to find where the bleeding lies.</div>
+                <div class="txt ar" style="display:none"><strong>"خدعة النمو البراقة" (نظرة عامة)</strong><br><br>بدأت القصة بمشهد مبهج؛ مبيعات إجمالية بلغت <strong>2.3 مليون دولار</strong> مع نمو سنوي قوي بنسبة <strong>20.4%</strong>. للوهلة الأولى، يبدو أن كل شيء يسير على ما يرام.<br><br><strong>السؤال المحير:</strong> "إذا كانت مبيعاتنا تنمو بهذا الشكل، لماذا لا تنعكس هذه القوة في خزينة الشركة؟"<br><br><strong>الاكتشاف من البيانات:</strong> بمقارنة إجمالي المبيعات بصافي الربح، وجدنا هامشاً ضئيلاً لا يتجاوز <strong>12.5%</strong>. وعندما نظرنا لمؤشر الخصومات (322.6 ألف دولار)، أدركنا الحقيقة المرة: نحن نمنح خصومات للعملاء تتجاوز إجمالي أرباحنا الصافية!<br><br><strong>خلاصة الصفحة:</strong> النمو بدون ربحية هو مجرد "رقم للمفاخرة"، وهنا قررنا التعمق لنعرف أين يكمن النزيف.</div>
             </div>
 
-            <div id="eco-discounts" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('eco-discounts')">Translate to Arabic</button>
-                <div class="tab-content-text en">
-                    <strong>"The Discount Puzzle & The Missing Correlation" (Discount Analysis)</strong><br><br>
-                    We moved to the second page to answer a strategic question: "Are high discounts the real sales driver?"<br><br>
-                    <strong>The Core Question:</strong> "Does a customer who gets an 80% discount buy larger quantities that justify our loss?"<br><br>
-                    <strong>What the Charts Said:</strong> Through the scatter plot, we were shocked that the line is almost horizontal! This means increasing the discount does not lead to a noticeable increase in quantity sold. We are losing profit without gaining additional sales volume.<br><br>
-                    <strong>The Death Zone:</strong> We identified that any discount exceeding <strong>20%</strong> immediately turns the deal into an operational loss.<br><br>
-                    <strong>Efficiency Indicator:</strong> We created a Discount Efficiency indicator that recorded (-$0.82), an "alarm bell" telling managers: every dollar of discount we give costs us profit efficiency and budget erosion.
-                </div>
-                <div class="tab-content-text ar" style="display:none;">
-                    <strong>"لغز الخصومات والارتباط المفقود" (تحليل الخصومات)</strong><br><br>
-                    انتقنا إلى الصفحة الثانية للإجابة على سؤال استراتيجي: "هل الخصومات العالية هي المحرك الحقيقي للبيع؟"<br><br>
-                    <strong>السؤال الجوهري:</strong> "هل العميل الذي يحصل على خصم 80% يشتري كميات أكبر تبرر خسارتنا؟"<br><br>
-                    <strong>ما قالته الشارتات:</strong> من خلال رسم التشتت، صُدمنا بأن الخط شبه أفقي! هذا يعني أن زيادة الخصم لا تؤدي لزيادة ملحوظة في الكمية المباعة. نحن نخسر الربح دون كسب حجم مبيعات إضافي.<br><br>
-                    <strong>منطقة الموت:</strong> حددنا أن أي خصم يتجاوز <strong>20%</strong> يحول الصفقة فوراً إلى خسارة تشغيلية.<br><br>
-                    <strong>مؤشر الكفاءة:</strong> قمنا بابتكار مؤشر Discount Efficiency الذي سجل (0.82- دولار)، وهو "جرس إنذار" يقول للمديرين: كل دولار خصم نمنحه، يكلفنا عملياً ضياع كفاءة ربحية وتآكل للميزانية.
-                </div>
+            <div id="e-di" class="pane">
+                <button class="lang-btn" onclick="lang('e-di')">Translate to Arabic</button>
+                <div class="txt en"><strong>"The Discount Puzzle & The Missing Correlation" (Discount Analysis)</strong><br><br>We moved to the second page to answer a strategic question: "Are high discounts the real sales driver?"<br><br><strong>The Core Question:</strong> "Does a customer who gets an 80% discount buy larger quantities that justify our loss?"<br><br><strong>What the Charts Said:</strong> Through the scatter plot, we were shocked that the line is almost horizontal! This means increasing the discount does not lead to a noticeable increase in quantity sold.<br><br><strong>The Death Zone:</strong> We identified that any discount exceeding <strong>20%</strong> immediately turns the deal into an operational loss.<br><br><strong>Efficiency Indicator:</strong> We created a Discount Efficiency indicator that recorded (-$0.82), an "alarm bell" telling managers: every dollar of discount we give costs us profit efficiency and budget erosion.</div>
+                <div class="txt ar" style="display:none"><strong>"لغز الخصومات والارتباط المفقود" (تحليل الخصومات)</strong><br><br>انتقنا إلى الصفحة الثانية للإجابة على سؤال استراتيجي: "هل الخصومات العالية هي المحرك الحقيقي للبيع؟"<br><br><strong>السؤال الجوهري:</strong> "هل العميل الذي يحصل على خصم 80% يشتري كميات أكبر تبرر خسارتنا؟"<br><br><strong>ما قالته الشارتات:</strong> من خلال رسم التشتت، صُدمنا بأن الخط شبه أفقي! هذا يعني أن زيادة الخصم لا تؤدي لزيادة ملحوظة في الكمية المباعة.<br><br><strong>منطقة الموت:</strong> حددنا أن أي خصم يتجاوز <strong>20%</strong> يحول الصفقة فوراً إلى خسارة تشغيلية.<br><br><strong>مؤشر الكفاءة:</strong> قمنا بابتكار مؤشر Discount Efficiency الذي سجل (0.82- دولار)، وهو "جرس إنذار" يقول للمديرين: كل دولار خصم نمنحه، يكلفنا عملياً ضياع كفاءة ربحية وتآكل للميزانية.</div>
             </div>
 
-            <div id="eco-ops" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('eco-ops')">Translate to Arabic</button>
-                <div class="tab-content-text en">
-                    <strong>"Black Holes in Operations" (Products & Shipping)</strong><br><br>
-                    In the final stage, we had to identify who is responsible for draining profits; is it the product or its delivery method?<br><br>
-                    <strong>The Strategic Question:</strong> "Where does the money go after selling the product?"<br><br>
-                    <strong>Numerical Dissection:</strong> Using the Decomposition Tree, we traced the losses and discovered that the "Tables" section in the Furniture category is a "black hole" swallowing profits with a net loss of <strong>$16.6K</strong>.<br><br>
-                    <strong>Shipping Shock:</strong> States like Alabama and South Carolina consume huge amounts reaching <strong>$45 per shipment</strong>, making selling low-margin products there a commercial suicide decision.<br><br>
-                    <strong>Final Result:</strong> We proved with data that the combination of "high discount" and "high shipping cost" is the main reason behind the list of losing products.
-                </div>
-                <div class="tab-content-text ar" style="display:none;">
-                    <strong>"الثقوب السوداء في العمليات" (المنتجات والشحن)</strong><br><br>
-                    في المرحلة الأخيرة، كان علينا تحديد المسؤول عن استنزاف الأرباح؛ هل هو المنتج أم طريقة توصيله؟<br><br>
-                    <strong>السؤال الاستراتيجي:</strong> "أين تذهب الأموال بعد بيع المنتج؟"<br><br>
-                    <strong>التشريح الرقمي:</strong> باستخدام شجرة التفكيك (Decomposition Tree)، تتبعنا الخسائر واكتشفنا أن قسم "الطاولات" (Tables) في فئة الأثاث هو "ثقب أسود" يبتلع الأرباح بخسارة صافية قدرها <strong>16.6 ألف دولار</strong>.<br><br>
-                    <strong>صدمة الشحن:</strong> اكتشفنا أن ولايات مثل Alabama و South Carolina تستهلك مبالغ طائلة تصل لـ <strong>45 دولاراً للشحنة الواحدة</strong>، مما يجعل بيع المنتجات منخفضة الهامش هناك قراراً انتحارياً تجارياً.<br><br>
-                    <strong>النتيجة النهائية:</strong> أثبتنا بالبيانات أن الجمع بين "خصم مرتفع" و "تكلفة شحن عالية" هو السبب الرئيسي وراء قائمة المنتجات الخاسرة التي رصدناها في الجداول التفصيلية.
-                </div>
+            <div id="e-op" class="pane">
+                <button class="lang-btn" onclick="lang('e-op')">Translate to Arabic</button>
+                <div class="txt en"><strong>"Black Holes in Operations" (Products & Shipping)</strong><br><br>In the final stage, we had to identify who is responsible for draining profits.<br><br><strong>The Strategic Question:</strong> "Where does the money go after selling the product?"<br><br><strong>Numerical Dissection:</strong> Using the Decomposition Tree, we traced the losses and discovered that the "Tables" section in the Furniture category is a "black hole" swallowing profits with a net loss of <strong>$16.6K</strong>.<br><br><strong>Shipping Shock:</strong> States like Alabama and South Carolina consume huge amounts reaching <strong>$45 per shipment</strong>, making selling low-margin products there a commercial suicide decision.<br><br><strong>Final Result:</strong> We proved with data that the combination of "high discount" and "high shipping cost" is the main reason behind the list of losing products.</div>
+                <div class="txt ar" style="display:none"><strong>"الثقوب السوداء في العمليات" (المنتجات والشحن)</strong><br><br>في المرحلة الأخيرة، كان علينا تحديد المسؤول عن استنزاف الأرباح.<br><br><strong>السؤال الاستراتيجي:</strong> "أين تذهب الأموال بعد بيع المنتج؟"<br><br><strong>التشريح الرقمي:</strong> باستخدام شجرة التفكيك (Decomposition Tree)، تتبعنا الخسائر واكتشفنا أن قسم "الطاولات" (Tables) في فئة الأثاث هو "ثقب أسود" يبتلع الأرباح بخسارة صافية قدرها <strong>16.6 ألف دولار</strong>.<br><br><strong>صدمة الشحن:</strong> اكتشفنا أن ولايات مثل Alabama و South Carolina تستهلك مبالغ طائلة تصل لـ <strong>45 دولاراً للشحنة الواحدة</strong>، مما يجعل بيع المنتجات منخفضة الهامش هناك قراراً انتحارياً تجارياً.<br><br><strong>النتيجة النهائية:</strong> أثبتنا بالبيانات أن الجمع بين "خصم مرتفع" و "تكلفة شحن عالية" هو السبب الرئيسي وراء قائمة المنتجات الخاسرة.</div>
             </div>
 
-            <div id="eco-rec" class="tab-pane">
-                <button class="translate-btn" onclick="toggleLang('eco-rec')">Translate to Arabic</button>
-                <div class="tab-content-text en">
-                    <strong>Actionable Insights — Final Recommendations:</strong><br><br>
-                    Based on this digital story, we came up with 3 essential recommendations:<br><br>
-                    <strong>1. Ban Blind Discounts:</strong> Set a strict discount cap at <strong>15-20%</strong>, as data proved that anything beyond that is a confirmed loss.<br><br>
-                    <strong>2. Re-engineer Logistics:</strong> Impose a "minimum order" in distant states to cover high shipping costs.<br><br>
-                    <strong>3. Portfolio Cleanup:</strong> Review products in the Furniture/Tables category and re-price them or reduce reliance on them in high-cost areas.
-                </div>
-                <div class="tab-content-text ar" style="display:none;">
-                    <strong>التوصيات الختامية (Actionable Insights):</strong><br><br>
-                    بناءً على هذه القصة الرقمية، خرجنا بـ 3 توصيات لا غنى عنها:<br><br>
-                    <strong>1. حظر الخصومات العمياء:</strong> وضع سقف صارم للخصومات عند <strong>15-20%</strong>، حيث أثبتت البيانات أن ما بعد ذلك هو خسارة محققة.<br><br>
-                    <strong>2. إعادة هندسة اللوجستيات:</strong> فرض "حد أدنى للطلب" في الولايات البعيدة لتغطية تكاليف الشحن المرتفعة.<br><br>
-                    <strong>3. تطهير المحفظة:</strong> مراجعة المنتجات في فئة (Furniture/Tables) وإعادة تسعيرها أو تقليل الاعتماد عليها في المناطق ذات التكلفة العالية.
-                </div>
+            <div id="e-re" class="pane">
+                <button class="lang-btn" onclick="lang('e-re')">Translate to Arabic</button>
+                <div class="txt en"><strong>Actionable Insights — Final Recommendations:</strong><br><br><strong>1. Ban Blind Discounts:</strong> Set a strict discount cap at <strong>15-20%</strong>, as data proved that anything beyond that is a confirmed loss.<br><br><strong>2. Re-engineer Logistics:</strong> Impose a "minimum order" in distant states to cover high shipping costs.<br><br><strong>3. Portfolio Cleanup:</strong> Review products in the Furniture/Tables category and re-price them or reduce reliance on them in high-cost areas.</div>
+                <div class="txt ar" style="display:none"><strong>التوصيات الختامية (Actionable Insights):</strong><br><br><strong>1. حظر الخصومات العمياء:</strong> وضع سقف صارم للخصومات عند <strong>15-20%</strong>، حيث أثبتت البيانات أن ما بعد ذلك هو خسارة محققة.<br><br><strong>2. إعادة هندسة اللوجستيات:</strong> فرض "حد أدنى للطلب" في الولايات البعيدة لتغطية تكاليف الشحن المرتفعة.<br><br><strong>3. تطهير المحفظة:</strong> مراجعة المنتجات في فئة (Furniture/Tables) وإعادة تسعيرها أو تقليل الاعتماد عليها في المناطق ذات التكلفة العالية.</div>
             </div>
         </div>
     </div>
 
 </section>
 
-<section id="certificates" class="container" style="padding: 50px 0;">
-    <div class="section-divider" style="margin-bottom: 30px;"></div>
-    <h2 style="text-align:center; font-size: 22px; font-weight: 600;">Professional Certificates</h2>
-    <div class="certificates-grid" style="margin-top: 30px;">
-        <div class="certificate-card" data-aos="fade-up">
-            <img src="Data Transformation in power bi.png" onclick="openPopup(this.src)">
-            <div class="cert-info"><h3>Data Transformation</h3></div>
-        </div>
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="80">
-            <img src="intermediante Sql.jpg" onclick="openPopup(this.src)">
-            <div class="cert-info"><h3>Intermediate SQL</h3></div>
+<section id="certs" class="certs">
+    <div class="wrap">
+        <div class="divider" style="margin-bottom:30px"></div>
+        <h3>Professional Certificates</h3>
+        <div class="certs-grid">
+            <div class="cert-card" data-aos="fade-up">
+                <div class="cert-img-w"><img src="Data Transformation in power bi.png" onclick="pop(this.src)"></div>
+                <div class="cert-info">
+                    <h4>Data Transformation</h4>
+                    <div class="cert-btns">
+                        <button class="cb cb-prev" onclick="pop('Data Transformation in power bi.png')">Preview</button>
+                        <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/e686cfc0c0906f9569fc3c411b468fa769c9b0cc?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa" target="_blank" class="cb cb-link">View Certificate</a>
+                    </div>
+                </div>
+            </div>
+            <div class="cert-card" data-aos="fade-up" data-aos-delay="80">
+                <div class="cert-img-w"><img src="intermediante Sql.jpg" onclick="pop(this.src)"></div>
+                <div class="cert-info">
+                    <h4>Intermediate SQL</h4>
+                    <div class="cert-btns">
+                        <button class="cb cb-prev" onclick="pop('intermediante Sql.jpg')">Preview</button>
+                        <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/fe2ff1270f4fb6187ad25757aeba17846d8b42bb?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa" target="_blank" class="cb cb-link">View Certificate</a>
+                    </div>
+                </div>
+            </div>
+            <div class="cert-card" data-aos="fade-up" data-aos-delay="160">
+                <div class="cert-img-w"><img src="Intermediate_Data_Modeling_in_Power_BI.png" onclick="pop(this.src)"></div>
+                <div class="cert-info">
+                    <h4>Intermediate Data Modeling in Power BI</h4>
+                    <div class="cert-btns">
+                        <button class="cb cb-prev" onclick="pop('Intermediate_Data_Modeling_in_Power_BI.png')">Preview</button>
+                        <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/6241db4e965e2b2e4b57a85def5ee487f4b05814?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa" target="_blank" class="cb cb-link">View Certificate</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<div id="popup" class="popup" onclick="this.classList.remove('active')">
-    <img id="popup-img" src="">
-</div>
+<div id="popup" class="popup" onclick="this.classList.remove('on')"><img id="pop-img" src=""></div>
 
 <section id="contact" class="contact" data-aos="fade-up">
-    <div class="container">
-        <div class="section-divider"></div>
-        <h2>Contact Me</h2>
-        <div class="contact-info">
-            <div class="contact-item"><a href="mailto:mohamed3mad131@gmail.com">mohamed3mad131@gmail.com</a></div>
-            <div class="contact-item"><a href="https://www.linkedin.com/in/mohamed-emad-76b24a294" target="_blank">LinkedIn Profile</a></div>
-            <div class="contact-item"><a href="tel:01040699963">01040699963</a></div>
+    <div class="wrap">
+        <div class="divider"></div>
+        <h3>Contact Me</h3>
+        <div class="contact-links">
+            <a href="mailto:mohamed3mad131@gmail.com">mohamed3mad131@gmail.com</a>
+            <a href="https://www.linkedin.com/in/mohamed-emad-76b24a294" target="_blank">LinkedIn Profile</a>
+            <a href="tel:01040699963">01040699963</a>
         </div>
     </div>
 </section>
 
 <footer><p>&copy; 2026 Mohamed Emad Hamdy</p></footer>
 
-</div><!-- end content-layer -->
+</div>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    AOS.init({ duration: 700, once: true });
+AOS.init({duration:700,once:true});
 
-    function changeSlide(sliderId, direction) {
-        const slider = document.getElementById(sliderId);
-        const images = slider.getElementsByTagName('img');
-        let activeIdx = 0;
-        for(let i=0; i<images.length; i++) {
-            if(images[i].classList.contains('active')) {
-                activeIdx = i;
-                images[i].classList.remove('active');
-                break;
-            }
-        }
-        let nextIdx = (activeIdx + direction + images.length) % images.length;
-        images[nextIdx].classList.add('active');
-    }
+(function(){var t=localStorage.getItem('theme');document.body.setAttribute('data-theme',t||'light')})();
 
-    function zoomIn(event) {
-        const img = event.currentTarget.querySelector('img.active');
-        const x = (event.offsetX / event.currentTarget.offsetWidth) * 100;
-        const y = (event.offsetY / event.currentTarget.offsetHeight) * 100;
-        img.style.transformOrigin = x + '% ' + y + '%';
-        img.style.transform = "scale(1.6)";
-    }
+function toggleTheme(){
+    var t=document.body.getAttribute('data-theme')==='dark'?'light':'dark';
+    document.body.setAttribute('data-theme',t);
+    localStorage.setItem('theme',t);
+}
 
-    function zoomOut(event) {
-        const img = event.currentTarget.querySelector('img.active');
-        img.style.transform = "scale(1)";
-    }
+function slide(id,d){
+    var b=document.getElementById(id),imgs=b.getElementsByTagName('img'),a=0;
+    for(var i=0;i<imgs.length;i++){if(imgs[i].classList.contains('on')){a=i;imgs[i].classList.remove('on');break;}}
+    imgs[(a+d+imgs.length)%imgs.length].classList.add('on');
+}
 
-    function openTab(evt, tabName) {
-        const parent = evt.currentTarget.closest('.project-details');
-        const panes = parent.getElementsByClassName("tab-pane");
-        const links = parent.getElementsByClassName("tab-link");
-        for(let i=0; i<panes.length; i++) panes[i].classList.remove("active");
-        for(let i=0; i<links.length; i++) links[i].classList.remove("active");
-        document.getElementById(tabName).classList.add("active");
-        evt.currentTarget.classList.add("active");
-    }
+function zmIn(e){
+    var img=e.currentTarget.querySelector('img.on');
+    img.style.transformOrigin=(e.offsetX/e.currentTarget.offsetWidth*100)+'% '+(e.offsetY/e.currentTarget.offsetHeight*100)+'%';
+    img.style.transform='scale(1.6)';
+}
+function zmOut(e){e.currentTarget.querySelector('img.on').style.transform='scale(1)';}
 
-    function toggleLang(tabId) {
-        const tab = document.getElementById(tabId);
-        const en = tab.querySelector('.en');
-        const ar = tab.querySelector('.ar');
-        const btn = tab.querySelector('.translate-btn');
-        if(en.style.display === "none") {
-            en.style.display = "block"; ar.style.display = "none";
-            btn.innerText = "Translate to Arabic";
-        } else {
-            en.style.display = "none"; ar.style.display = "block";
-            btn.innerText = "Translate to English";
-        }
-    }
+function tab(e,id){
+    var p=e.currentTarget.closest('.p-body'),ps=p.getElementsByClassName('pane'),ts=p.getElementsByClassName('t-btn');
+    for(var i=0;i<ps.length;i++)ps[i].classList.remove('on');
+    for(var i=0;i<ts.length;i++)ts[i].classList.remove('on');
+    document.getElementById(id).classList.add('on');
+    e.currentTarget.classList.add('on');
+}
 
-    function openPopup(src) {
-        document.getElementById("popup-img").src = src;
-        document.getElementById("popup").classList.add("active");
-    }
+function lang(id){
+    var p=document.getElementById(id),en=p.querySelector('.en'),ar=p.querySelector('.ar'),b=p.querySelector('.lang-btn');
+    if(en.style.display==='none'){en.style.display='block';ar.style.display='none';b.innerText='Translate to Arabic';}
+    else{en.style.display='none';ar.style.display='block';b.innerText='Translate to English';}
+}
+
+function pop(src){document.getElementById('pop-img').src=src;document.getElementById('popup').classList.add('on');}
 </script>
 </body>
 </html>
