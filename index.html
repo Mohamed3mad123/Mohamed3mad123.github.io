@@ -7,20 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        :root {
-            --bg:#f0f4f8;--card:rgba(255,255,255,0.55);--card-h:rgba(255,255,255,0.75);
-            --header:rgba(255,255,255,0.82);--border:rgba(0,0,0,0.07);--border-h:rgba(0,0,0,0.12);
-            --t1:#1e293b;--t2:#475569;--t3:#94a3b3;
-            --accent:#0284c7;--accent-bg:rgba(2,132,199,0.07);--accent-bd:rgba(2,132,199,0.22);
-            --slider-bg:#e2e8f0;--ac:2,132,199;
-        }
-        [data-theme="dark"] {
-            --bg:#0b1120;--card:rgba(19,28,49,0.55);--card-h:rgba(24,35,64,0.7);
-            --header:rgba(11,17,32,0.9);--border:rgba(255,255,255,0.07);--border-h:rgba(255,255,255,0.12);
-            --t1:#e2e8f0;--t2:#8896b0;--t3:#5a6a85;
-            --accent:#38bdf8;--accent-bg:rgba(56,189,248,0.08);--accent-bd:rgba(56,189,248,0.22);
-            --slider-bg:#0a0f1c;--ac:56,189,248;
-        }
+        :root{--bg:#f0f4f8;--card:rgba(255,255,255,0.55);--card-h:rgba(255,255,255,0.75);--header:rgba(255,255,255,0.82);--border:rgba(0,0,0,0.07);--border-h:rgba(0,0,0,0.12);--t1:#1e293b;--t2:#475569;--t3:#94a3b3;--accent:#0284c7;--accent-bg:rgba(2,132,199,0.07);--accent-bd:rgba(2,132,199,0.22);--slider-bg:#e2e8f0;--ac:2,132,199;--code-bg:rgba(0,0,0,0.04);--kpi-red:#ef4444}
+        [data-theme="dark"]{--bg:#0b1120;--card:rgba(19,28,49,0.55);--card-h:rgba(24,35,64,0.7);--header:rgba(11,17,32,0.9);--border:rgba(255,255,255,0.07);--border-h:rgba(255,255,255,0.12);--t1:#e2e8f0;--t2:#8896b0;--t3:#5a6a85;--accent:#38bdf8;--accent-bg:rgba(56,189,248,0.08);--accent-bd:rgba(56,189,248,0.22);--slider-bg:#0a0f1c;--ac:56,189,248;--code-bg:rgba(255,255,255,0.04);--kpi-red:#f87171}
         *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
         body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--t1);scroll-behavior:smooth;overflow-x:hidden;transition:background .5s,color .5s}
         #bgCanvas{position:fixed;inset:0;pointer-events:none;z-index:0}
@@ -85,7 +73,7 @@
         .expand-btn svg{width:16px;height:16px;transition:transform .3s}
         .expand-btn.open svg{transform:rotate(180deg)}
         .p-expand{max-height:0;overflow:hidden;transition:max-height .5s ease,opacity .4s ease;opacity:0}
-        .p-expand.open{max-height:5000px;opacity:1}
+        .p-expand.open{max-height:8000px;opacity:1}
         .tabs{display:flex;gap:6px;border-bottom:1px solid var(--border);margin:14px 0 16px;overflow-x:auto;padding-bottom:10px;transition:border-color .5s}
         .t-btn{padding:6px 13px;border:1px solid var(--border);background:transparent;font-weight:500;color:var(--t2);cursor:pointer;border-radius:6px;white-space:nowrap;font-size:12px;font-family:'Poppins',sans-serif;transition:all .3s}
         .t-btn:hover{border-color:var(--border-h);color:var(--t1)}
@@ -99,6 +87,12 @@
         .txt-en strong{color:var(--t1);font-weight:600}
         .txt-ar{font-family:'Cairo',sans-serif;font-size:15px;line-height:2.1;direction:rtl;text-align:right;color:var(--t2);transition:color .5s}
         .txt-ar strong{color:var(--t1);font-weight:600}
+        .code-block{background:var(--code-bg);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin:12px 0;font-family:'Courier New',monospace;font-size:12px;line-height:1.8;color:var(--t2);overflow-x:auto;direction:ltr;text-align:left;white-space:pre-wrap;transition:background .5s,border-color .5s;word-break:break-all}
+        .kpi-row{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+        .kpi-box{background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:8px;padding:10px 14px;flex:1;min-width:110px;text-align:center}
+        .kpi-box .kpi-val{font-size:17px;font-weight:700;color:var(--accent)}
+        .kpi-box .kpi-val.red{color:var(--kpi-red)}
+        .kpi-box .kpi-label{font-size:11px;color:var(--t3);margin-top:2px}
         .certs{padding:50px 0}
         .certs h3{text-align:center;font-size:22px;font-weight:600;margin-bottom:30px;color:var(--t1);transition:color .5s}
         .certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px}
@@ -111,20 +105,17 @@
         .cert-info h4{margin:0;font-size:13px;font-weight:500;color:var(--t2);transition:color .5s}
         .cert-btns{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
         .cb{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:6px;font-size:11px;font-weight:600;font-family:'Poppins',sans-serif;cursor:pointer;text-decoration:none;transition:all .3s}
-        .cb-prev{background:transparent;border:1px solid var(--border);color:var(--t3)}
-        .cb-prev:hover{border-color:var(--accent-bd);color:var(--accent)}
-        .cb-link{background:var(--accent-bg);border:1px solid var(--accent-bd);color:var(--accent)}
-        .cb-link:hover{background:var(--accent);color:#fff}
+        .cb-prev{background:transparent;border:1px solid var(--border);color:var(--t3)}.cb-prev:hover{border-color:var(--accent-bd);color:var(--accent)}
+        .cb-link{background:var(--accent-bg);border:1px solid var(--accent-bd);color:var(--accent)}.cb-link:hover{background:var(--accent);color:#fff}
         .popup{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:flex-start;justify-content:center;z-index:10000;padding:28px 16px;cursor:pointer;overflow-y:auto}
         .popup.on{display:flex}
         .popup img{max-width:900px;width:100%;height:auto;object-fit:contain;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
         .contact{padding:60px 0;background:var(--card);border-top:1px solid var(--border);text-align:center;border-radius:20px 20px 0 0;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:all .5s}
         .contact h3{font-size:22px;font-weight:600;color:var(--t1);transition:color .5s}
         .contact-links{display:flex;flex-direction:column;gap:16px;align-items:center;margin-top:26px}
-        .contact-links a{color:var(--t2);text-decoration:none;font-size:14px;transition:color .3s}
-        .contact-links a:hover{color:var(--accent)}
+        .contact-links a{color:var(--t2);text-decoration:none;font-size:14px;transition:color .3s}.contact-links a:hover{color:var(--accent)}
         footer{text-align:center;padding:16px;background:#0f172a;color:#64748b;font-size:13px}
-        @media(max-width:600px){.hero-flex{flex-direction:column;text-align:center}.hero-text{text-align:center}.hero-tools{justify-content:center}}
+        @media(max-width:600px){.hero-flex{flex-direction:column;text-align:center}.hero-text{text-align:center}.hero-tools{justify-content:center}.kpi-row{flex-direction:column}}
         @media(min-width:768px){.contact-links{flex-direction:row;gap:36px}.nav-links{margin:0}}
         ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border-h);border-radius:3px}
     </style>
@@ -167,17 +158,11 @@
                 <h2>Mohamed Emad Hamdy</h2>
                 <p class="hero-sub">Data Analyst</p>
                 <div class="hero-tools">
-                    <div class="ht-item">
-                        <div class="ht-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg></div>SQL
-                    </div>
+                    <div class="ht-item"><div class="ht-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg></div>SQL</div>
                     <span class="ht-sep">&#8226;</span>
-                    <div class="ht-item">
-                        <div class="ht-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#f2c811" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>Power BI
-                    </div>
+                    <div class="ht-item"><div class="ht-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#f2c811" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>Power BI</div>
                     <span class="ht-sep">&#8226;</span>
-                    <div class="ht-item">
-                        <div class="ht-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#217346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></div>Excel
-                    </div>
+                    <div class="ht-item"><div class="ht-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#217346" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></div>Excel</div>
                 </div>
             </div>
         </div>
@@ -185,45 +170,15 @@
 </section>
 
 <section id="about" class="about" data-aos="fade-up">
-    <div class="wrap about-inner">
-        <div class="divider"></div>
-        <h3>About Me</h3>
-        <p>Professional Data Analyst with expertise in SQL, Power BI, and Excel. I specialize in transforming raw data into meaningful business insights through interactive dashboards and strategic data modeling.</p>
-    </div>
+    <div class="wrap about-inner"><div class="divider"></div><h3>About Me</h3><p>Professional Data Analyst with expertise in SQL, Power BI, and Excel. I specialize in transforming raw data into meaningful business insights through interactive dashboards and strategic data modeling.</p></div>
 </section>
 
 <section id="skills" class="skills" data-aos="fade-up">
-    <div class="wrap">
-        <div class="divider"></div>
-        <h3>Skills & Expertise</h3>
+    <div class="wrap"><div class="divider"></div><h3>Skills & Expertise</h3>
         <div class="skills-grid">
-            <div class="sk-card" data-aos="fade-up">
-                <h4>Tools</h4>
-                <div class="sk-list">
-                    <div class="sk-row"><div class="sk-dot"></div><span>Power BI</span></div>
-                    <div class="sk-row"><div class="sk-dot"></div><span>Power Query</span></div>
-                    <div class="sk-row"><div class="sk-dot"></div><span>SQL Server</span></div>
-                    <div class="sk-row"><div class="sk-dot"></div><span>Excel</span></div>
-                </div>
-            </div>
-            <div class="sk-card" data-aos="fade-up" data-aos-delay="80">
-                <h4>Technical</h4>
-                <div class="sk-list">
-                    <div class="sk-row"><div class="sk-dot"></div><span>DAX Formulas</span></div>
-                    <div class="sk-row"><div class="sk-dot"></div><span>Star Schema</span></div>
-                    <div class="sk-row"><div class="sk-dot"></div><span>ETL Pipelines</span></div>
-                    <div class="sk-row"><div class="sk-dot"></div><span>Data Cleaning</span></div>
-                </div>
-            </div>
-            <div class="sk-card" data-aos="fade-up" data-aos-delay="160">
-                <h4>Analytics</h4>
-                <div class="sk-list">
-                    <div class="sk-row"><div class="sk-dot"></div><span>KPI Design</span></div>
-                    <div class="sk-row"><div class="sk-dot"></div><span>Data Storytelling</span></div>
-                    <div class="sk-row"><div class="sk-dot"></div><span>Root Cause Analysis</span></div>
-                    <div class="sk-row"><div class="sk-dot"></div><span>What-if Analysis</span></div>
-                </div>
-            </div>
+            <div class="sk-card" data-aos="fade-up"><h4>Tools</h4><div class="sk-list"><div class="sk-row"><div class="sk-dot"></div><span>Power BI</span></div><div class="sk-row"><div class="sk-dot"></div><span>Power Query</span></div><div class="sk-row"><div class="sk-dot"></div><span>SQL Server</span></div><div class="sk-row"><div class="sk-dot"></div><span>Excel</span></div></div></div>
+            <div class="sk-card" data-aos="fade-up" data-aos-delay="80"><h4>Technical</h4><div class="sk-list"><div class="sk-row"><div class="sk-dot"></div><span>DAX Formulas</span></div><div class="sk-row"><div class="sk-dot"></div><span>Star Schema</span></div><div class="sk-row"><div class="sk-dot"></div><span>ETL Pipelines</span></div><div class="sk-row"><div class="sk-dot"></div><span>Data Cleaning</span></div></div></div>
+            <div class="sk-card" data-aos="fade-up" data-aos-delay="160"><h4>Analytics</h4><div class="sk-list"><div class="sk-row"><div class="sk-dot"></div><span>KPI Design</span></div><div class="sk-row"><div class="sk-dot"></div><span>Data Storytelling</span></div><div class="sk-row"><div class="sk-dot"></div><span>Root Cause Analysis</span></div><div class="sk-row"><div class="sk-dot"></div><span>What-if Analysis</span></div></div></div>
         </div>
     </div>
 </section>
@@ -243,10 +198,7 @@
         <div class="p-body">
             <div class="p-title-ar">دراسة حالة: تحليل الأداء التشغيلي لمتجر</div>
             <div class="p-title-en">Business Intelligence: Optimizing Flavor & Branch Performance</div>
-            <button class="expand-btn" onclick="toggleExpand(this)">
-                <span>Read Case Study</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
+            <button class="expand-btn" onclick="toggleExpand(this)"><span>Read Case Study</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
             <div class="p-expand">
                 <div class="tabs">
                     <button class="t-btn on" onclick="tab(event,'i-ov')">Overview</button>
@@ -255,99 +207,189 @@
                     <button class="t-btn" onclick="tab(event,'i-pr')">Pricing</button>
                     <button class="t-btn" onclick="tab(event,'i-re')">Recommendations</button>
                 </div>
-
-                <div id="i-ov" class="pane on">
-                    <button class="lang-btn" onclick="lang(this)">Translate to Arabic</button>
-                    <div class="txt-en"><strong>"Beyond the Total Number" (Overview)</strong><br><br>In this project, I analyzed sales data for a store covering multiple branches in Egypt (Cairo, Tanta, Mansoura, Alexandria) to decode financial performance and understand customer behavior across different time periods.<br><br>The journey began with a general performance analysis that revealed <strong>total revenue of $327K</strong> and <strong>net profit of $224K</strong>.<br><br><strong>The Numeric Paradox:</strong> Despite revenue declining slightly by 6.96% compared to last year, the profit margin remained very strong at <strong>68.64%</strong>.<br><br><strong>Key Discovery:</strong> Data proved that ice cream sales don't depend entirely on summer as commonly believed; winter recorded sales very close to spring and autumn, breaking the stereotype of product seasonality.</div>
-                    <div class="txt-ar" style="display:none"><strong>"ما وراء الرقم الإجمالي" (نظرة عامة)</strong><br><br>في هذا المشروع، قمت بتحليل بيانات المبيعات لمتجر يغطي عدة فروع في مصر (القاهرة، طنطا، المنصورة، الإسكندرية) لفك شفرة الأداء المالي وفهم سلوك العميل عبر فترات زمنية مختلفة.<br><br>بدأت الرحلة بتحليل الأداء العام الذي كشف عن إيرادات إجمالية قدرها <strong>327 ألف دولار</strong> وصافي ربح <strong>224 ألف دولار</strong>.<br><br><strong>المفارقة الرقمية:</strong> رغم أن الإيرادات شهدت تراجعاً طفيفاً بنسبة 6.96% عن العام الماضي، إلا أن هامش الربح ظل قوياً جداً عند <strong>68.64%</strong>.<br><br><strong>الاكتشاف الأهم:</strong> أثبتت البيانات أن مبيعات الآيس كريم لا تعتمد كلياً على الصيف كما هو شائع؛ حيث سجل فصل الشتاء مبيعات متقاربة جداً مع الربيع والخريف، مما يكسر الصورة النمطية لموسمية المنتج.</div>
-                </div>
-
-                <div id="i-op" class="pane">
-                    <button class="lang-btn" onclick="lang(this)">Translate to Arabic</button>
-                    <div class="txt-en"><strong>"Product & Branch Dissection" (Operational Performance)</strong><br><br><strong>The Star:</strong> Cone is the best-selling product with revenue of <strong>$89K</strong>, followed by Ice Cream Cup.<br><br><strong>Sales Stronghold:</strong> Cairo branch sits at the top with revenue of <strong>$111K</strong>, making it the main growth engine.<br><br><strong>Employee Efficiency:</strong> "Ahmed" is the top performer with sales reaching <strong>$84K</strong>, a model that can be generalized to develop the rest of the team.</div>
-                    <div class="txt-ar" style="display:none"><strong>"تشريح المنتجات والفروع" (الأداء التشغيلي)</strong><br><br><strong>نجم العرض (The Star):</strong> منتج الـ Cone هو الأكثر مبيعاً بإيرادات بلغت <strong>89 ألف دولار</strong>، يليه Ice Cream Cup.<br><br><strong>معقل المبيعات:</strong> فرع القاهرة يتربع على القمة بإيرادات <strong>111 ألف دولار</strong>، مما يجعله المحرك الرئيسي للنمو.<br><br><strong>كفاءة الموظفين:</strong> أظهر التحليل أن الموظف "أحمد" هو الأعلى أداءً بمبيعات وصلت إلى <strong>84 ألف دولار</strong>، وهو ما يمثل نموذجاً يمكن تعميمه لتطوير بقية الفريق.</div>
-                </div>
-
-                <div id="i-be" class="pane">
-                    <button class="lang-btn" onclick="lang(this)">Translate to Arabic</button>
-                    <div class="txt-en"><strong>"Consumer Behavior & Timing"</strong><br><br><strong>Peak Timing:</strong> Most sales concentrate in the evening period (<strong>50.51%</strong>), and Friday is the peak of weekly activity.<br><br><strong>Market Basket Analysis:</strong> Strong correlation between Cone and Ice Cream Cup (appeared together <strong>87 times</strong>), opening opportunities for bundling offers to increase average order value.</div>
-                    <div class="txt-ar" style="display:none"><strong>"سلوك المستهلك والوقت"</strong><br><br><strong>توقيت الذروة:</strong> تتركز أغلب المبيعات في الفترة المسائية (<strong>50.51%</strong>)، ويكون يوم الجمعة هو ذروة النشاط الأسبوعي.<br><br><strong>تحليل سلة المشتريات:</strong> اكتشفنا ارتباطاً وثيقاً بين الـ Cone والـ Ice Cream Cup (تكرر <strong>87 مرة</strong> معاً)، مما يفتح فرصاً لعمل عروض مشتركة لزيادة متوسط قيمة الطلب.</div>
-                </div>
-
-                <div id="i-pr" class="pane">
-                    <button class="lang-btn" onclick="lang(this)">Translate to Arabic</button>
-                    <div class="txt-en"><strong>"Decision Lab" (Discount & What-if Analysis)</strong><br><br><strong>Discount Efficiency:</strong> Total discounts reached <strong>$9K</strong>. Increasing discounts doesn't necessarily lead to a profit jump.<br><br><strong>What-if Simulation:</strong> Applying a 5% discount with 10% more orders would lead to only <strong>2.29% profit increase</strong> — maintaining current pricing with better service is more effective.</div>
-                    <div class="txt-ar" style="display:none"><strong>"مختبر القرارات" (تحليل الخصومات وماذا لو؟)</strong><br><br><strong>كفاءة الخصم:</strong> إجمالي الخصومات بلغت <strong>9 آلاف دولار</strong>. زيادة الخصم لا تؤدي بالضرورة لقفزة في الأرباح.<br><br><strong>محاكاة الواقع:</strong> تطبيق خصم 5% مع زيادة الطلبات 10% سيؤدي لزيادة أرباح <strong>2.29% فقط</strong> — الحفاظ على السعر مع تحسين الخدمة أجدى.</div>
-                </div>
-
-                <div id="i-re" class="pane">
-                    <button class="lang-btn" onclick="lang(this)">Translate to Arabic</button>
-                    <div class="txt-en"><strong>Final Recommendations:</strong><br><br><strong>1.</strong> Intensify marketing during evenings and Fridays.<br><strong>2.</strong> Activate Cone + Cup bundling offers.<br><strong>3.</strong> Increase investment in Cairo or transfer its model to other branches.<br><strong>4.</strong> Continue winter marketing — data proved real demand exists.</div>
-                    <div class="txt-ar" style="display:none"><strong>التوصيات الختامية:</strong><br><br><strong>1.</strong> تكثيف الحملات المسائية ويوم الجمعة.<br><strong>2.</strong> تفعيل عروض الربط بين Cone و Cup.<br><strong>3.</strong> زيادة الاستثمار في القاهرة أو نقل نموذجها لفروع أخرى.<br><strong>4.</strong> الاستمرار في التسويق الشتوي — البيانات أثبتت وجود طلب حقيقي.</div>
-                </div>
+                <div id="i-ov" class="pane on"><button class="lang-btn" onclick="lang(this)">Translate to Arabic</button><div class="txt-en"><strong>"Beyond the Total Number" (Overview)</strong><br><br>In this project, I analyzed sales data for a store covering multiple branches in Egypt (Cairo, Tanta, Mansoura, Alexandria) to decode financial performance and understand customer behavior across different time periods.<br><br>The journey began with a general performance analysis that revealed <strong>total revenue of $327K</strong> and <strong>net profit of $224K</strong>.<br><br><strong>The Numeric Paradox:</strong> Despite revenue declining slightly by 6.96% compared to last year, the profit margin remained very strong at <strong>68.64%</strong>.<br><br><strong>Key Discovery:</strong> Data proved that ice cream sales don't depend entirely on summer as commonly believed; winter recorded sales very close to spring and autumn, breaking the stereotype of product seasonality.</div><div class="txt-ar" style="display:none"><strong>"ما وراء الرقم الإجمالي" (نظرة عامة)</strong><br><br>في هذا المشروع، قمت بتحليل بيانات المبيعات لمتجر يغطي عدة فروع في مصر (القاهرة، طنطا، المنصورة، الإسكندرية) لفك شفرة الأداء المالي وفهم سلوك العميل عبر فترات زمنية مختلفة.<br><br>بدأت الرحلة بتحليل الأداء العام الذي كشف عن إيرادات إجمالية قدرها <strong>327 ألف دولار</strong> وصافي ربح <strong>224 ألف دولار</strong>.<br><br><strong>المفارقة الرقمية:</strong> رغم أن الإيرادات شهدت تراجعاً طفيفاً بنسبة 6.96% عن العام الماضي، إلا أن هامش الربح ظل قوياً جداً عند <strong>68.64%</strong>.<br><br><strong>الاكتشاف الأهم:</strong> أثبتت البيانات أن مبيعات الآيس كريم لا تعتمد كلياً على الصيف كما هو شائع؛ حيث سجل فصل الشتاء مبيعات متقاربة جداً مع الربيع والخريف، مما يكسر الصورة النمطية لموسمية المنتج.</div></div>
+                <div id="i-op" class="pane"><button class="lang-btn" onclick="lang(this)">Translate to Arabic</button><div class="txt-en"><strong>"Product & Branch Dissection"</strong><br><br><strong>The Star:</strong> Cone is the best-selling product with revenue of <strong>$89K</strong>.<br><br><strong>Sales Stronghold:</strong> Cairo branch sits at the top with <strong>$111K</strong>.<br><br><strong>Employee Efficiency:</strong> "Ahmed" is the top performer with sales reaching <strong>$84K</strong>.</div><div class="txt-ar" style="display:none"><strong>"تشريح المنتجات والفروع"</strong><br><br><strong>نجم العرض:</strong> منتج الـ Cone هو الأكثر مبيعاً بإيرادات بلغت <strong>89 ألف دولار</strong>.<br><br><strong>معقل المبيعات:</strong> فرع القاهرة يتربع على القمة بإيرادات <strong>111 ألف دولار</strong>.<br><br><strong>كفاءة الموظفين:</strong> الموظف "أحمد" هو الأعلى أداءً بمبيعات وصلت إلى <strong>84 ألف دولار</strong>.</div></div>
+                <div id="i-be" class="pane"><button class="lang-btn" onclick="lang(this)">Translate to Arabic</button><div class="txt-en"><strong>"Consumer Behavior & Timing"</strong><br><br><strong>Peak Timing:</strong> Evening period (<strong>50.51%</strong>), Friday is the weekly peak.<br><br><strong>Market Basket:</strong> Strong correlation between Cone and Cup (appeared together <strong>87 times</strong>).</div><div class="txt-ar" style="display:none"><strong>"سلوك المستهلك والوقت"</strong><br><br><strong>توقيت الذروة:</strong> الفترة المسائية (<strong>50.51%</strong>)، ويوم الجمعة هو ذروة النشاط.<br><br><strong>سلة المشتريات:</strong> ارتباط وثيق بين Cone و Cup (تكرر <strong>87 مرة</strong> معاً).</div></div>
+                <div id="i-pr" class="pane"><button class="lang-btn" onclick="lang(this)">Translate to Arabic</button><div class="txt-en"><strong>"Decision Lab"</strong><br><br><strong>Discount Efficiency:</strong> Total discounts <strong>$9K</strong>. Increasing discounts doesn't lead to a profit jump.<br><br><strong>What-if:</strong> 5% discount + 10% more orders = only <strong>2.29%</strong> profit increase.</div><div class="txt-ar" style="display:none"><strong>"مختبر القرارات"</strong><br><br><strong>كفاءة الخصم:</strong> إجمالي الخصومات <strong>9 آلاف دولار</strong>. زيادة الخصم لا تؤدي لقفزة في الأرباح.<br><br><strong>محاكاة الواقع:</strong> خصم 5% + زيادة 10% طلبات = زيادة أرباح <strong>2.29% فقط</strong>.</div></div>
+                <div id="i-re" class="pane"><button class="lang-btn" onclick="lang(this)">Translate to Arabic</button><div class="txt-en"><strong>Recommendations:</strong><br><br><strong>1.</strong> Intensify marketing during evenings and Fridays.<br><strong>2.</strong> Activate Cone + Cup bundling offers.<br><strong>3.</strong> Increase investment in Cairo or transfer its model.<br><strong>4.</strong> Continue winter marketing — data proved real demand exists.</div><div class="txt-ar" style="display:none"><strong>التوصيات الختامية:</strong><br><br><strong>1.</strong> تكثيف الحملات المسائية ويوم الجمعة.<br><strong>2.</strong> تفعيل عروض الربط بين Cone و Cup.<br><strong>3.</strong> زيادة الاستثمار في القاهرة أو نقل نموذجها.<br><strong>4.</strong> الاستمرار في التسويق الشتوي — البيانات أثبتت وجود طلب حقيقي.</div></div>
             </div>
         </div>
     </div>
 
+    <!-- E-commerce Project -->
     <div class="p-card" data-aos="fade-up">
         <div class="slider-wrap">
             <button class="s-btn prv" onclick="slide('s2',-1)">&#10094;</button>
             <div class="slider-box" id="s2" onmousemove="zmIn(event)" onmouseleave="zmOut(event)">
-                <img src="E-commerce Business Health Analysis/E-commerce_1.jpg" class="on"><img src="E-commerce Business Health Analysis/E-commerce_2.jpg"><img src="E-commerce Business Health Analysis/E-commerce_3.jpg">
+                <img src="E-commerce Business Health Analysis/E-commerce_1.jpg" class="on">
+                <img src="E-commerce Business Health Analysis/E-commerce_2.jpg">
+                <img src="E-commerce Business Health Analysis/E-commerce_3.jpg">
+                <img src="E-commerce Business Health Analysis/E-commerce_4.jpg">
             </div>
             <button class="s-btn nxt" onclick="slide('s2',1)">&#10095;</button>
         </div>
         <div class="p-body">
-            <div class="p-title-ar">دراسة حالة: كشف أسرار الربحية في التجارة الإلكترونية</div>
-            <div class="p-title-en">E-commerce Diagnostic Analysis: From Growth to Profitability</div>
-            <button class="expand-btn" onclick="toggleExpand(this)">
-                <span>Read Case Study</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
+            <div class="p-title-ar">دراسة حالة: تحليل صحة أعمال التجارة الإلكترونية</div>
+            <div class="p-title-en">E-commerce Business Health Analysis</div>
+            <button class="expand-btn" onclick="toggleExpand(this)"><span>Read Case Study</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
             <div class="p-expand">
                 <div class="tabs">
-                    <button class="t-btn on" onclick="tab(event,'e-to')">Tools</button>
-                    <button class="t-btn" onclick="tab(event,'e-st')">Summary</button>
-                    <button class="t-btn" onclick="tab(event,'e-ov')">Overview</button>
-                    <button class="t-btn" onclick="tab(event,'e-di')">Discounts</button>
-                    <button class="t-btn" onclick="tab(event,'e-op')">Operations</button>
-                    <button class="t-btn" onclick="tab(event,'e-re')">Recommendations</button>
+                    <button class="t-btn on" onclick="tabEco(event,'e-sum',0)">Executive Summary</button>
+                    <button class="t-btn" onclick="tabEco(event,'e-dis',1)">Discounts</button>
+                    <button class="t-btn" onclick="tabEco(event,'e-op',2)">Operations</button>
+                    <button class="t-btn" onclick="tabEco(event,'e-ret',2)">Returns</button>
+                    <button class="t-btn" onclick="tabEco(event,'e-dax',2)">DAX Measures</button>
+                    <button class="t-btn" onclick="tabEco(event,'e-rec',2)">Recommendations</button>
                 </div>
 
-                <div id="e-to" class="pane on">
-                    <button class="lang-btn" onclick="lang(this)">Translate to Arabic</button>
-                    <div class="txt-en"><strong>Tools Used:</strong><br><br><strong>Power BI:</strong> Interactive dashboards and visual storytelling.<br><br><strong>Power Query:</strong> Clean, structure, and transform raw data.<br><br><strong>DAX:</strong> Custom KPIs like Discount Efficiency and Shipping Ratios.<br><br><strong>Star Schema:</strong> Table interconnectivity and cross-analysis.</div>
-                    <div class="txt-ar" style="display:none"><strong>الأدوات المستخدمة:</strong><br><br><strong>Power BI:</strong> لوحات تحكم تفاعلية وسرد بصري.<br><br><strong>Power Query:</strong> تنظيف وهيكلة وتحويل البيانات.<br><br><strong>DAX:</strong> مؤشرات KPIs مخصصة مثل كفاءة الخصم ونسب الشحن.<br><br><strong>Star Schema:</strong> ترابط الجداول والتحليل المتقاطع.</div>
+                <div id="e-sum" class="pane on">
+                    <button class="lang-btn" onclick="lang(this)">Translate to English</button>
+                    <div class="txt-ar">
+                        <strong>1. ملخص المشروع (Executive Summary)</strong><br><br>
+                        تم تحليل بيانات متجر إلكتروني ضخم بمبيعات إجمالية بلغت <strong>2.3 مليون دولار</strong>. الهدف الأساسي كان الإجابة على سؤال: "لماذا هامش الربح منخفض رغم ضخامة المبيعات؟" كشف المشروع عن "نزيف أرباح" ناتج عن سوء إدارة الخصومات وتكاليف الشحن المرتفعة وفشل بعض قطاعات المنتجات في اختبار الجودة (المرتجعات).
+                        <br><br>
+                        <strong>DAX Measure - YoY Growth Arrow:</strong>
+                        <div class="code-block">Executive Summary Vs Last Year Sales = 
+    VAR LastYear = CALCULATE(MAX('Date Table'[year]))
+    VAR CY = CALCULATE([Gross Sales], 'Date Table'[year] = LastYear) 
+    VAR PY = CALCULATE([Gross Sales], 'Date Table'[year] = LastYear - 1) 
+    VAR Valu = DIVIDE(CY - PY, PY) 
+    VAR Arrow = SWITCH( TRUE(), Valu > 0, "↑", Valu < 0, "↓", "-" ) 
+    
+    RETURN Arrow &amp; " " &amp; FORMAT(Valu, "0.0%")</div>
+                        <br><br>
+                        <strong>مؤشرات الأداء الرئيسية (KPIs)</strong>
+                        <div class="kpi-row">
+                            <div class="kpi-box"><div class="kpi-val">2.3M$</div><div class="kpi-label">إجمالي المبيعات (+20.4%)</div></div>
+                            <div class="kpi-box"><div class="kpi-val">263.2K$</div><div class="kpi-label">صافي الربح (12.4%)</div></div>
+                            <div class="kpi-box"><div class="kpi-val red">322.6K$</div><div class="kpi-label">إجمالي الخصومات</div></div>
+                            <div class="kpi-box"><div class="kpi-val">226K$</div><div class="kpi-label">تكاليف الشحن</div></div>
+                            <div class="kpi-box"><div class="kpi-val red">8.06%</div><div class="kpi-label">معدل المرتجعات</div></div>
+                        </div>
+                    </div>
+                    <div class="txt-en" style="display:none">
+                        <strong>1. Executive Summary</strong><br><br>
+                        Data from a large e-commerce store with total sales of <strong>$2.3 million</strong> was analyzed. The core question: "Why is the profit margin low despite massive sales?" The project uncovered a "profit leak" caused by poor discount management, high shipping costs, and some product sectors failing quality tests (returns).
+                        <br><br>
+                        <strong>DAX Measure - YoY Growth Arrow:</strong>
+                        <div class="code-block">Executive Summary Vs Last Year Sales = 
+    VAR LastYear = CALCULATE(MAX('Date Table'[year]))
+    VAR CY = CALCULATE([Gross Sales], 'Date Table'[year] = LastYear) 
+    VAR PY = CALCULATE([Gross Sales], 'Date Table'[year] = LastYear - 1) 
+    VAR Valu = DIVIDE(CY - PY, PY) 
+    VAR Arrow = SWITCH( TRUE(), Valu > 0, "↑", Valu < 0, "↓", "-" ) 
+    
+    RETURN Arrow &amp; " " &amp; FORMAT(Valu, "0.0%")</div>
+                        <br><br>
+                        <strong>Key Performance Indicators (KPIs)</strong>
+                        <div class="kpi-row">
+                            <div class="kpi-box"><div class="kpi-val">$2.3M</div><div class="kpi-label">Total Sales (+20.4%)</div></div>
+                            <div class="kpi-box"><div class="kpi-val">$263.2K</div><div class="kpi-label">Net Profit (12.4%)</div></div>
+                            <div class="kpi-box"><div class="kpi-val red">$322.6K</div><div class="kpi-label">Total Discounts</div></div>
+                            <div class="kpi-box"><div class="kpi-val">$226K</div><div class="kpi-label">Shipping Costs</div></div>
+                            <div class="kpi-box"><div class="kpi-val red">8.06%</div><div class="kpi-label">Return Rate</div></div>
+                        </div>
+                    </div>
                 </div>
 
-                <div id="e-st" class="pane">
-                    <button class="lang-btn" onclick="lang(this)">Translate to Arabic</button>
-                    <div class="txt-en"><strong>Story Summary:</strong><br><br>An investigative journey inside a global e-commerce store's data to discover why profits evaporate despite massive sales. We analyzed <strong>5,000+ orders</strong> to connect the dots between aggressive discounts, shipping costs, and true net profit.</div>
-                    <div class="txt-ar" style="display:none"><strong>ملخص القصة:</strong><br><br>رحلة استقصائية داخل بيانات متجر إلكتروني عالمي لنكتشف لماذا تتبخر الأرباح رغم ضخامة المبيعات. تحليل <strong>5,000+ طلب</strong> لربط الخصومات العنيفة، تكاليف الشحن، وصافي الربح الحقيقي.</div>
-                </div>
-
-                <div id="e-ov" class="pane">
-                    <button class="lang-btn" onclick="lang(this)">Translate to Arabic</button>
-                    <div class="txt-en"><strong>"The Illusion of Growth"</strong><br><br>Total sales reached <strong>$2.3M</strong> with <strong>20.4%</strong> annual growth — looks great at first.<br><br><strong>The Question:</strong> "If sales are growing, why doesn't it reflect in the treasury?"<br><br><strong>Discovery:</strong> Net profit margin is only <strong>12.5%</strong>. Discounts total $322.6K — exceeding our entire net profit!<br><br>Growth without profitability is just a "bragging number."</div>
-                    <div class="txt-ar" style="display:none"><strong>"خدعة النمو البراقة"</strong><br><br>مبيعات بلغت <strong>2.3 مليون دولار</strong> بنمو <strong>20.4%</strong> — تبدو رائعة.<br><br><strong>السؤال:</strong> "إذا كانت المبيعات تنمو، لماذا لا تنعكس في الخزينة؟"<br><br><strong>الاكتشاف:</strong> هامش الربح <strong>12.5%</strong> فقط. الخصومات 322.6 ألف دولار — تتجاوز إجمالي الأرباح الصافية!<br><br>النمو بدون ربحية مجرد "رقم للمفاخرة".</div>
-                </div>
-
-                <div id="e-di" class="pane">
-                    <button class="lang-btn" onclick="lang(this)">Translate to Arabic</button>
-                    <div class="txt-en"><strong>"The Discount Puzzle"</strong><br><br>Scatter plot showed a nearly horizontal line — increasing discounts doesn't increase quantity sold. We lose profit without gaining volume.<br><br><strong>Death Zone:</strong> Any discount over <strong>20%</strong> = immediate operational loss.<br><br><strong>Efficiency:</strong> Discount Efficiency recorded (-$0.82) — every discount dollar costs us profit erosion.</div>
-                    <div class="txt-ar" style="display:none"><strong>"لغز الخصومات"</strong><br><br>رسم التشتت أظهر خطاً شبه أفقي — زيادة الخصم لا تزيد الكمية. نخسر ربحاً بلا فائدة.<br><br><strong>منطقة الموت:</strong> خصم فوق <strong>20%</strong> = خسارة تشغيلية فورية.<br><br><strong>الكفاءة:</strong> Discount Efficiency سجل (0.82- دولار) — كل دولار خصم يكلفنا تآكل الأرباح.</div>
+                <div id="e-dis" class="pane">
+                    <button class="lang-btn" onclick="lang(this)">Translate to English</button>
+                    <div class="txt-ar">
+                        <strong>الخصومات (The Discount Paradox)</strong><br><br>
+                        <strong>الاكتشاف:</strong> أي خصم يتجاوز <strong>20%</strong> يحول الصفقة فوراً إلى خسارة تشغيلية.<br><br>
+                        <strong>كفاءة الخصم:</strong> سجل المؤشر قيمة سالبة (<strong>0.82-</strong>)، مما يعني أن الخصومات تآكل الأرباح ولا تزيد حجم المبيعات بشكل طردي كافٍ لتعويض الخسارة.
+                    </div>
+                    <div class="txt-en" style="display:none">
+                        <strong>The Discount Paradox</strong><br><br>
+                        <strong>Discovery:</strong> Any discount exceeding <strong>20%</strong> immediately turns the deal into an operational loss.<br><br>
+                        <strong>Discount Efficiency:</strong> The indicator recorded a negative value (<strong>-0.82</strong>), meaning discounts erode profits and don't increase sales volume enough to compensate for the loss.
+                    </div>
                 </div>
 
                 <div id="e-op" class="pane">
-                    <button class="lang-btn" onclick="lang(this)">Translate to Arabic</button>
-                    <div class="txt-en"><strong>"Black Holes in Operations"</strong><br><br><strong>Decomposition Tree:</strong> "Tables" in Furniture = black hole with <strong>$16.6K</strong> net loss.<br><br><strong>Shipping Shock:</strong> Alabama & South Carolina reach <strong>$45/shipment</strong> — selling low-margin products there is commercial suicide.<br><br><strong>Root Cause:</strong> "High discount" + "high shipping" = the main driver behind losing products.</div>
-                    <div class="txt-ar" style="display:none"><strong>"الثقوب السوداء في العمليات"</strong><br><br><strong>شجرة التفكيك:</strong> "الطاولات" في الأثاث = ثقب أسود بخسارة <strong>16.6 ألف دولار</strong>.<br><br><strong>صدمة الشحن:</strong> Alabama و South Carolina تصل لـ <strong>45 دولار/شحنة</strong> — بيع منتجات منخفضة الهامش هناك انتحار تجاري.<br><br><strong>السبب:</strong> "خصم مرتفع" + "شحن عالي" = السبب الرئيسي للمنتجات الخاسرة.</div>
+                    <button class="lang-btn" onclick="lang(this)">Translate to English</button>
+                    <div class="txt-ar">
+                        <strong>العمليات واللوجستيات</strong><br><br>
+                        <strong>فئة الطاولات (Tables):</strong> تم تحديدها كـ "ثقب أسود" للأرباح بخسارة صافية <strong>16.6 ألف دولار</strong> بسبب وزنها وتكاليف شحنها العالية.<br><br>
+                        <strong>الجغرافيا:</strong> ولايات مثل Alabama و South Carolina تعاني من كفاءة شحن منخفضة مقارنة بحجم المبيعات. متوسط تكلفة الشحن يصل لـ <strong>45 دولاراً للشحنة</strong>.
+                    </div>
+                    <div class="txt-en" style="display:none">
+                        <strong>3b. Operations & Logistics</strong><br><br>
+                        <strong>Tables Category:</strong> Identified as a "black hole" for profits with a net loss of <strong>$16.6K</strong> due to their weight and high shipping costs.<br><br>
+                        <strong>Geography:</strong> States like Alabama and South Carolina suffer from low shipping efficiency relative to sales volume. Average shipping cost reaches <strong>$45 per shipment</strong>.
+                     لقد قمت ببناء مقاييس خاصة لقياس الأثر المالي الحقيقي، وليس فقط عدد المرتجعات:<br><br>
+                        <strong>DAX Measure - Shipping Efficiency:</strong>
+                        <div class="code-block">Shipping Efficiency = 
+        VAR Net_Profit=[Gross Profit] - [Returned Profit]
+        VAR Shipping_Cost = SUM(Orders[Shipping Cost])
+
+        RETURN DIVIDE([Net Profit], [Shipping Cost])</div>
+                        <strong>النتيجة:</strong> مقياس يربط بين صافي الربح وتكاليف الشحن لتحديد كفاءة العملية اللوجستية.
+                    </div>
                 </div>
 
-                <div id="e-re" class="pane">
-                    <button class="lang-btn" onclick="lang(this)">Translate to Arabic</button>
-                    <div class="txt-en"><strong>Recommendations:</strong><br><br><strong>1.</strong> Cap discounts at <strong>15-20%</strong>. Beyond that is confirmed loss.<br><strong>2.</strong> Impose minimum order in distant states for high shipping costs.<br><strong>3.</strong> Review Furniture/Tables — re-price or reduce reliance in high-cost areas.</div>
-                    <div class="txt-ar" style="display:none"><strong>التوصيات:</strong><br><br><strong>1.</strong> سقف الخصومات <strong>15-20%</strong>. ما بعدها خسارة محققة.<br><strong>2.</strong> حد أدنى للطلب في الولايات البعيدة لتغطية الشحن.<br><strong>3.</strong> مراجعة Furniture/Tables — إعادة تسعير أو تقليل الاعتماد في المناطق عالية التكلفة.</div>
+                <div id="e-ret" class="pane">
+                    <button class="lang-btn" onclick="lang(this)">Translate to English</button>
+                    <div class="txt-ar">
+                        <strong>3ج. أزمة المرتجعات</strong><br><br>
+                        <strong>قطاع المعدات (Machines):</strong> سجل أعلى نسبة مرتجعات بـ <strong>14%</strong>، مما يشير إلى مشاكل في الجودة أو وصف المنتج.<br><br>
+                        <strong>المنتجات الفاشلة:</strong> أكواد مثل TEC-MA سجلت معدل مرتجعات <strong>100%</strong>.<br><br>
+                        <strong>DAX Measure - Lost Sales Revenue:</strong>
+                        <div class="code-block">Lost Sales Revenue = 
+    CALCULATE(
+        SUM(Orders[Sales]),
+        Orders[return] = "yes"
+    )</div>
+                        <strong>النتيجة: 181 ألف دولار مبيعات ضائعة.</strong>
+                    </div>
+                    <div class="txt-en" style="display:none">
+                        <strong>Returns Crisis</strong><br><br>
+                        <strong>Machines Sector:</strong> Recorded the highest return rate at <strong>14%</strong>, indicating quality or product description issues.<br><br>
+                        <strong>Failed Products:</strong> Codes like TEC-MA registered a <strong>100% return rate</strong>.<br><br>
+                        <strong>DAX Measure - Lost Sales Revenue:</strong>
+                        <div class="code-block">Lost Sales Revenue = 
+    CALCULATE(
+        SUM(Orders[Sales]),
+        Orders[return] = "yes"
+    )</div>
+                        <strong>Result: $181K in lost sales.</strong>
+                    </div>
+                </div>
+
+                <div id="e-dax" class="pane">
+                    <button class="lang-btn" onclick="lang(this)">Translate to English</button>
+                    <div class="txt-ar">
+                        <strong>المعادلات المتقدمة المطورة (DAX Measures)</strong><br><br>
+
+                        
+                    </div>
+                    <div class="txt-en" style="display:none">
+                        <strong>4. Advanced DAX Measures Developed</strong><br><br>
+                        Custom measures were built to measure true financial impact, not just return counts:<br><br>
+                        <strong>DAX Measure - Shipping Efficiency:</strong>
+                        <div class="code-block">Shipping Efficiency = 
+        VAR Net_Profit=[Gross Profit] - [Returned Profit]
+        VAR Shipping_Cost = SUM(Orders[Shipping Cost])
+
+        RETURN DIVIDE([Net Profit], [Shipping Cost])</div>
+                        <strong>Result:</strong> A metric linking net profit to shipping costs to determine logistics operational efficiency.
+                    </div>
+                </div>
+
+                <div id="e-rec" class="pane">
+                    <button class="lang-btn" onclick="lang(this)">Translate to English</button>
+                    <div class="txt-ar">
+                        <strong>التوصيات الاستراتيجية (Actionable Insights)</strong><br><br>
+                        <strong>1. حماية الهامش:</strong> فرض سقف صارم للخصومات بين <strong>15-20%</strong>. أي شيء فوق ذلك هو خسارة محققة.<br><br>
+                        <strong>2. تطهير المحفظة:</strong> إيقاف أو إعادة تسعير المنتجات ذات المرتجعات العالية (Machines) والمنتجات الخاسرة (Tables).<br><br>
+                        <strong>3. الحد الأدنى للطلب:</strong> فرض "Minimum Order Value" في الولايات ذات تكاليف الشحن المرتفعة لضمان تغطية مصاريف اللوجستيات.
+                    </div>
+                    <div class="txt-en" style="display:none">
+                        <strong>5. Strategic Recommendations</strong><br><br>
+                        <strong>1. Protect the Margin:</strong> Impose a strict discount cap between <strong>15-20%</strong>. Anything beyond that is a confirmed loss.<br><br>
+                        <strong>2. Portfolio Cleanup:</strong> Stop or re-price products with high return rates (Machines) and loss-making products (Tables).<br><br>
+                        <strong>3. Minimum Order Value:</strong> Impose a minimum order value in states with high shipping costs to ensure logistics expenses are covered.
+                    </div>
                 </div>
             </div>
         </div>
@@ -360,36 +402,9 @@
         <div class="divider" style="margin-bottom:30px"></div>
         <h3>Professional Certificates</h3>
         <div class="certs-grid">
-            <div class="cert-card" data-aos="fade-up">
-                <div class="cert-img-w"><img src="Data Transformation in power bi.png" onclick="pop(this.src)"></div>
-                <div class="cert-info">
-                    <h4>Data Transformation</h4>
-                    <div class="cert-btns">
-                        <button class="cb cb-prev" onclick="pop('Data Transformation in power bi.png')">Preview</button>
-                        <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/e686cfc0c0906f9569fc3c411b468fa769c9b0cc?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa" target="_blank" class="cb cb-link">View Certificate</a>
-                    </div>
-                </div>
-            </div>
-            <div class="cert-card" data-aos="fade-up" data-aos-delay="80">
-                <div class="cert-img-w"><img src="intermediante Sql.jpg" onclick="pop(this.src)"></div>
-                <div class="cert-info">
-                    <h4>Intermediate SQL</h4>
-                    <div class="cert-btns">
-                        <button class="cb cb-prev" onclick="pop('intermediante Sql.jpg')">Preview</button>
-                        <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/fe2ff1270f4fb6187ad25757aeba17846d8b42bb?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa" target="_blank" class="cb cb-link">View Certificate</a>
-                    </div>
-                </div>
-            </div>
-            <div class="cert-card" data-aos="fade-up" data-aos-delay="160">
-                <div class="cert-img-w"><img src="Intermediate_Data_Modeling_in_Power_BI.png" onclick="pop(this.src)"></div>
-                <div class="cert-info">
-                    <h4>Intermediate Data Modeling in Power BI</h4>
-                    <div class="cert-btns">
-                        <button class="cb cb-prev" onclick="pop('Intermediate_Data_Modeling_in_Power_BI.png')">Preview</button>
-                        <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/6241db4e965e2b2e4b57a85def5ee487f4b05814?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa" target="_blank" class="cb cb-link">View Certificate</a>
-                    </div>
-                </div>
-            </div>
+            <div class="cert-card" data-aos="fade-up"><div class="cert-img-w"><img src="Data Transformation in power bi.png" onclick="pop(this.src)"></div><div class="cert-info"><h4>Data Transformation</h4><div class="cert-btns"><button class="cb cb-prev" onclick="pop('Data Transformation in power bi.png')">Preview</button><a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/e686cfc0c0906f9569fc3c411b468fa769c9b0cc?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa" target="_blank" class="cb cb-link">View Certificate</a></div></div></div>
+            <div class="cert-card" data-aos="fade-up" data-aos-delay="80"><div class="cert-img-w"><img src="intermediante Sql.jpg" onclick="pop(this.src)"></div><div class="cert-info"><h4>Intermediate SQL</h4><div class="cert-btns"><button class="cb cb-prev" onclick="pop('intermediante Sql.jpg')">Preview</button><a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/fe2ff1270f4fb6187ad25757aeba17846d8b42bb?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa" target="_blank" class="cb cb-link">View Certificate</a></div></div></div>
+            <div class="cert-card" data-aos="fade-up" data-aos-delay="160"><div class="cert-img-w"><img src="Intermediate_Data_Modeling_in_Power_BI.png" onclick="pop(this.src)"></div><div class="cert-info"><h4>Intermediate Data Modeling in Power BI</h4><div class="cert-btns"><button class="cb cb-prev" onclick="pop('Intermediate_Data_Modeling_in_Power_BI.png')">Preview</button><a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/6241db4e965e2b2e4b57a85def5ee487f4b05814?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa" target="_blank" class="cb cb-link">View Certificate</a></div></div></div>
         </div>
     </div>
 </section>
@@ -397,15 +412,7 @@
 <div id="popup" class="popup" onclick="this.classList.remove('on')"><img id="pop-img" src=""></div>
 
 <section id="contact" class="contact" data-aos="fade-up">
-    <div class="wrap">
-        <div class="divider"></div>
-        <h3>Contact Me</h3>
-        <div class="contact-links">
-            <a href="mailto:mohamed3mad131@gmail.com">mohamed3mad131@gmail.com</a>
-            <a href="https://www.linkedin.com/in/mohamed-emad-76b24a294" target="_blank">LinkedIn Profile</a>
-            <a href="tel:01040699963">01040699963</a>
-        </div>
-    </div>
+    <div class="wrap"><div class="divider"></div><h3>Contact Me</h3><div class="contact-links"><a href="mailto:mohamed3mad131@gmail.com">mohamed3mad131@gmail.com</a><a href="https://www.linkedin.com/in/mohamed-emad-76b24a294" target="_blank">LinkedIn Profile</a><a href="tel:01040699963">01040699963</a></div></div>
 </section>
 
 <footer><p>&copy; 2026 Mohamed Emad Hamdy</p></footer>
@@ -415,35 +422,19 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
 AOS.init({duration:700,once:true});
-
 (function(){var t=localStorage.getItem('theme');document.body.setAttribute('data-theme',t||'light')})();
 
-function toggleTheme(){
-    var t=document.body.getAttribute('data-theme')==='dark'?'light':'dark';
-    document.body.setAttribute('data-theme',t);
-    localStorage.setItem('theme',t);
-}
+function toggleTheme(){var t=document.body.getAttribute('data-theme')==='dark'?'light':'dark';document.body.setAttribute('data-theme',t);localStorage.setItem('theme',t);}
 
-function toggleExpand(btn){
-    var box=btn.nextElementSibling;
-    var label=btn.querySelector('span');
-    if(box.classList.contains('open')){
-        box.classList.remove('open');
-        btn.classList.remove('open');
-        label.textContent='Read Case Study';
-    }else{
-        box.classList.add('open');
-        btn.classList.add('open');
-        label.textContent='Hide Case Study';
-    }
-}
+function toggleExpand(btn){var box=btn.nextElementSibling,label=btn.querySelector('span');if(box.classList.contains('open')){box.classList.remove('open');btn.classList.remove('open');label.textContent='Read Case Study';}else{box.classList.add('open');btn.classList.add('open');label.textContent='Hide Case Study';}}
 
 function lang(btn){
     var container=btn.parentElement;
     var enDiv=container.querySelector('.txt-en');
     var arDiv=container.querySelector('.txt-ar');
     if(!enDiv||!arDiv)return;
-    if(arDiv.style.display==='none'||arDiv.style.display===''){
+    var arHidden=arDiv.style.display==='none'||arDiv.style.display==='';
+    if(arHidden){
         enDiv.style.display='none';
         arDiv.style.display='block';
         btn.textContent='Translate to English';
@@ -454,34 +445,16 @@ function lang(btn){
     }
 }
 
-function slide(id,d){
-    var b=document.getElementById(id),imgs=b.getElementsByTagName('img'),a=0;
-    for(var i=0;i<imgs.length;i++){if(imgs[i].classList.contains('on')){a=i;imgs[i].classList.remove('on');break;}}
-    imgs[(a+d+imgs.length)%imgs.length].classList.add('on');
-}
+function slide(id,d){var b=document.getElementById(id),imgs=b.getElementsByTagName('img'),a=0;for(var i=0;i<imgs.length;i++){if(imgs[i].classList.contains('on')){a=i;imgs[i].classList.remove('on');break;}}imgs[(a+d+imgs.length)%imgs.length].classList.add('on');}
 
-function zmIn(e){
-    var img=e.currentTarget.querySelector('img.on');
-    var x=(e.offsetX/e.currentTarget.offsetWidth)*100;
-    var y=(e.offsetY/e.currentTarget.offsetHeight)*100;
-    img.style.transformOrigin=x+'% '+y+'%';
-    img.style.transform='scale(1.6)';
-}
+function zmIn(e){var img=e.currentTarget.querySelector('img.on');var x=(e.offsetX/e.currentTarget.offsetWidth)*100;var y=(e.offsetY/e.currentTarget.offsetHeight)*100;img.style.transformOrigin=x+'% '+y+'%';img.style.transform='scale(1.6)';}
 function zmOut(e){e.currentTarget.querySelector('img.on').style.transform='scale(1)';}
 
-function tab(e,id){
-    var p=e.currentTarget.closest('.p-expand');
-    var ps=p.querySelectorAll('.pane'),ts=p.querySelectorAll('.t-btn');
-    for(var i=0;i<ps.length;i++)ps[i].classList.remove('on');
-    for(var i=0;i<ts.length;i++)ts[i].classList.remove('on');
-    document.getElementById(id).classList.add('on');
-    e.currentTarget.classList.add('on');
-}
+function tab(e,id){var p=e.currentTarget.closest('.p-expand'),ps=p.querySelectorAll('.pane'),ts=p.querySelectorAll('.t-btn');for(var i=0;i<ps.length;i++)ps[i].classList.remove('on');for(var i=0;i<ts.length;i++)ts[i].classList.remove('on');document.getElementById(id).classList.add('on');e.currentTarget.classList.add('on');}
 
-function pop(src){
-    document.getElementById('pop-img').src=src;
-    document.getElementById('popup').classList.add('on');
-}
+function tabEco(e,id,imgIdx){tab(e,id);var slider=document.getElementById('s2'),imgs=slider.getElementsByTagName('img');for(var i=0;i<imgs.length;i++)imgs[i].classList.remove('on');imgs[imgIdx].classList.add('on');}
+
+function pop(src){document.getElementById('pop-img').src=src;document.getElementById('popup').classList.add('on');}
 
 (function(){
     var cv=document.getElementById('bgCanvas'),cx=cv.getContext('2d'),W,H,t=0;
@@ -506,15 +479,14 @@ function pop(src){
     function draw(){
         cx.clearRect(0,0,W,H);t+=0.016;
         for(var i=0;i<edges.length;i++){var a=nodes[edges[i].a],b=nodes[edges[i].b];cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);cx.strokeStyle=gc(0.05);cx.lineWidth=0.7;cx.stroke();}
-        for(var i=0;i<flowDots.length;i++){var d=flowDots[i];d.t+=d.s;if(d.t>1)d.t-=1;var a=nodes[edges[d.e].a],b=nodes[edges[d.e].b],px=a.x+(b.x-a.x)*d.t,py=a.y+(b.y-a.y)*d.t;cx.beginPath();cx.arc(px,py,1.5,0,6.28);cx.fillStyle=gc(0.18);cx.fill();var tt=d.t-0.05;if(tt<0)tt+=1;cx.beginPath();cx.arc(a.x+(b.x-a.x)*tt,a.y+(b.y-a.y)*tt,1,0,6.28);cx.fillStyle=gc(0.07);cx.fill();}
+        for(var i=0;i<flowDots.length;i++){var d=flowDots[i];d.t+=d.s;if(d.t>1)d.t-=1;var a=nodes[edges[d.e].a],b=nodes[edges[d.e].b],px=a.x+(b.x-a.x)*d.t,py=a.y+(b.y-a.y)*d.t;cx.beginPath();cx.arc(px,py,1.5,0,6.28);cx.fillStyle=gc(0.18);cx.fill();}
         for(var i=0;i<nodes.length;i++){var n=nodes[i],p=Math.sin(t*1.5+n.ph)*0.3+0.7;cx.beginPath();cx.arc(n.x,n.y,n.r*p,0,6.28);cx.fillStyle=gc(0.22*p);cx.fill();cx.beginPath();cx.arc(n.x,n.y,n.r*p+4,0,6.28);cx.fillStyle=gc(0.035*p);cx.fill();}
         for(var s=0;s<barSets.length;s++){var bs=barSets[s],th=50,tw=bs.v.length*(bs.bw+bs.gap);cx.beginPath();cx.moveTo(bs.x-2,bs.y+th);cx.lineTo(bs.x+tw+2,bs.y+th);cx.strokeStyle=gc(0.07);cx.lineWidth=0.5;cx.stroke();for(var j=0;j<bs.v.length;j++){var an=Math.sin(t*bs.sp+j*0.5+bs.ph)*0.25+0.75,h=Math.max(3,bs.v[j]*th*an),x=bs.x+j*(bs.bw+bs.gap),y=bs.y+th-h;cx.fillStyle=gc(0.055);cx.fillRect(x,y,bs.bw,h);cx.fillStyle=gc(0.14);cx.fillRect(x,y,bs.bw,1.5);}}
-        cx.beginPath();var dl=Math.floor((t*30)%trendPts.length);for(var i=0;i<=dl&&i<trendPts.length;i++){var p=trendPts[i],y=p.base+Math.sin(t*0.5+p.ph)*12;if(i===0)cx.moveTo(p.x,y);else cx.lineTo(p.x,y);}cx.strokeStyle=gc(0.06);cx.lineWidth=1.5;cx.stroke();if(dl<trendPts.length){var tip=trendPts[dl],ty=tip.base+Math.sin(t*0.5+tip.ph)*12;cx.beginPath();cx.arc(tip.x,ty,3,0,6.28);cx.fillStyle=gc(0.16);cx.fill();}
+        cx.beginPath();var dl=Math.floor((t*30)%trendPts.length);for(var i=0;i<=dl&&i<trendPts.length;i++){var p=trendPts[i],y=p.base+Math.sin(t*0.5+p.ph)*12;if(i===0)cx.moveTo(p.x,y);else cx.lineTo(p.x,y);}cx.strokeStyle=gc(0.06);cx.lineWidth=1.5;cx.stroke();
         for(var i=0;i<scatterPts.length;i++){var p=scatterPts[i],f=Math.sin(t*0.8+p.ph)*0.5+0.5,dx=Math.sin(t*0.3+p.ph)*8,dy=Math.cos(t*0.25+p.ph)*6;cx.beginPath();cx.arc(p.x+dx,p.y+dy,p.r*f,0,6.28);cx.fillStyle=gc(0.07*f);cx.fill();}
         cx.font='600 11px Poppins';cx.textAlign='left';
         for(var i=0;i<kpiTexts.length;i++){var k=kpiTexts[i];k.life++;if(k.life>k.ml){k.life=0;var kps=['$2.3M','68.6%','5,000+','12.5%','-0.82$','20.4%','87x','$327K'];k.txt=kps[Math.floor(Math.random()*kps.length)];k.x=W*0.5+Math.random()*W*0.4;k.y=H*0.1+Math.random()*H*0.8;}var fi=Math.min(1,k.life/40),fo=Math.max(0,1-(k.life-k.ml+60)/60),al=Math.min(fi,fo)*0.09;cx.fillStyle=gc(al);cx.fillText(k.txt,k.x,k.y);}
-        for(var i=0;i<3;i++){var py=H*(0.25+i*0.25)+Math.sin(t*0.6+i)*20,pr=(t*0.15+i*0.33)%1,sx=W*0.08,ex=W*0.42,ax=sx+(ex-sx)*pr;cx.beginPath();cx.moveTo(sx,py);cx.lineTo(ex,py);cx.strokeStyle=gc(0.025);cx.lineWidth=1;cx.setLineDash([4,6]);cx.stroke();cx.setLineDash([]);cx.beginPath();cx.arc(ax,py,2.5,0,6.28);cx.fillStyle=gc(0.1);cx.fill();}
-        var px=W*0.82,py=H*0.85,pr=18,sa=t*0.3,sl=[0.35,0.25,0.2,0.2];for(var i=0;i<sl.length;i++){cx.beginPath();cx.moveTo(px,py);cx.arc(px,py,pr,sa,sa+sl[i]*6.28);cx.closePath();cx.fillStyle=gc(0.035+i*0.015);cx.fill();sa+=sl[i]*6.28;}cx.beginPath();cx.arc(px,py,pr,0,6.28);cx.strokeStyle=gc(0.05);cx.lineWidth=0.5;cx.stroke();
+        var px=W*0.82,py=H*0.85,pr=18,sa=t*0.3,sl=[0.35,0.25,0.2,0.2];for(var i=0;i<sl.length;i++){cx.beginPath();cx.moveTo(px,py);cx.arc(px,py,pr,sa,sa+sl[i]*6.28);cx.closePath();cx.fillStyle=gc(0.035+i*0.015);cx.fill();sa+=sl[i]*6.28;}
         requestAnimationFrame(draw);
     }
     resize();draw();
