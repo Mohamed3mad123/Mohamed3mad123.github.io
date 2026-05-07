@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mohamed Emad — Data Analyst</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;600;700;800&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- MODIFICATION 1: Changed fonts to IBM Plex Sans (professional, formal, data-analyst appropriate) -->
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Serif:wght@400;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════
    VARIABLES & RESET
@@ -28,6 +29,9 @@
   --card-bg: rgba(12,18,32,0.8);
   --card-border: rgba(56,189,248,0.1);
   --grad: linear-gradient(135deg, #38bdf8, #818cf8);
+  /* MODIFICATION 1: IBM Plex Sans font stack */
+  --font-main: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
 }
 [data-theme="light"] {
   --bg: #f0f4fa;
@@ -49,16 +53,24 @@
   --card-border: rgba(2,132,199,0.12);
 }
 *,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
-html { scroll-behavior: smooth }
+html {
+  scroll-behavior: smooth;
+  /* MODIFICATION 4: Force scroll to top on load */
+  scroll-padding-top: 0;
+}
 body {
-  font-family: 'Syne', sans-serif;
+  /* MODIFICATION 1: IBM Plex Sans as primary font */
+  font-family: var(--font-main);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
   background: var(--bg);
   color: var(--t1);
   overflow-x: hidden;
   transition: background .5s, color .5s;
 }
 img { display:block; max-width:100% }
-button { font-family: 'Syne', sans-serif }
+button { font-family: var(--font-main) }
 a { text-decoration: none; color: inherit }
 
 /* ═══════════════════════════════════════
@@ -109,16 +121,17 @@ header {
   width: 100%; height: 100%; border-radius: 50%;
   background: var(--bg);
   display: flex; align-items: center; justify-content: center;
-  font-size: 17px; font-weight: 800; color: var(--accent);
-  font-family: 'Space Mono', monospace;
+  font-size: 17px; font-weight: 700; color: var(--accent);
+  font-family: var(--font-mono);
 }
-.brand-name { font-size: 15px; font-weight: 700; color: var(--t1) }
-.brand-role { font-size: 10px; color: var(--t3); letter-spacing: 2px; text-transform: uppercase; margin-top: 1px }
+/* MODIFICATION 1: Font weight and size adjustments for brand */
+.brand-name { font-size: 15px; font-weight: 600; color: var(--t1); letter-spacing: 0.01em }
+.brand-role { font-size: 10px; color: var(--t3); letter-spacing: 2px; text-transform: uppercase; margin-top: 1px; font-weight: 500 }
 .nav-links { display: flex; gap: 6px; list-style: none }
 .nav-links a {
   padding: 6px 12px; border-radius: 8px;
-  font-size: 12px; font-weight: 600; color: var(--t2);
-  letter-spacing: .5px; transition: all .25s;
+  font-size: 12px; font-weight: 500; color: var(--t2);
+  letter-spacing: .4px; transition: all .25s;
   border: 1px solid transparent;
 }
 .nav-links a:hover {
@@ -137,6 +150,7 @@ header {
 .status-dot {
   display: flex; align-items: center; gap: 7px;
   font-size: 11px; color: var(--accent3); font-weight: 600;
+  letter-spacing: 0.3px;
 }
 .status-dot::before {
   content: '';width:7px;height:7px;border-radius:50%;
@@ -167,7 +181,7 @@ header {
   padding: 6px 14px; border-radius: 100px;
   border: 1px solid var(--border2);
   background: var(--glow);
-  font-size: 11px; font-weight: 700; color: var(--accent);
+  font-size: 11px; font-weight: 600; color: var(--accent);
   letter-spacing: 2px; text-transform: uppercase;
   margin-bottom: 28px;
   animation: slide-in-left 1s ease both;
@@ -178,11 +192,13 @@ header {
   box-shadow: 0 0 10px var(--accent);
   animation: pulse-green 2s ease-in-out infinite;
 }
+/* MODIFICATION 1: Hero name uses IBM Plex Sans with refined weights */
 .hero-name {
   font-size: clamp(40px, 6vw, 68px);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.05;
   color: var(--t1);
+  letter-spacing: -0.02em;
   animation: slide-in-left 1s .1s ease both;
 }
 .hero-name .grad-text {
@@ -191,15 +207,16 @@ header {
   background-clip: text;
 }
 .hero-role {
-  font-size: clamp(16px, 2.5vw, 22px); color: var(--t2);
-  font-weight: 500; margin-top: 12px;
+  font-size: clamp(15px, 2.5vw, 20px); color: var(--t2);
+  font-weight: 500; margin-top: 12px; letter-spacing: 0.01em;
   animation: slide-in-left 1s .2s ease both;
 }
 .hero-desc {
-  font-size: 15px; color: var(--t3); line-height: 1.8;
-  margin-top: 20px; max-width: 480px;
+  font-size: 15px; color: var(--t3); line-height: 1.85;
+  margin-top: 20px; max-width: 480px; font-weight: 400;
   animation: slide-in-left 1s .3s ease both;
 }
+.hero-desc strong { color: var(--t2); font-weight: 600 }
 .hero-tools {
   display: flex; gap: 10px; margin-top: 32px; flex-wrap: wrap;
   animation: slide-in-left 1s .4s ease both;
@@ -209,10 +226,10 @@ header {
   padding: 8px 16px; border-radius: 10px;
   border: 1px solid var(--card-border);
   background: var(--card-bg);
-  font-size: 13px; font-weight: 700;
+  font-size: 12px; font-weight: 600;
   backdrop-filter: blur(8px);
   transition: all .3s;
-  cursor: default;
+  cursor: default; letter-spacing: 0.02em;
 }
 .tool-badge:hover {
   border-color: var(--border2);
@@ -227,20 +244,21 @@ header {
 .btn-primary {
   padding: 13px 28px; border-radius: 12px;
   background: var(--grad);
-  color: #fff; font-size: 13px; font-weight: 700;
+  color: #fff; font-size: 13px; font-weight: 600;
   border: none; cursor: pointer;
-  letter-spacing: .5px;
+  letter-spacing: .4px;
   transition: all .3s;
   box-shadow: 0 4px 20px rgba(56,189,248,0.3);
+  font-family: var(--font-main);
 }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(56,189,248,0.45) }
 .btn-ghost {
   padding: 13px 28px; border-radius: 12px;
   border: 1px solid var(--border2);
   background: transparent; color: var(--t2);
-  font-size: 13px; font-weight: 700;
+  font-size: 13px; font-weight: 600;
   cursor: pointer; transition: all .3s;
-  letter-spacing: .5px;
+  letter-spacing: .4px; font-family: var(--font-main);
 }
 .btn-ghost:hover { background: var(--glow); color: var(--accent); border-color: var(--accent) }
 
@@ -286,8 +304,10 @@ header {
   box-shadow: 0 0 12px var(--accent);
   top: -5px; left: 50%; transform: translateX(-50%);
 }
+
+/* MODIFICATION 2: Stats row now has only 2 cards (removed "2+ Years Exp") */
 .stats-row {
-  display: grid; grid-template-columns: repeat(3, 1fr);
+  display: grid; grid-template-columns: repeat(2, 1fr);
   gap: 12px; margin-top: 32px;
 }
 .stat-card {
@@ -302,10 +322,10 @@ header {
   box-shadow: 0 12px 30px var(--glow);
 }
 .stat-val {
-  font-size: 22px; font-weight: 800; color: var(--accent);
-  font-family: 'Space Mono', monospace;
+  font-size: 22px; font-weight: 700; color: var(--accent);
+  font-family: var(--font-mono);
 }
-.stat-label { font-size: 10px; color: var(--t3); font-weight: 600; margin-top: 4px; letter-spacing: 1px; text-transform: uppercase }
+.stat-label { font-size: 10px; color: var(--t3); font-weight: 500; margin-top: 4px; letter-spacing: 1px; text-transform: uppercase }
 
 /* animations */
 @keyframes slide-in-left { from{opacity:0;transform:translateX(-30px)} to{opacity:1;transform:translateX(0)} }
@@ -320,16 +340,16 @@ section { padding: 100px 24px }
   display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
 }
 .section-label span {
-  font-size: 10px; font-weight: 700; color: var(--accent);
+  font-size: 10px; font-weight: 600; color: var(--accent);
   letter-spacing: 3px; text-transform: uppercase;
-  font-family: 'Space Mono', monospace;
+  font-family: var(--font-mono);
 }
 .section-label::after {
   content: ''; flex: 1; height: 1px; background: var(--border);
 }
 .section-title {
-  font-size: clamp(30px,5vw,50px); font-weight: 800;
-  color: var(--t1); line-height: 1.1;
+  font-size: clamp(28px,5vw,48px); font-weight: 700;
+  color: var(--t1); line-height: 1.1; letter-spacing: -0.02em;
 }
 .section-title .acc { color: var(--accent) }
 
@@ -342,10 +362,10 @@ section { padding: 100px 24px }
   gap: 60px; align-items: center; margin-top: 60px;
 }
 .about-text p {
-  font-size: 16px; line-height: 1.9; color: var(--t2);
-  margin-bottom: 16px;
+  font-size: 15px; line-height: 1.9; color: var(--t2);
+  margin-bottom: 16px; font-weight: 400;
 }
-.about-text strong { color: var(--t1) }
+.about-text strong { color: var(--t1); font-weight: 600 }
 .about-text-ar {
   font-family: 'Cairo', sans-serif; direction: rtl; text-align: right;
   font-size: 16px; line-height: 2.1; color: var(--t2); display: none;
@@ -354,8 +374,9 @@ section { padding: 100px 24px }
   padding: 6px 14px; border-radius: 8px;
   border: 1px solid var(--border2);
   background: transparent; color: var(--accent);
-  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  font-size: 11px; font-weight: 600; letter-spacing: 1px;
   cursor: pointer; transition: all .3s; margin-bottom: 20px;
+  font-family: var(--font-main);
 }
 .translate-mini:hover { background: var(--glow) }
 .about-visual {
@@ -375,8 +396,8 @@ section { padding: 100px 24px }
 .t-dot.r { background: #f87171 }
 .t-dot.y { background: #fbbf24 }
 .t-dot.g { background: #34d399 }
-.t-title { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--t3); margin-left: auto }
-.terminal-body { padding: 20px; font-family: 'Space Mono', monospace; font-size: 12px; line-height: 1.9 }
+.t-title { font-family: var(--font-mono); font-size: 11px; color: var(--t3); margin-left: auto }
+.terminal-body { padding: 20px; font-family: var(--font-mono); font-size: 12px; line-height: 1.9 }
 .t-line { display: flex; gap: 10px }
 .t-prompt { color: var(--accent3) }
 .t-cmd { color: var(--accent) }
@@ -413,11 +434,11 @@ section { padding: 100px 24px }
 .skill-card:hover { transform: translateY(-6px); border-color: var(--border2); box-shadow: 0 20px 50px var(--glow) }
 .skill-card:hover::before { opacity: 1 }
 .sk-icon { font-size: 36px; margin-bottom: 16px }
-.sk-name { font-size: 18px; font-weight: 800; color: var(--t1); margin-bottom: 6px }
+.sk-name { font-size: 17px; font-weight: 700; color: var(--t1); margin-bottom: 6px; letter-spacing: -0.01em }
 .sk-level {
-  font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  font-size: 10px; font-weight: 600; letter-spacing: 2px;
   text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
-  font-family: 'Space Mono', monospace;
+  font-family: var(--font-mono);
 }
 .sk-items { display: flex; flex-direction: column; gap: 10px }
 .sk-item { display: flex; align-items: center; gap: 10px }
@@ -432,8 +453,8 @@ section { padding: 100px 24px }
   transition: transform 1.2s ease;
 }
 .sk-bar.animating { transform: scaleX(1) }
-.sk-item-name { font-size: 12px; color: var(--t2); font-weight: 600; min-width: 100px }
-.sk-pct { font-size: 10px; color: var(--t3); font-family:'Space Mono',monospace }
+.sk-item-name { font-size: 12px; color: var(--t2); font-weight: 500; min-width: 100px }
+.sk-pct { font-size: 10px; color: var(--t3); font-family: var(--font-mono) }
 
 /* ═══════════════════════════════════════
    PROJECTS
@@ -492,12 +513,12 @@ section { padding: 100px 24px }
 .proj-content { padding: 36px }
 .proj-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; flex-wrap: wrap }
 .proj-titles {}
-.proj-en { font-size: 22px; font-weight: 800; color: var(--t1); margin-bottom: 6px }
+.proj-en { font-size: 21px; font-weight: 700; color: var(--t1); margin-bottom: 6px; letter-spacing: -0.01em }
 .proj-ar { font-family: 'Cairo', sans-serif; font-size: 16px; color: var(--t2); direction: rtl }
 .proj-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px }
 .badge {
   padding: 4px 10px; border-radius: 6px;
-  font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
   border: 1px solid;
 }
 .badge-blue { color: var(--accent); border-color: rgba(56,189,248,.3); background: rgba(56,189,248,.07) }
@@ -517,14 +538,14 @@ section { padding: 100px 24px }
 }
 .kpi-item:hover { background: var(--glow) }
 .kpi-v {
-  font-size: 20px; font-weight: 800; color: var(--accent);
-  font-family: 'Space Mono', monospace;
+  font-size: 19px; font-weight: 700; color: var(--accent);
+  font-family: var(--font-mono);
   display: block;
 }
 .kpi-v.red { color: var(--red) }
 .kpi-v.green { color: var(--accent3) }
 .kpi-v.gold { color: var(--gold) }
-.kpi-l { font-size: 10px; color: var(--t3); display: block; margin-top: 4px; font-weight: 600; letter-spacing: .5px }
+.kpi-l { font-size: 10px; color: var(--t3); display: block; margin-top: 4px; font-weight: 500; letter-spacing: .5px }
 
 /* Expand */
 .expand-trigger {
@@ -532,8 +553,9 @@ section { padding: 100px 24px }
   padding: 12px 22px; border-radius: 12px;
   border: 1px solid var(--border2);
   background: var(--glow);
-  color: var(--accent); font-size: 13px; font-weight: 700;
+  color: var(--accent); font-size: 13px; font-weight: 600;
   cursor: pointer; transition: all .3s; margin-top: 20px;
+  font-family: var(--font-main);
 }
 .expand-trigger:hover { background: var(--accent); color: #fff; border-color: var(--accent) }
 .expand-trigger .arr {
@@ -559,10 +581,10 @@ section { padding: 100px 24px }
   padding: 7px 15px; border-radius: 8px;
   border: 1px solid var(--border);
   background: transparent; color: var(--t2);
-  font-size: 12px; font-weight: 700;
+  font-size: 12px; font-weight: 600;
   cursor: pointer; transition: all .3s;
-  font-family: 'Syne', sans-serif;
-  letter-spacing: .3px;
+  font-family: var(--font-main);
+  letter-spacing: .2px;
 }
 .tab:hover { border-color: var(--border2); color: var(--t1) }
 .tab.on { color: var(--accent); border-color: rgba(56,189,248,.4); background: rgba(56,189,248,.08) }
@@ -578,9 +600,9 @@ section { padding: 100px 24px }
   display: flex; align-items: center; gap: 7px;
   padding: 7px 16px; border-radius: 9px;
   border: 1px solid var(--border2); background: transparent;
-  color: var(--accent); font-size: 11px; font-weight: 700;
+  color: var(--accent); font-size: 11px; font-weight: 600;
   cursor: pointer; transition: all .3s;
-  font-family: 'Syne', sans-serif; letter-spacing: .5px;
+  font-family: var(--font-main); letter-spacing: .4px;
 }
 .tr-btn:hover { background: var(--glow) }
 .tr-flag { font-size: 14px }
@@ -589,8 +611,8 @@ section { padding: 100px 24px }
   font-family: 'Cairo', sans-serif; direction: rtl; text-align: right;
   display: none;
 }
-.prose { font-size: 14px; line-height: 1.95; color: var(--t2) }
-.prose strong { color: var(--t1); font-weight: 700 }
+.prose { font-size: 14px; line-height: 1.95; color: var(--t2); font-weight: 400 }
+.prose strong { color: var(--t1); font-weight: 600 }
 .prose p { margin-bottom: 14px }
 .prose-ar { font-size: 15px; line-height: 2.2 }
 
@@ -598,7 +620,7 @@ section { padding: 100px 24px }
 .code-b {
   background: #010a14; border: 1px solid var(--border2);
   border-radius: 12px; padding: 16px 18px;
-  margin: 14px 0; font-family: 'Space Mono', monospace;
+  margin: 14px 0; font-family: var(--font-mono);
   font-size: 12px; line-height: 1.8; color: var(--t2);
   overflow-x: auto; direction: ltr; text-align: left;
   white-space: pre;
@@ -621,13 +643,13 @@ section { padding: 100px 24px }
 }
 .insight-card:hover { border-color: var(--border2); transform: translateY(-2px) }
 .insight-num {
-  font-size: 22px; font-weight: 800; color: var(--accent);
-  font-family: 'Space Mono', monospace;
+  font-size: 22px; font-weight: 700; color: var(--accent);
+  font-family: var(--font-mono);
 }
 .insight-num.red { color: var(--red) }
 .insight-num.green { color: var(--accent3) }
 .insight-num.gold { color: var(--gold) }
-.insight-txt { font-size: 11px; color: var(--t3); margin-top: 5px; font-weight: 600 }
+.insight-txt { font-size: 11px; color: var(--t3); margin-top: 5px; font-weight: 500 }
 
 /* ═══════════════════════════════════════
    CERTIFICATES
@@ -657,13 +679,14 @@ section { padding: 100px 24px }
 }
 .cert-card:hover .cert-overlay { opacity: 1 }
 .cert-body { padding: 20px }
-.cert-title { font-size: 14px; font-weight: 700; color: var(--t1); margin-bottom: 6px }
-.cert-issuer { font-size: 11px; color: var(--t3); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px }
+.cert-title { font-size: 14px; font-weight: 600; color: var(--t1); margin-bottom: 6px }
+.cert-issuer { font-size: 11px; color: var(--t3); font-weight: 500; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px }
 .cert-btns { display: flex; gap: 8px }
 .cert-btn {
   flex: 1; padding: 9px 0; border-radius: 10px; text-align: center;
-  font-size: 11px; font-weight: 700; cursor: pointer;
+  font-size: 11px; font-weight: 600; cursor: pointer;
   transition: all .3s; letter-spacing: .5px;
+  font-family: var(--font-main);
 }
 .cert-btn-preview {
   border: 1px solid var(--border2); background: transparent; color: var(--t2);
@@ -695,14 +718,14 @@ section { padding: 100px 24px }
   pointer-events: none;
 }
 .contact-glyph { font-size: 60px; margin-bottom: 24px }
-.contact-card h3 { font-size: 32px; font-weight: 800; margin-bottom: 10px; color: var(--t1) }
-.contact-card p { font-size: 15px; color: var(--t2); margin-bottom: 40px }
+.contact-card h3 { font-size: 30px; font-weight: 700; margin-bottom: 10px; color: var(--t1); letter-spacing: -0.02em }
+.contact-card p { font-size: 15px; color: var(--t2); margin-bottom: 40px; font-weight: 400 }
 .contact-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap }
 .contact-link {
   display: flex; align-items: center; gap: 10px;
   padding: 14px 24px; border-radius: 14px;
   border: 1px solid var(--border2);
-  color: var(--t2); font-size: 13px; font-weight: 700;
+  color: var(--t2); font-size: 13px; font-weight: 500;
   transition: all .3s;
 }
 .contact-link:hover {
@@ -719,7 +742,7 @@ footer {
   text-align: center; padding: 30px 24px;
   border-top: 1px solid var(--border);
   font-size: 12px; color: var(--t3);
-  font-family: 'Space Mono', monospace;
+  font-family: var(--font-mono);
 }
 footer span { color: var(--accent) }
 
@@ -883,16 +906,13 @@ footer span { color: var(--accent) }
         <div class="photo-ring"></div>
       </div>
 
+      <!-- MODIFICATION 2: Removed "2+ Years Exp" stat card. Now only 2 cards remain. -->
       <div class="stats-row">
         <div class="stat-card reveal">
-          <div class="stat-val">2+</div>
-          <div class="stat-label">Years Exp</div>
-        </div>
-        <div class="stat-card reveal reveal-delay-1">
           <div class="stat-val">5+</div>
           <div class="stat-label">Projects</div>
         </div>
-        <div class="stat-card reveal reveal-delay-2">
+        <div class="stat-card reveal reveal-delay-1">
           <div class="stat-val">3+</div>
           <div class="stat-label">Certificates</div>
         </div>
@@ -944,7 +964,7 @@ footer span { color: var(--accent) }
             <div class="t-line"><span class="t-out">  name:       <span class="t-val">'Mohamed Emad Hamdy'</span></span></div>
             <div class="t-line"><span class="t-out">  role:       <span class="t-val">'Data Analyst'</span></span></div>
             <div class="t-line"><span class="t-out">  location:   <span class="t-val">'Egypt 🇪🇬'</span></span></div>
-            <div class="t-line"><span class="t-out">  exp_years:  <span class="t-val">2</span></span></div>
+            <div class="t-line"><span class="t-out">  exp_years:  <span class="t-val">0</span></span></div>
             <div class="t-line"><span class="t-out">  skills:     <span class="t-val">['SQL','PowerBI','DAX','Excel']</span></span></div>
             <br>
             <div class="t-line"><span class="t-prompt">❯</span> <span class="cursor"></span></div>
@@ -962,30 +982,31 @@ footer span { color: var(--accent) }
     <h2 class="section-title">Technical <span class="acc">Arsenal</span></h2>
     <div class="skills-grid">
 
+      <!-- MODIFICATION 3: SQL level changed from "Advanced" to "Beginner" with adjusted bar percentages -->
       <div class="skill-card reveal" data-observe>
         <div class="sk-icon">🗄️</div>
         <div class="sk-name">SQL</div>
-        <div class="sk-level">Advanced</div>
+        <div class="sk-level">Beginner</div>
         <div class="sk-items">
           <div class="sk-item">
             <div class="sk-item-name">Queries & Joins</div>
-            <div class="sk-bar-wrap"><div class="sk-bar" data-w="92"></div></div>
-            <div class="sk-pct">92%</div>
+            <div class="sk-bar-wrap"><div class="sk-bar" data-w="55"></div></div>
+            <div class="sk-pct">55%</div>
           </div>
           <div class="sk-item">
             <div class="sk-item-name">Aggregations</div>
-            <div class="sk-bar-wrap"><div class="sk-bar" data-w="90"></div></div>
-            <div class="sk-pct">90%</div>
+            <div class="sk-bar-wrap"><div class="sk-bar" data-w="60"></div></div>
+            <div class="sk-pct">60%</div>
           </div>
           <div class="sk-item">
             <div class="sk-item-name">Subqueries</div>
-            <div class="sk-bar-wrap"><div class="sk-bar" data-w="85"></div></div>
-            <div class="sk-pct">85%</div>
+            <div class="sk-bar-wrap"><div class="sk-bar" data-w="45"></div></div>
+            <div class="sk-pct">45%</div>
           </div>
           <div class="sk-item">
             <div class="sk-item-name">Window Functions</div>
-            <div class="sk-bar-wrap"><div class="sk-bar" data-w="80"></div></div>
-            <div class="sk-pct">80%</div>
+            <div class="sk-bar-wrap"><div class="sk-bar" data-w="35"></div></div>
+            <div class="sk-pct">35%</div>
           </div>
         </div>
       </div>
@@ -1589,6 +1610,20 @@ YoY_Growth_Arrow =
 </div><!-- /z1 -->
 
 <script>
+/* ═══════════════════════════════════════
+   MODIFICATION 4: Force scroll to top on page load/refresh
+═══════════════════════════════════════ */
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.addEventListener('load', function() {
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+});
+// Also handle the case where page loads with a hash
+if (!window.location.hash) {
+  window.scrollTo(0, 0);
+}
+
 /* ═══════════════════════════════════════
    THEME
 ═══════════════════════════════════════ */
